@@ -1,0 +1,24 @@
+/* pages/me/me.wxss */
+.loginTitle{
+  display:flex;
+  flex-direction:row;
+  width:100%;
+}
+.select{
+  font-size:12px;
+  color:blueviolet;
+  width:50%;
+  text-align:center;
+  height:45px;
+  line-height:45px;
+  border-bottom:5rpx solid blueviolet;
+}
+.default{
+  font-size:12px;
+  margin:0 auto;
+  padding:15px;
+}
+.hr{
+  border:1px solid#cccccc;
+  opacity:0.2;
+}

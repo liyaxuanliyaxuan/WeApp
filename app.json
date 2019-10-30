@@ -1,0 +1,49 @@
+{
+  "pages": [
+    "pages/cook/cook",
+    "pages/headline/headline",
+    "pages/food/food",
+    "pages/message/message",
+    "pages/me/me"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor":"#87CEFA",
+    "navigationBarTitleText": "考拉养生大全",
+    "navigationBarTextStyle": "black",
+    "enablePullDownRefresh": true
+  },
+  "tabBar":{
+    "backgroundColor":"black",
+    "color":"#999999",
+    "selectedColor":"#CC1004",
+    "borderStyle":"black",
+    "list":[{
+      "pagePath":"pages/cook/cook",
+      "text":"学做菜",
+      "iconPath":"image/厨师帽.png",
+      "selectedIconPath":"image/厨师帽.png"
+    },{
+      "pagePath":"pages/headline/headline",
+      "text":"头条",
+      "iconPath":"image/读头条.png",
+      "selectedIconPath":"image/读头条.png"
+    },{
+      "pagePath":"pages/food/food",
+      "text":"美食圈",
+      "iconPath":"image/圈子.png",
+      "selectedIconPath":"image/圈子.png"
+    },{
+      "pagePath":"pages/message/message",
+      "text":"消息",
+      "iconPath":"image/消息.png",
+      "selectedIconPath":"image/消息.png"
+    },{
+      "pagePath":"pages/me/me",
+      "text":"我的",
+      "iconPath":"image/我的.png",
+      "selectedIconPath":"image/我的.png"
+    }]
+  },
+  "sitemapLocation": "sitemap.json"
+}

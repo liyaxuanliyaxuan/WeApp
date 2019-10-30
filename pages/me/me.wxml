@@ -1,0 +1,16 @@
+<!--pages/me/me.wxml-->
+<view class="content">
+  <view class="loginTitle">
+    <view class="{{currentTab==0?'select':'default'}}"data-current="0"bindtap="switchNav">账号密码登陆</view>
+    <view class="{{currentTab==1?'select':'default'}}"data-current="1"bindtap="switchNav">手机快捷登陆</view>
+  </view>
+  <view class="hr"></view>
+  <swiper current="{{currentTab}}"style="height:{{winHeight}}px">
+    <swiper-item>
+      <view style="margin-top:10px;border:1px solid #cccccc;widthL99%;height:200px;">登陆区域</view>
+    </swiper-item>
+    <swiper-item>
+      <view style="margin-top:10px;border:1px solid #cccccc;widthL99%;height:200px;">登陆区域</view>
+    </swiper-item>
+  </swiper>
+</view>

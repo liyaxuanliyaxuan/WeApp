@@ -1,0 +1,12 @@
+<!--pages/food/food.wxml-->
+<video id="myVideo" src="http://ugcbsy.qq.com/uwMROfz2r5zEIaQXGdGnCmdfhzmTk18sX2Ar-h4hnWJblhxX/g30122c52n0.m701.mp4?vkey=892AAEBA0710A291B3738DC07748784B20AD3361A4B3DBBCD7C5035189A35A4A326548912375F0BD2581AE55883A01711D02238F9956DAF7DE0181A4F9F1E0986F1BA2F79FBDB470869005272AE99EEEA34789F5095B30B5DB1F48D449BAD6EB260A86006965D628A1F8186209703466"controls="{{false}}"event-model="bubble"style="width:100%">
+  <cover-view class="controls">
+    <cover-view class="play"bindtap="play">
+      <cover-image class="img" src="picture/播放.png"/>
+    </cover-view>
+    <cover-view class="pause"bindtap="pause">
+      <cover-image class="img" src="picture/暂停.png"/>
+    </cover-view>
+    <cover-view class="time">00:00</cover-view>
+  </cover-view>
+</video>

@@ -1,0 +1,65 @@
+<!--pages/cook/cook.wxml-->
+<view class="haibao">
+  <swiper indicator-dots="{{indicatorDots}}"autoplay="{{autoplay}}"interval="{{interval}}"duration="{{duation}}">
+    <block wx:for="{{imgUrls}}">
+      <swiper-item>
+        <image src="{{item}}"class="slide-image"style="width:100%"></image>
+      </swiper-item>
+    </block>
+  </swiper>
+</view>
+
+<view class="content">
+<!--
+  <view class="img">
+    <image src="pictures/food-1.jpg"style="width:100%;height:150px;"></image>
+  </view>
+  -->
+  <view class="nav">
+    <view class="nav-item">
+      <view><image src="pictures/menu.png"style="width:25px;height:23px;"></image></view>
+      <view>菜谱</view>
+    </view>
+    <view class="nav-item">
+      <view><image src="pictures/视频.png"style="width:25px;height:23px;"></image></view>
+      <view>视频</view>
+    </view>
+    <view class="nav-item">
+      <view><image src="pictures/美食.png"style="width:25px;height:23px;"></image></view>
+      <view>美食</view>
+    </view>
+    <view class="nav-item">
+      <view><image src="pictures/购物.png"style="width:25px;height:23px;"></image></view>
+      <view>购物</view>
+    </view>
+  </view>
+  <view class="hr"></view>
+  <view class="head">
+    <view>头条推荐</view>
+    <view class="right">></view>
+  </view>
+  <import src="../template/template"/>
+  <view class="list">
+    <template is="cooks"data="{{array}}"/>
+  </view>
+</view>
+<!--
+  <view class="list">
+  <block wx:for="{{array}}">
+    <view class="item" bindtap="seeDetail" id="0">
+      <view>
+        <image src="{{item.img}}"style="width:75px;height:45px;"></image>
+      </view>
+      <view class="desc">
+        <view class="title">{{item.title}}</view>
+        <view class="count">
+          <view>{{item.type}}</view>
+          <view class="liulan">{{item.liulan}}</view>
+          <view class="pinglun">{{item.pinglun}}</view>
+        </view>
+      </view>
+    </view>
+    <view class="hr2"></view>
+    </block>
+  </view>
+</view>
