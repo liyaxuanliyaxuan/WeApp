@@ -1,0 +1,3 @@
+<!--pages/record/record.wxml-->
+<text>pages/record/record.wxml</text>
+<navigator class="mode-1" url="../record_write/record_write"><text>发表动态</text></navigator>

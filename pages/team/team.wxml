@@ -1,0 +1,10 @@
+<!--pages/team/team.wxml-->
+<text>pages/team/team.wxml</text>
+<view class="mode">
+    <navigator class="mode-1" url="../team/team"><text>1足迹</text></navigator>
+
+    <navigator class="mode-2" url="../team_advise/team_advise"><text>2建议</text></navigator>
+
+
+    <navigator class="mode-3" url="../team_info/team_info"><text>3信息</text></navigator>
+</view>

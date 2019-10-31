@@ -1,0 +1,4 @@
+<!--pages/team_advise/team_advise.wxml-->
+<text>pages/team_advise/team_advise.wxml</text>
+<navigator class="mode-1" url="../team_add_advise/team_add_advise"><text>提意见</text></navigator>
+

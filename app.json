@@ -1,0 +1,47 @@
+{
+  "pages": [
+    "pages/join/join",
+    "pages/join_create/join_create",
+    "pages/team/team",
+    "pages/team_info/team_info",
+    "pages/team_advise/team_advise",
+    "pages/team_add_advise/team_add_advise",
+    "pages/me/me",
+    "pages/record/record",
+    "pages/record_write/record_write"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "WeChat",
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar":{
+    "backgroundColor":"black",
+    "color":"#999999",
+    "selectedColor":"#CC1004",
+    "borderStyle":"black",
+    "list":[{
+      "pagePath":"pages/join/join",
+      "text":"加入",
+      "iconPath":"image/厨师帽.png",
+      "selectedIconPath":"image/厨师帽.png"
+    },{
+      "pagePath":"pages/record/record",
+      "text":"动态",
+      "iconPath":"image/消息.png",
+      "selectedIconPath":"image/消息.png"
+    },{
+      "pagePath":"pages/team/team",
+      "text":"团队",
+      "iconPath":"image/圈子.png",
+      "selectedIconPath":"image/圈子.png"
+    },{
+      "pagePath":"pages/me/me",
+      "text":"我的",
+      "iconPath":"image/我的.png",
+      "selectedIconPath":"image/我的.png"
+    }]
+  },
+  "sitemapLocation": "sitemap.json"
+}
