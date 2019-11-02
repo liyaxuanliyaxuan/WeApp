@@ -1,2 +1,48 @@
-<!--pages/join_create/join_create.wxml-->
-<text>pages/join_create/join_create.wxml</text>
+<!--pages/join_create/join_create.wxml
+当前是团队创建页面，具体的数据项还未完善，本质上是表单和提交
+
+-->
+
+<van-cell-group>
+    <van-field
+      value="{{ username }}"
+      required
+      clearable
+      label="用户名"
+      icon="question-o"
+      placeholder="请输入团队名"
+      bind:click-icon="onClickIcon"
+    />
+  
+    <van-field
+      value="{{ password }}"
+      type="password"
+      label="创建人账号"
+      placeholder="请输入创建人账号"
+      required
+      border="{{ false }}"
+    />
+    <van-field
+    value="{{ password }}"
+    type="password"
+    label=" "
+    placeholder=" "
+    required
+    border="{{ false }}"
+  />
+  <van-field
+  value="{{ password }}"
+  type="password"
+  label="描述"
+  placeholder="请输入团队描述"
+  required
+  border="{{ false }}"
+/>
+  </van-cell-group>
+  <van-picker columns="{{ teamType }}" 
+  default-index="{{ 2 }}"
+  show-toolbar
+  title="团队性质"
+  bind:change="onChange" />
+  <van-button plain type="primary" 
+  bind:click="createTeam">创建团队</van-button>

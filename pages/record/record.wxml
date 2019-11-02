@@ -1,3 +1,53 @@
-<!--pages/record/record.wxml-->
-<text>pages/record/record.wxml</text>
-<navigator class="mode-1" url="../record_write/record_write"><text>发表动态</text></navigator>
+<!--pages/record/record.wxml
+
+在当前页面1、显示动态
+2、发表动态 
+-->
+<view >
+        <van-icon name="add" size="30px" bind:click="addRecord"/>
+        <text>发表动态</text>
+</view>
+
+<!--
+    选择显示某个特定团队的成员动态
+-->
+
+<van-card
+
+  tag="标签"
+  
+  desc="信息"
+  title="标题"
+  thumb="{{ imageURL }}"
+>
+  <view slot="footer">
+    <van-button size="mini">按钮</van-button>
+    <van-button size="mini">按钮</van-button>
+  </view>
+</van-card>
+<van-card
+
+  tag="标签"
+  
+  desc="信息"
+  title="标题"
+  thumb="{{ imageURL }}"
+>
+  <view slot="footer">
+    <van-button size="mini">按钮</van-button>
+    <van-button size="mini">按钮</van-button>
+  </view>
+</van-card>
+<van-card
+
+  tag="标签"
+  
+  desc="信息"
+  title="标题"
+  thumb="{{ imageURL }}"
+>
+  <view slot="footer">
+    <van-button size="mini">按钮</van-button>
+    <van-button size="mini">按钮</van-button>
+  </view>
+</van-card>

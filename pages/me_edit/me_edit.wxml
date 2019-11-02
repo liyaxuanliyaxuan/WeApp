@@ -1,0 +1,2 @@
+<!--pages/me_edit/me_edit.wxml-->
+<van-button slot="button" size="small" type="primary">保存</van-button>

@@ -1,10 +1,15 @@
 // pages/join_create/join_create.js
+import Toast from 'vant-weapp/toast';
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
+    teamType:['1','2','3','4'],
+    teamNane:"",
+    teamDetail:"",
+    creator:"",
 
   },
 
@@ -62,5 +67,13 @@ Page({
    */
   onShareAppMessage: function () {
 
+  },
+  createBtn(){
+
+  }
+  ,
+  onChange(event) {
+    const { picker, value, index } = event.detail;
+    Toast(`当前值：${value}, 当前索引：${index}`);
   }
 })

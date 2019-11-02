@@ -5,6 +5,11 @@ Page({
    * 页面的初始数据
    */
   data: {
+    searchIdValue:"",
+    teamShow:[{
+
+    },
+    ],
 
   },
 
@@ -62,5 +67,25 @@ Page({
    */
   onShareAppMessage: function () {
 
+  },
+  onSearch(){
+
+  },
+  onCancel(){
+
+  },
+  addTeam(){
+   wx.navigateTo({
+     url: '../join_create/join_create',
+     success: function(res){
+       // success
+     },
+     fail: function() {
+       // fail
+     },
+     complete: function() {
+       // complete
+     }
+   })
   }
 })

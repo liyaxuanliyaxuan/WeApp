@@ -1,2 +1,16 @@
-<!--pages/record_write/record_write.wxml-->
-<text>pages/record_write/record_write.wxml</text>
+<!--pages/record_write/record_write.wxml
+
+当前页面为发布个人动态页面
+可进行图片上传和文字描述，点击提交后在动态页面展示
+-->
+<van-cell-group>
+    <van-field
+      value="{{ message }}"
+      label="动态"
+      type="textarea"
+      placeholder="记录我的生活。。。"
+      autosize
+      border="{{ false }}"
+    />
+    <van-button slot="button" size="small" type="primary">发布我的动态</van-button>
+  </van-cell-group>

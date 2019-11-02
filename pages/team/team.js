@@ -5,6 +5,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    active:0
 
   },
 
@@ -62,5 +63,57 @@ Page({
    */
   onShareAppMessage: function () {
 
+  },
+  directTo(event){
+     
+    let index=event.detail
+   switch(index){
+     case 1:{
+      wx.navigateTo({
+        url: '../team_advise/team_advise',
+        success: function(res){
+          // success
+        },
+        fail: function() {
+          // fail
+        },
+        complete: function() {
+          // complete
+        }
+      })
+     }
+       break
+       case 1:{
+         wx.navigateTo({
+           url: '../team_advise/team_advise',
+           success: function(res){
+             // success
+           },
+           fail: function() {
+             // fail
+           },
+           complete: function() {
+             // complete
+           }
+         })
+       }
+       break
+       case 2:{
+         wx.navigateTo({
+           url: '../team_info/team_info',
+           success: function(res){
+             // success
+           },
+           fail: function() {
+             // fail
+           },
+           complete: function() {
+             // complete
+           }
+         })
+       }
+   }
   }
+
+
 })

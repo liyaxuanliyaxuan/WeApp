@@ -1,3 +1,12 @@
-<!--pages/join/join.wxml-->
-<text>pages/join/join.wxml</text>
-<navigator class="mode-1" url="../join_create/join_create"><text>点击创建</text></navigator>
+<!--pages/join/join.wxml
+
+初始页面，显示团队创建按钮和搜索功能
+
+-->
+<van-icon name="add" size="30px" bind:click="addTeam"/>
+
+<van-search value="{{ aearchIdValue }}" 
+show-action
+bind:search="onSearch"
+bind:cancel="onCancel"
+placeholder="请输入搜索的团队ID" />

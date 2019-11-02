@@ -7,8 +7,10 @@
     "pages/team_advise/team_advise",
     "pages/team_add_advise/team_add_advise",
     "pages/me/me",
+    "pages/me_edit/me_edit",
     "pages/record/record",
-    "pages/record_write/record_write"
+    "pages/record_write/record_write",
+    "pages/team_edit/team_edit"
   ],
   "window": {
     "backgroundTextStyle": "light",
@@ -42,6 +44,18 @@
       "iconPath":"image/我的.png",
       "selectedIconPath":"image/我的.png"
     }]
+  },
+  "usingComponents": {
+    "van-button": "vant-weapp/button",
+    "van-search": "vant-weapp/search",
+    "van-field":"vant-weapp/field",
+    "van-picker":"vant-weapp/picker",
+    "van-icon":"vant-weapp/icon",
+    "van-card":"vant-weapp/card",
+    "van-tabbar": "vant-weapp/tabbar",
+  "van-tabbar-item": "vant-weapp/tabbar-item/index"
+
+    
   },
   "sitemapLocation": "sitemap.json"
 }
