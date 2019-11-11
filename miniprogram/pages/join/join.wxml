@@ -1,0 +1,19 @@
+<!--pages/join/join.wxml
+
+初始页面，显示团队创建按钮和搜索功能
+
+-->
+<van-icon name="add" size="30px" bind:click="addTeam"/>
+
+<van-search 
+show-action
+bind:change="onChange"
+bind:search="onSearch"
+bind:cancel="onCancel"
+placeholder="请输入搜索的团队ID或名称" />
+<van-icon name="comment-o" size="20px" bind:click="enterIndex"/>
+{{teamShow}}
+<view wx:for="{{teamList}}">
+团队名称：{{item.name}}
+团队创建者：{{item.leader}}
+</view>

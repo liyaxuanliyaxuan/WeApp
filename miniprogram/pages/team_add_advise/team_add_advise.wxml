@@ -1,0 +1,11 @@
+<!--pages/team_add_advise/team_add_advise.wxml
+
+提建议页面：
+写入建议、表单提交
+
+-->
+
+
+
+<textarea></textarea>
+<van-button slot="button" size="small" type="primary">提交我的意见</van-button>

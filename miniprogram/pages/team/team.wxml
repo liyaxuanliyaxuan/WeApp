@@ -1,0 +1,25 @@
+<!--pages/team/team.wxml
+
+包括三个导航/子页面
+1、团队足迹
+2、团队建议→建议页面
+3、团队信息->修改团队信息
+默认当前页面为团队足迹
+
+选择显示团队协议
+-->
+
+<view class="mode">
+</view>
+<van-tabbar active="{{ active }}" fixed="{{false}}" bind:change="directTo">
+    <van-tabbar-item icon="home-o">
+    <text>1足迹</text>
+</van-tabbar-item>
+    <van-tabbar-item icon="search">
+        <text>2建议</text>
+    </van-tabbar-item>
+    <van-tabbar-item icon="friends-o">
+            <text>3信息</text>
+    </van-tabbar-item>
+    
+  </van-tabbar>

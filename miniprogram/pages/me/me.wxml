@@ -1,0 +1,10 @@
+<!--pages/me/me.wxml
+
+
+显示个人信息
+-->
+
+<view>
+        <van-icon name="comment-o" size="20px" bind:click="editMe"/>
+    <text>编辑个人信息</text>
+</view>

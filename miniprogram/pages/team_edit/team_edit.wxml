@@ -1,0 +1,6 @@
+<!--pages/team_edit/team_edit.wxml
+
+此页面进行团队信息的修改
+-->
+
+<van-button slot="button" size="small" type="primary">提交团队信息</van-button>

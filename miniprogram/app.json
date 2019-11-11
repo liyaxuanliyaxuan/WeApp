@@ -1,0 +1,79 @@
+{
+  "pages": [
+    "pages/record/record",
+    "pages/team/team",
+    "pages/join/join",
+    "pages/join_create/join_create",
+    "pages/team_info/team_info",
+    "pages/team_advise/team_advise",
+    "pages/team_add_advise/team_add_advise",
+    "pages/me/me",
+    "pages/me_edit/me_edit",
+  
+    "pages/record_write/record_write",
+    "pages/team_edit/team_edit",
+    "pages/index/index",
+    "pages/userConsole/userConsole",
+    "pages/storageConsole/storageConsole",
+    "pages/databaseGuide/databaseGuide",
+    "pages/addFunction/addFunction",
+    "pages/deployFunctions/deployFunctions",
+    "pages/chooseLib/chooseLib",
+    "pages/openapi/openapi",
+    "pages/openapi/serverapi/serverapi",
+    "pages/openapi/callback/callback",
+    "pages/openapi/cloudid/cloudid",
+    "pages/im/im",
+    "pages/im/room/room"
+  ],
+  "window": {
+    "backgroundColor": "#F6F6F6",
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#F6F6F6",
+    "navigationBarTitleText": "云开发 QuickStart"
+    
+  },
+  "tabBar":{
+    "backgroundColor":"black",
+    "color":"#999999",
+    "selectedColor":"#CC1004",
+    "borderStyle":"black",
+    "list":[{
+      "pagePath":"pages/join/join",
+      "text":"加入",
+      "iconPath":"image/厨师帽.png",
+      "selectedIconPath":"image/厨师帽.png"
+    },{
+      "pagePath":"pages/record/record",
+      "text":"动态",
+      "iconPath":"image/消息.png",
+      "selectedIconPath":"image/消息.png"
+    },{
+      "pagePath":"pages/team/team",
+      "text":"团队",
+      "iconPath":"image/圈子.png",
+      "selectedIconPath":"image/圈子.png"
+    },{
+      "pagePath":"pages/me/me",
+      "text":"我的",
+      "iconPath":"image/我的.png",
+      "selectedIconPath":"image/我的.png"
+    }]
+  },
+  "usingComponents": {
+    "van-button": "/vant-weapp/button",
+    "van-search": "vant-weapp/search",
+    "van-field":"vant-weapp/field",
+    "van-picker":"vant-weapp/picker",
+    "van-icon":"vant-weapp/icon",
+    "van-card":"vant-weapp/card",
+    "van-tabbar": "vant-weapp/tabbar",
+  "van-tabbar-item": "vant-weapp/tabbar-item",
+  "van-overlay":"vant-weapp/overlay",
+  "van-popup":"vant-weapp/popup",
+  "van-cell":"vant-weapp/cell",
+  "van-row": "vant-weapp/row",
+  "van-col": "vant-weapp/col"
+  },
+  "sitemapLocation": "sitemap.json"
+}

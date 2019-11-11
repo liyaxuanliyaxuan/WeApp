@@ -1,0 +1,13 @@
+<!--pages/team_advise/team_advise.wxml
+
+
+显示建议
+提建议按钮
+
+-->
+<view>
+        <van-icon name="comment-o" size="20px" bind:click="addAdvise"/>
+    <text>提出意见</text>
+</view>
+
+
