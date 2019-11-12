@@ -9,5 +9,17 @@
         <van-icon name="comment-o" size="20px" bind:click="addAdvise"/>
     <text>提出意见</text>
 </view>
-
-
+当前团队{{currentTeamName}}
+<view wx:for="{{adviceList}}">
+团队建议：{{item.content}}
+</view>
+    <i-swipeout  i-class="i-swipeout-demo-item" 
+    actions="{{actions}}">
+        <view slot="content">
+            <i-cell 
+                i-class="i-cell-padding" 
+                title="团队秩序" 
+                label="团队应该保持良好的合作团队应该保持良好的合作氛">
+            </i-cell>
+        </view>
+    </i-swipeout>

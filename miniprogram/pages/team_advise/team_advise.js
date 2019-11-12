@@ -1,10 +1,13 @@
 // pages/team_advise/team_advise.js
+import store from "../../utils/store.js"
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
+    currentTeamName:"",
+    adviceList:[]
 
   },
 
@@ -12,6 +15,11 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    const temp = store.dataFromTeam.currentTeamName
+   // console.log(store.dataFromTeam.currentTeamName)
+   this.setData({
+     currentTeamName:temp
+   })
 
   },
 
@@ -26,6 +34,18 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+    const that = this
+    const db = wx.cloud.database()
+  
+    db.collection("team").where({
+      name: this.data.currentTeamName,
+    }).get().then(res => {
+      return res.data[0].advice
+    }).then(t => {
+      that.setData({
+        adviceList: t
+      })
+    })
 
   },
 

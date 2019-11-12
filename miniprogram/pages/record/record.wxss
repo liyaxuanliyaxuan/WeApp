@@ -1,1 +1,4 @@
 /* pages/record/record.wxss */
+.van-card__title{
+  color: pink
+}

@@ -1,10 +1,12 @@
 // pages/team_info/team_info.js
+import store from "../../utils/store.js"
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
+    currentTeamName:""
 
   },
 

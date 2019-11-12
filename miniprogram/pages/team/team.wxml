@@ -6,6 +6,9 @@
 3、团队信息->修改团队信息
 默认当前页面为团队足迹
 
+还没有增加添加动态的功能
+还没有增加对足迹的排序
+
 选择显示团队协议
 -->
 
@@ -23,3 +26,43 @@
     </van-tabbar-item>
     
   </van-tabbar>
+  <van-cell
+   title="选择我的团队"
+    
+  is-link
+  arrow-direction="down"
+   bind:click="showPopup" />
+
+<van-popup show="{{ show }}" 
+position="top"
+  custom-style="height: auto;"
+bind:close="onClose">
+
+
+<van-row>
+  <van-col span="8" 
+  data-team="{{item}}"
+  wx:for="{{myTeams}}"bindtap="enterTeam">{{item}}</van-col>
+</van-row>
+<van-row>
+  <van-col span="8">span: 8</van-col>
+  <van-col span="8">span: 8</van-col>
+  <van-col span="8">span: 8</van-col>
+</van-row>
+
+</van-popup>
+<view wx:if="{{unchoose}}">
+{{defaultTeamName}}
+</view>
+<view wx:else>
+{{currentTeamName}}
+</view>
+<view wx:for="{{history}}">
+标题：{{item.title}}
+<br/>
+事件：{{item.details}}
+</view>
+<i-card title="卡片标题" extra="额外内容" thumb="https://i.loli.net/2017/08/21/599a521472424.jpg">
+    <view slot="content">内容不错</view>
+    <view slot="footer">尾部内容</view>
+</i-card>

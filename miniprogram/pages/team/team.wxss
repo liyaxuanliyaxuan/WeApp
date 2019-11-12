@@ -1,1 +1,4 @@
 /* pages/team/team.wxss */
+.dist-card-index--i-card-body{
+  height: 300rpx;
+}

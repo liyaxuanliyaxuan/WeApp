@@ -12,8 +12,11 @@
     选择显示某个特定团队的成员动态
 -->
 
-<van-cell title="选择我的团队" 
-is-link bind:click="showPopup" />
+<van-cell
+ title="选择我的团队" 
+is-link 
+arrow-direction="down"
+bind:click="showPopup" />
 
 <van-popup show="{{ show }}" 
 position="top"
@@ -22,54 +25,46 @@ bind:close="onClose">
 
 
 <van-row>
-  <van-col span="8" wx:for="{{myTeams}}">{{item}}</van-col>
+  <van-col span="8" 
+  data-team="{{item}}"
+  wx:for="{{myTeams}}"
+  bindtap="enterTeam">{{item}}</van-col>
 </van-row>
-<van-row>
-  <van-col span="8">span: 8</van-col>
-  <van-col span="8">span: 8</van-col>
-  <van-col span="8">span: 8</van-col>
-</van-row>
-
 </van-popup>
 
 
+<view wx:if="{{unchoose}}">
+{{defaultTeamName}}
+</view>
+<view wx:else>
+{{currentTeamName}}
+</view>
+
+
+
+
+{{currentMembers}}
+
+
+
+
+<view wx:for="{{userMoments}}">
 
 <van-card
-
-  tag="标签"
   
-  desc="信息"
-  title="标题"
-  thumb="{{ imageURL }}"
->
+  desc="{{item.moment}}"
+  title="{{item.name}}"
+  thumb="{{ imageURL }}">
   <view slot="footer">
-    <van-button size="mini">按钮</van-button>
-    <van-button size="mini">按钮</van-button>
+    <van-rate
+    value="{{1}}"
+    count="{{likeNum}}"
+    icon="like"
+    void-icon="like-o"
+    bind:change="addToLike"/>
+   
   </view>
 </van-card>
-<van-card
+</view>
 
-  tag="标签"
-  
-  desc="信息"
-  title="标题"
-  thumb="{{ imageURL }}"
->
-  <view slot="footer">
-    <van-button size="mini">按钮</van-button>
-    <van-button size="mini">按钮</van-button>
-  </view>
-</van-card>
-<van-card
 
-  tag="标签"
-  
-  desc="信息"
-  title="标题"
-  thumb="{{ imageURL }}"
->
-  <view slot="footer">
-    <van-button size="mini">按钮</van-button>
-    <van-button size="mini">按钮</van-button>
-  </view>
-</van-card>

@@ -6,6 +6,18 @@
 -->
 
 
-
-<textarea></textarea>
-<van-button slot="button" size="small" type="primary">提交我的意见</van-button>
+<van-cell-group>
+  <van-field
+    value="{{ message }}"
+    label="提出我的建议"
+    type="textarea"
+    placeholder="我有一个大胆的想法"
+    bind:change="changeInput"
+    autosize
+    border="{{ false }}"
+  />
+</van-cell-group>
+<van-button slot="button" size="small"
+bind:click="upBtn"
+ type="primary">
+ 提交我的意见</van-button>

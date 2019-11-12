@@ -7,3 +7,4 @@
         <van-icon name="edit" bind:click="editTeamInfo"/>
         <text>编辑团队信息</text>
 </view>
+当前团队：{{currentTeamName}}

@@ -1,15 +1,15 @@
 {
   "pages": [
-    "pages/record/record",
     "pages/team/team",
     "pages/join/join",
     "pages/join_create/join_create",
+    
     "pages/team_info/team_info",
     "pages/team_advise/team_advise",
     "pages/team_add_advise/team_add_advise",
     "pages/me/me",
     "pages/me_edit/me_edit",
-  
+    "pages/record/record",
     "pages/record_write/record_write",
     "pages/team_edit/team_edit",
     "pages/index/index",
@@ -72,8 +72,18 @@
   "van-overlay":"vant-weapp/overlay",
   "van-popup":"vant-weapp/popup",
   "van-cell":"vant-weapp/cell",
-  "van-row": "vant-weapp/row",
-  "van-col": "vant-weapp/col"
+  "van-rate": "vant-weapp/rate",
+  "van-row":"vant-weapp/row",
+  "van-col":"vant-weapp/col",
+  "i-grid": "../miniprogram/utils/dist/grid/index",
+    "i-grid-item": "../miniprogram/utils/dist/grid-item/index",
+    "i-grid-icon": "../miniprogram/utils/dist/grid-icon/index",
+    "i-grid-label": "../miniprogram/utils/dist/grid-label/index",
+    "i-card":"../miniprogram/utils/dist/card/index",
+    "i-swipeout":"../miniprogram/utils/dist/swipeout/index",
+    "i-cell":"../miniprogram/utils/dist/cell/index"
+ 
+  
   },
   "sitemapLocation": "sitemap.json"
 }

@@ -6,7 +6,7 @@ Page({
    */
   data: {
     inputValue: 'llllll',
-    teamShow:"pppp",
+  
     teamList:[]
 
   },
