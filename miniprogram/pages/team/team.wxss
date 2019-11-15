@@ -2,3 +2,61 @@
 .dist-card-index--i-card-body{
   height: 300rpx;
 }
+.dist-card-index--i-card-header-content{
+  height: 500rpx;
+}
+.dist-card-index--i-card-header-thumb{
+  width: 500rpx;
+  height: 500rpx;
+
+}
+.parent{
+  position: relative;
+}
+.danmu {
+  width: 100px;
+  height: 25px;  
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  text-align: center;
+  font-size: 10px;
+  background: yellowgreen;
+}  
+.icon-1{
+  background: #FFF68F;
+
+}
+.icon-2{
+  
+background: 
+#FF7F24
+}
+.icon-3{
+  background: 
+
+#CD9B1D;
+}
+.van-tabbar-item--active{
+color: #FFF68F;
+}
+.choose-cell{}
+.span-class{
+  background: #FF7F50;
+  padding: 4px;
+  margin: 4px;
+  border-radius: 2px;
+  color: white;
+  font-size: 12px;
+  text-align: center;
+}
+.page-team{
+  font-size: 10 px;
+  display: block;
+  padding: 10px;
+  margin: 10px auto;
+  color: black;
+}

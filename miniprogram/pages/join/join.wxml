@@ -13,15 +13,17 @@ bind:cancel="onCancel"
 placeholder="请输入搜索的团队ID或名称" />
 <van-icon name="comment-o" size="20px" bind:click="enterIndex"/>
 
-<view wx:for="{{teamList}}">
-团队名称：{{item.name}}
-团队创建者：{{item.leader}}
-</view>
-<i-grid>
-    <i-grid-item>Grid</i-grid-item>
-    <i-grid-item>Grid</i-grid-item>
+
+<i-grid wx:for="{{teamList}}" wx:for-item="i">
+    <i-grid-item 
+    wx:for="{{i}}" wx:for-item="j"
+    bindtap="chooseTeam"
+    data-name="{{j.name}}">
+    团队名称：{{j.name}}
+    团队创建者：{{j.leader}}
+    <van-button size="mini"
+    bind:click="enterTeam"
+    >加入</van-button>
+    </i-grid-item>
 </i-grid>
-<i-grid>
-    <i-grid-item>Grid</i-grid-item>
-    <i-grid-item>Grid</i-grid-item>
-</i-grid>
+

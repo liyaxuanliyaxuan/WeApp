@@ -12,23 +12,39 @@
 选择显示团队协议
 -->
 
-<view class="mode">
+<view class="haibao">
+  <swiper indicator-dots="{{indicatorDots}}"autoplay="{{autoplay}}"interval="{{interval}}"duration="{{duation}}">
+    <block wx:for="{{imgUrls}}">
+      <swiper-item>
+   <view class="parent">
+        <image src="{{item}}"class="slide-image"style="width:100%">
+        </image>
+   </view>
+      </swiper-item>
+    </block>
+  </swiper>
 </view>
-<van-tabbar active="{{ active }}" fixed="{{false}}" bind:change="directTo">
-    <van-tabbar-item icon="home-o">
-    <text>1足迹</text>
-</van-tabbar-item>
-    <van-tabbar-item icon="search">
-        <text>2建议</text>
+
+
+
+
+<van-tabbar fixed="{{false}}"
+ bind:change="directTo">
+    <van-tabbar-item 
+    class="icon-2"
+    icon="search">
+        <text>建议</text>
     </van-tabbar-item>
-    <van-tabbar-item icon="friends-o">
-            <text>3信息</text>
+    <van-tabbar-item 
+    class="icon-3"
+    icon="friends-o">
+            <text>信息</text>
     </van-tabbar-item>
     
   </van-tabbar>
   <van-cell
    title="选择我的团队"
-    
+    custom-class="choose-cell"
   is-link
   arrow-direction="down"
    bind:click="showPopup" />
@@ -36,33 +52,36 @@
 <van-popup show="{{ show }}" 
 position="top"
   custom-style="height: auto;"
+  round="true"
 bind:close="onClose">
 
 
 <van-row>
   <van-col span="8" 
   data-team="{{item}}"
+  offset="2"
+  custom-class="span-class"
+  round="round"
   wx:for="{{myTeams}}"bindtap="enterTeam">{{item}}</van-col>
 </van-row>
 <van-row>
-  <van-col span="8">span: 8</van-col>
-  <van-col span="8">span: 8</van-col>
-  <van-col span="8">span: 8</van-col>
 </van-row>
 
 </van-popup>
-<view wx:if="{{unchoose}}">
+
+
+
+<view wx:if="{{unchoose}}" class="page-team">
 {{defaultTeamName}}
 </view>
-<view wx:else>
+<view wx:else class="page-team">
 {{currentTeamName}}
 </view>
+
+
 <view wx:for="{{history}}">
-标题：{{item.title}}
-<br/>
-事件：{{item.details}}
-</view>
-<i-card title="卡片标题" extra="额外内容" thumb="https://i.loli.net/2017/08/21/599a521472424.jpg">
-    <view slot="content">内容不错</view>
-    <view slot="footer">尾部内容</view>
+<i-card thumb="https://i.loli.net/2017/08/21/599a521472424.jpg">
+    <view slot="content">{{item.details}}</view>
+    <view slot="footer">{{item.title+"---"+item.when[0]+'-'+item.when[1]+'-'+item.when[2]}}</view>
 </i-card>
+</view>

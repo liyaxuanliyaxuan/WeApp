@@ -34,7 +34,7 @@
     
   },
   "tabBar":{
-    "backgroundColor":"black",
+    "backgroundColor":"#FAFAD2",
     "color":"#999999",
     "selectedColor":"#CC1004",
     "borderStyle":"black",
@@ -81,7 +81,11 @@
     "i-grid-label": "../miniprogram/utils/dist/grid-label/index",
     "i-card":"../miniprogram/utils/dist/card/index",
     "i-swipeout":"../miniprogram/utils/dist/swipeout/index",
-    "i-cell":"../miniprogram/utils/dist/cell/index"
+    "i-cell":"../miniprogram/utils/dist/cell/index",
+    "van-collapse": "vant-weapp/collapse",
+    "van-collapse-item": "vant-weapp/collapse-item",
+    "i-divider": "../miniprogram/utils/dist/divider/index"
+
  
   
   },

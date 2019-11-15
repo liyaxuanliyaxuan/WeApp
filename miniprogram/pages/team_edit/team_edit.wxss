@@ -1,1 +1,24 @@
 /* pages/team_edit/team_edit.wxss */
+view.divider-index--i-divider-line{
+
+  height: 4rpx;
+  background: #ffcc33;
+
+}
+view.divider-index--i-divider{
+ 
+}
+view.divider-index--i-divider-content{
+  border-radius: 4px;
+  background: #ff6666;
+  
+}
+.createBtn{
+  margin: 50rpx auto;
+  
+}
+.page-team{
+  display:block;
+  margin:20rpx auto;
+  color: plum;
+}

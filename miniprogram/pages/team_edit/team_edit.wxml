@@ -2,5 +2,51 @@
 
 此页面进行团队信息的修改
 -->
+<i-divider  color="#ffffff" lineColor="#ffcc33"
+size="14"
+>修改团队信息</i-divider>
+<van-cell-group>
+    <van-field
+   
+      value="{{originInfo.name}}"
+      required
+      clearable
+      label="团队名"
+      icon="question-o"
+      placeholder="{{originInfo.name}}"
+      bind:change="change1"
+      bind:click-icon="onClickIcon"
+    />
+  
+    <van-field
+      value="{{originInfo.leader}}"
+    
+      label="创建人姓名"
+      placeholder="{{originInfo.leader}}"
+      bind:change="change2"
+      required
+      border="{{ false }}"
+    />
+    <van-field
+    value="{{ password }}"
+    type="password"
+    label=" "
+    placeholder=" "
+    required
+    border="{{ false }}"
+  />
+  <van-field
+  value="{{ password }}"
+  type="password"
+  label="描述"
+  placeholder="请输入团队描述"
 
-<van-button slot="button" size="small" type="primary">提交团队信息</van-button>
+  border="{{ false }}"
+/>
+  </van-cell-group>
+
+
+
+<van-button slot="button" size="small"
+bind:click="submit"
+ type="primary">提交团队信息</van-button>

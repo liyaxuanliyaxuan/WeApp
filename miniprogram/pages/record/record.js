@@ -5,22 +5,31 @@ Page({
    * 页面的初始数据
    */
   data: {
+    likedList:[],
+    liked:0,
     show:false,
     myTeams:[],
-    currentTeamName:"null",
+    currentTeamName:"",
     defaultTeamName:"",
     unchoose:true,
     defaultTeam:"默认",
     currentMembers:[],
     likeNum:1,
-    userMoments:[{name:"hhhhh",moment:"kkkkkkk"},{name:"uuuu",moment:"ooooooo"}]
-
+    userMomentsTest:[{name:"hhhhh",moment:"kkkkkkk",stars:22},{name:"uuuu",moment:"ooooooo",stars:19}],
+    userMoments:[]
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+
+
+
+    
+
+
+
 
   },
 
@@ -35,6 +44,8 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+    //console.log(this.data.likedList)
+    //const that = this
     const that = this
     const db = wx.cloud.database()
     db.collection('member').where({
@@ -50,10 +61,58 @@ Page({
     }).then(l => {
       that.setData({
         myTeams: l,
-        defaultTeamName:l[1],
+        currentTeamName:l[0],//默认团队为该成员的index0团队
         
       })
+      return l[0]
+    }).then(name=>{
+      
+        db.collection("team").where({
+          name: name,
+        }).get().then(res => {
+          return res.data[0].member
+        }).then(t => {
+          return t.map(a => a.id)
+        }).then(l => {
+          that.setData({
+            currentMembers: l
+          })
+          return l[0]
+        }).then(id=>{
+          //for(let i=0;i<idList.length;i++){
+            wx.cloud.callFunction({
+              name: "get_dongtai",
+              data: {
+                //id: idList[i]
+                id:id
+              },
+              success: function (res) {
+                //console.log(res.result.data.update)
+                that.setData({
+                  userMoments: res.result.data.update,
+                })
+              },
+              fail: console.error
+            })
+    
+         // }
+        })
+
+      }
+    )
+
+
+
+
+
+
+    const len = 40
+    this.setData({
+      likedList: Array.from({ length: len }, () => 'black')
     })
+
+ 
+    
    
     
 
@@ -115,24 +174,68 @@ Page({
     })
 
   },
+  addToLike(e){
+
+    console.log(e.target.dataset.stars)
+    if (e.target.dataset.flag==="black") {
+      e.target.dataset.stars++
+      let param = {}
+      let string = "likedList[" + e.target.dataset.index + "]"
+      param[string] = "red"
+      this.setData(param)
+      let param_2 = {}
+      let string_2 = "userMoments["+e.target.dataset.index+"].stars"
+      param_2[string_2] = e.target.dataset.stars++
+      this.setData(param_2)
+
+    }
+    else {
+      e.target.dataset.stars--
+      let param_ = {}
+      let string_ = "likedList[" + e.target.dataset.index + "]"
+      param_[string_] = "black"
+      this.setData(param_)
+      let param_3 = {}
+      let string_3 = "userMoments[" + e.target.dataset.index + "].stars"
+      param_3[string_3] = e.target.dataset.stars--
+      this.setData(param_3)
+
+    }
+
+  }
+  ,
   enterTeam(e){
     const that = this
     const db = wx.cloud.database()
     this.setData({
       currentTeamName: e.target.dataset.team,
-      unchoose:false
+      
     })
     db.collection("team").where({
       name: this.data.currentTeamName,
     }).get().then(res => {
       return res.data[0].member
     }).then(t => {
-      return t.map(a => a.name)
+      return t.map(a => a.id)
     }).then(l => {
       that.setData({
         currentMembers: l
       })
 
+    return l[0]//暂时的报错是由于数据库的格式问题
+    }
+    ).then(id=>{
+      wx.cloud.callFunction({
+        name: "get_dongtai",
+        data: {
+          id: id
+        },
+        success: function (res) {
+          console.log(res.result.data.update)
+        },
+        fail: console.error
+      })
+     
     })
   }
 })

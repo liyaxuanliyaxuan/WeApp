@@ -7,7 +7,8 @@ Page({
    */
   data: {
     currentTeamName:"",
-    message:""
+    message:"",
+    id:""
 
   },
 
@@ -73,24 +74,30 @@ Page({
   upBtn(){
     //console.log("hey")
   //在此处无法使用update，只能通过调用云函数的方式，在云函数端对数据进行更新处理
+  const that = this
     const db = wx.cloud.database()
-    const _ = db.command
-    const content = this.data.message
-    /*
-    db.collection('team').where({
-      name:this.data.currentTeamName
-    }).update(
-     { data: {
-        advice: _.push({content:content})
-      },
-      success: function (res) {
-        console.log(res.data)
-      }}
-    )
-    */
-    
+    db.collection("team").where({
+      name:that.data.currentTeamName
+    }).get().then(res=>{
+      return res.data[0]._id
+    }).then(id=>{
+     wx.cloud.callFunction({
+       name:"add",
+       data:{
+         name:"up",
+         advice:that.data.message,
+         id:id,
+       },
+       success:function(res){
 
-  },
+       },
+       fail:console.error
+     })
+    })
+    const _ = db.command
+   
+    
+    },
   changeInput(e){
     
     this.setData({

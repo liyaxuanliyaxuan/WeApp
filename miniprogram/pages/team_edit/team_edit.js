@@ -6,6 +6,10 @@ Page({
    * 页面的初始数据
    */
   data: {
+    teamName:"",
+    leader:"",
+    currentTeamName:"",
+    originInfo:{},
 
   },
 
@@ -13,8 +17,10 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    
-
+    const temp = store.dataFromTeamInfo.teamInfo
+    this.setData({
+      originInfo: temp
+    })
   },
 
   /**
@@ -64,5 +70,23 @@ Page({
    */
   onShareAppMessage: function () {
 
+  },
+  change1(e) {
+    this.setData({
+      teamName: e.detail
+    })
+
+  },
+
+
+
+  change2(e) {
+    this.setData({
+      leader: e.detail
+    })
+
+  },
+  submit(){
+    console.log(this.data.leader)
   }
 })

@@ -2,9 +2,12 @@
 当前是团队创建页面，具体的数据项还未完善，本质上是表单和提交
 
 -->
-
+<i-divider  color="#ffffff" lineColor="#ffcc33"
+size="14"
+>创建我的团队</i-divider>
 <van-cell-group>
     <van-field
+   
       value="{{ teamName }}"
       required
       clearable
@@ -37,14 +40,13 @@
   type="password"
   label="描述"
   placeholder="请输入团队描述"
-  required
+
   border="{{ false }}"
 />
   </van-cell-group>
-  <van-picker columns="{{ teamType }}" 
-  default-index="{{ 2 }}"
-  show-toolbar
-  title="团队性质"
-  bind:change="onChange" />
-  <van-button plain type="primary" 
-  bind:click="createTeam">创建团队</van-button>
+
+  <van-button class="createBtn"
+  bind:click="createTeam"
+  color="#ff9966" 
+  icon="success"
+  />

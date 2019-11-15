@@ -6,15 +6,26 @@ Page({
    * 页面的初始数据
    */
   data: {
-    active:0,
+    round:true,
+    indicatorDots: true,
+    autoplay: false,
+    interval: 5000,
+    duration: 1000,
+    imgUrls: ["pictures/food-1.jpg", "pictures/food-5.jpg", "pictures/food-6.jpg", "pictures/food-7.jpg"],
+    
     show:false,
     myTeams:[],
-    currentTeamName:"null",
+    currentTeamName:"薪火小队",//此处还没有动态实现默认的团队名称
     defaultTeamName:"",
     unchoose:true,
     defaultTeam:"默认",
     currentMembers:[],
     history:[],
+    danmuList:[
+      "我们是最棒的",
+      "新的一年，再度起航",
+      "今天你写代码了吗？"
+    ]
     
 
   },
@@ -24,6 +35,18 @@ Page({
    */
   onLoad: function (options) {
     store.addData(this,"dataFromTeam")
+    wx.cloud.getTempFileURL({
+      fileList: [{
+        fileID: 'cloud://cloud-demo-l5rvx.636c-cloud-demo-l5rvx-1300498757/my-image.jpg',
+        maxAge: 60 * 60, // one hour
+      }]
+    }).then(res => {
+      // get temp file URL
+      console.log(res.fileList)
+    }).catch(error => {
+      // handle error
+    })
+ 
 
   },
 
@@ -55,6 +78,15 @@ Page({
         myTeams: l,
         defaultTeamName:l[0],
         
+      })
+    })
+    db.collection("team").where({
+      name: this.data.currentTeamName,
+    }).get().then(res => {
+      return res.data[0].history
+    }).then(t => {
+      that.setData({
+        history: t
       })
     })
    
@@ -105,23 +137,10 @@ Page({
   directTo(event){
      
     let index=event.detail
+    console.log(event.detail)
    switch(index){
-     case 1:{
-      wx.navigateTo({
-        url: '../team_advise/team_advise',
-        success: function(res){
-          // success
-        },
-        fail: function() {
-          // fail
-        },
-        complete: function() {
-          // complete
-        }
-      })
-     }
-       break
-       case 1:{
+      
+       case 0:{
          wx.navigateTo({
            url: '../team_advise/team_advise',
            success: function(res){
@@ -136,7 +155,7 @@ Page({
          })
        }
        break
-       case 2:{
+       case 1:{
          wx.navigateTo({
            url: '../team_info/team_info',
            success: function(res){

@@ -6,10 +6,12 @@ Page({
    * 页面的初始数据
    */
   data: {
+    active:1,
     currentTeamName:"",
-    adviceList:[]
-
-  },
+    adviceList:[],
+    activeName: '1'
+    },
+ 
 
   /**
    * 生命周期函数--监听页面加载
@@ -60,6 +62,7 @@ Page({
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
+    
 
   },
 
@@ -83,6 +86,11 @@ Page({
   onShareAppMessage: function () {
 
   },
+  onChange(event) {
+    this.setData({
+      activeName: event.detail
+    });
+  },
   addAdvise(){
     wx.navigateTo({
       url: '../team_add_advise/team_add_advise',
@@ -96,5 +104,41 @@ Page({
         // complete
       }
     })
-  }
+  },
+  directTo(event) {
+
+    let index = event.detail
+    switch (index) {
+  
+      case 0: {
+        wx.navigateTo({
+          url: '../team_advise/team_advise',
+          success: function (res) {
+            // success
+          },
+          fail: function () {
+            // fail
+          },
+          complete: function () {
+            // complete
+          }
+        })
+      }
+        break
+      case 1: {
+        wx.navigateTo({
+          url: '../team_info/team_info',
+          success: function (res) {
+            // success
+          },
+          fail: function () {
+            // fail
+          },
+          complete: function () {
+            // complete
+          }
+        })
+      }
+    }
+  },
 })

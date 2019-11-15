@@ -3,8 +3,21 @@
 显示团队的资料
 
 -->
+<van-tabbar fixed="{{false}}" bind:change="directTo">
+    <van-tabbar-item icon="search">
+        <text>建议</text>
+    </van-tabbar-item>
+    <van-tabbar-item icon="friends-o">
+            <text>信息</text>
+    </van-tabbar-item>
+    
+  </van-tabbar>
 <view>
         <van-icon name="edit" bind:click="editTeamInfo"/>
         <text>编辑团队信息</text>
 </view>
 当前团队：{{currentTeamName}}
+团队名称：{{teamInfo.name}}
+团队Id：{{teamInfo.teamId}}
+团队创建者：{{teamInfo.leader}}
+

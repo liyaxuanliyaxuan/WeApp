@@ -6,8 +6,10 @@ Page({
    */
   data: {
     inputValue: 'llllll',
+    array: [[1, 2], [3, 4], [5, 6]],
   
-    teamList:[]
+    teamList:[],
+    selected:"",
 
   },
 
@@ -38,10 +40,21 @@ Page({
        return res.data
       
     }).then(list=>{
+      var temp = new Array()
+      for (let i = 0; i < list.length/2; i++) {
+        temp[i] = new Array();
+        for (let j = 0; j < 2; j++) {
+          temp[i][j] = list[i * 2 + j];
+        }
+        
+      }
+      return temp
+  
+    }).then(l=>{
+      console.log(l)
       that.setData({
-        teamList:list
+        teamList:l
       })
-
     })
 
   },
@@ -128,6 +141,25 @@ Page({
     })
 
   },
+  chooseTeam(e){
+    console.log(e)
+    console.log(e.target.dataset.name)
+    this.setData({
+      selected: e.target.dataset.name
+    })
+
+
+   // wx.navigateTo({
+     // url: '../team_info/team_info',
+    //})
+
+  },
+  enterTeam(){
+    wx.navigateTo({
+      url: '../team_info/team_info',
+    })
+  }
+  ,
   enterIndex(){
     wx.navigateTo({
       url: '../index/index',

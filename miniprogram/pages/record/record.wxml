@@ -33,18 +33,10 @@ bind:close="onClose">
 </van-popup>
 
 
-<view wx:if="{{unchoose}}">
-{{defaultTeamName}}
-</view>
-<view wx:else>
+
+<view>
 {{currentTeamName}}
 </view>
-
-
-
-
-{{currentMembers}}
-
 
 
 
@@ -52,18 +44,18 @@ bind:close="onClose">
 
 <van-card
   
-  desc="{{item.moment}}"
-  title="{{item.name}}"
+  desc="{{item.content}}"
+  title="{{item.when}}"
   thumb="{{ imageURL }}">
   <view slot="footer">
-    <van-rate
-    value="{{1}}"
-    count="{{likeNum}}"
-    icon="like"
-    void-icon="like-o"
-    bind:change="addToLike"/>
-   
+  <text>{{item.stars}}</text>
+    <van-icon name="like"
+    data-index="{{index}}"
+    data-flag="{{likedList[index]}}"
+    data-stars="{{item.stars}}"
+     color="{{likedList[index]}}" bindtap="addToLike"/>
   </view>
+  
 </van-card>
 </view>
 
