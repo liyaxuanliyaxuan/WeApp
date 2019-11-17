@@ -30,3 +30,7 @@
   width: 100%;
   height: 360rpx;
 }
+.input-area{
+  min-height: 100px;
+
+}

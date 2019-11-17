@@ -12,6 +12,16 @@
 选择显示团队协议
 -->
 
+<van-tabs active="{{ active }}"
+
+custom-class="tab"
+bind:change="directTo">
+<van-tab title="团队秀" name="show"></van-tab>
+  <van-tab title="团队建议" name="advice"></van-tab>
+  <van-tab title="团队信息" name="info"></van-tab>
+</van-tabs>
+
+
 <view class="haibao">
   <swiper indicator-dots="{{indicatorDots}}"autoplay="{{autoplay}}"interval="{{interval}}"duration="{{duation}}">
     <block wx:for="{{imgUrls}}">
@@ -28,26 +38,21 @@
 
 
 
-<van-tabbar fixed="{{false}}"
- bind:change="directTo">
-    <van-tabbar-item 
-    class="icon-2"
-    icon="search">
-        <text>建议</text>
-    </van-tabbar-item>
-    <van-tabbar-item 
-    class="icon-3"
-    icon="friends-o">
-            <text>信息</text>
-    </van-tabbar-item>
-    
-  </van-tabbar>
-  <van-cell
-   title="选择我的团队"
-    custom-class="choose-cell"
-  is-link
-  arrow-direction="down"
-   bind:click="showPopup" />
+
+
+<van-cell
+ title="团队秀"
+ icon="diamond-o"
+ value="选择我的团队"
+is-link 
+arrow-direction="down"
+bind:click="showPopup" />
+
+
+
+
+
+
 
 <van-popup show="{{ show }}" 
 position="top"
@@ -69,19 +74,18 @@ bind:close="onClose">
 
 </van-popup>
 
-
-
-<view wx:if="{{unchoose}}" class="page-team">
-{{defaultTeamName}}
-</view>
-<view wx:else class="page-team">
-{{currentTeamName}}
+<view>
+<van-icon
+custom-class="fire"
+ name="fire-o"/>
+<text class="team-name">{{currentTeamName}}</text>
 </view>
 
 
-<view wx:for="{{history}}">
-<i-card thumb="https://i.loli.net/2017/08/21/599a521472424.jpg">
-    <view slot="content">{{item.details}}</view>
-    <view slot="footer">{{item.title+"---"+item.when[0]+'-'+item.when[1]+'-'+item.when[2]}}</view>
+
+<view wx:for="{{history}}" class="team-card">
+<i-card  thumb="https://img1.doubanio.com/view/photo/albumcover/public/p2513679947.jpg">
+    <view slot="content" class="content">{{item.details}}</view>
+    <view slot="footer" class="footer">{{item.title+"---"+item.when[0]+'-'+item.when[1]+'-'+item.when[2]}}</view>
 </i-card>
 </view>

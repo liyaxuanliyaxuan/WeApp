@@ -41,12 +41,11 @@ Page({
       
     }).then(list=>{
       var temp = new Array()
-      for (let i = 0; i < list.length/2; i++) {
+      for (let i = 0; i <2; i++) {
         temp[i] = new Array();
-        for (let j = 0; j < 2; j++) {
+        for (let j = 0; j < list.length/2; j++) {
           temp[i][j] = list[i * 2 + j];
         }
-        
       }
       return temp
   

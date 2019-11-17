@@ -2,51 +2,57 @@
 
 此页面进行团队信息的修改
 -->
-<i-divider  color="#ffffff" lineColor="#ffcc33"
-size="14"
->修改团队信息</i-divider>
+
 <van-cell-group>
     <van-field
+      icon="eye-o"
    
-      value="{{originInfo.name}}"
+      value="{{ teamName }}"
       required
       clearable
       label="团队名"
       icon="question-o"
-      placeholder="{{originInfo.name}}"
+     placeholder="{{originInfo.name}}"
       bind:change="change1"
       bind:click-icon="onClickIcon"
     />
   
     <van-field
-      value="{{originInfo.leader}}"
+      value="{{ leader }}"
+      icon="user-o"
     
       label="创建人姓名"
-      placeholder="{{originInfo.leader}}"
+     placeholder="{{originInfo.leader}}"
       bind:change="change2"
       required
       border="{{ false }}"
     />
     <van-field
     value="{{ password }}"
-    type="password"
+    type="txt"
     label=" "
     placeholder=" "
-    required
+    
     border="{{ false }}"
   />
   <van-field
   value="{{ password }}"
-  type="password"
+  type="txt"
   label="描述"
+  icon="flag-o"
   placeholder="请输入团队描述"
 
   border="{{ false }}"
 />
   </van-cell-group>
 
+  <van-button 
+  bind:click="submit"
+  custom-class="create-btn"
+  style="position:fixed;bottom:0;width:100%;"
+  color="#CD4F39" 
+  icon="success"
+  size="large"
+  >提交修改</van-button>
 
 
-<van-button slot="button" size="small"
-bind:click="submit"
- type="primary">提交团队信息</van-button>

@@ -3,39 +3,51 @@
 在当前页面1、显示动态
 2、发表动态 
 -->
-<view >
-        <van-icon name="add" size="30px" bind:click="addRecord"/>
-        <text>发表动态</text>
-</view>
+
 
 <!--
     选择显示某个特定团队的成员动态
 -->
 
 <van-cell
- title="选择我的团队" 
+ title="个人秀"
+ icon="friends-o"
+ value="选择我的团队"
 is-link 
 arrow-direction="down"
 bind:click="showPopup" />
 
+ 
+
+
 <van-popup show="{{ show }}" 
 position="top"
   custom-style="height: auto;"
+  round
 bind:close="onClose">
-
 
 <van-row>
   <van-col span="8" 
   data-team="{{item}}"
-  wx:for="{{myTeams}}"
-  bindtap="enterTeam">{{item}}</van-col>
+  offset="2"
+  custom-class="span-class"
+  round="round"
+  wx:for="{{myTeams}}"bindtap="enterTeam">{{item}}</van-col>
 </van-row>
+<van-row>
+</van-row>
+
+
 </van-popup>
 
 
 
+
 <view>
-{{currentTeamName}}
+<van-icon
+custom-class="fire"
+ name="fire-o"/>
+<text class="team-name">{{currentTeamName}}</text>
 </view>
 
 
@@ -43,12 +55,11 @@ bind:close="onClose">
 <view wx:for="{{userMoments}}">
 
 <van-card
-  
   desc="{{item.content}}"
-  title="{{item.when}}"
+  title="{{item.title}}"
   thumb="{{ imageURL }}">
   <view slot="footer">
-  <text>{{item.stars}}</text>
+  <text class="star-num">{{item.stars}}</text>
     <van-icon name="like"
     data-index="{{index}}"
     data-flag="{{likedList[index]}}"
@@ -60,3 +71,8 @@ bind:close="onClose">
 </view>
 
 
+<view >
+        <van-icon name="add" size="40px"
+        custom-class="dongtai-btn"
+         bind:click="addRecord"/>
+</view>

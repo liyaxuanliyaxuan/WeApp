@@ -5,17 +5,37 @@
 
 -->
 
-<van-button
-bind:click="upBtn"
- icon="passed"/>
-<van-cell-group>
-  <van-field
-    value="{{ message }}"
-    type="textarea"
-    placeholder="我有一个大胆的想法"
-    bind:change="changeInput"
-    autosize
-    border="{{ false }}"
-  />
-</van-cell-group>
 
+
+
+  <van-cell-group>
+    <van-field
+    value="{{title}}"
+    label="关键字"
+    left-icon="bulb-o"
+    
+    border="{{ true }}"/>
+    <van-field
+      value="{{ message }}"
+    
+     input-class="input-area"
+      type="textarea"
+       bind:change="changeInput"
+      placeholder="我有一个大胆的想法！！"
+      bind:change="onChange"
+      autosize
+      border="{{ false }}"
+    />
+
+
+  </van-cell-group>
+
+ <image class="image1" src="{{imagePath}}" mode="aspectFit"></image>
+  <van-button 
+  bindtap="submitMine"
+  bind:click="upBtn"
+  style="position:fixed;bottom:0;width:100%;"
+  color="#CD4F39" 
+  icon="plus"
+  size="large"
+  >提出建议</van-button>

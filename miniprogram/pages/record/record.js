@@ -6,6 +6,7 @@ Page({
    */
   data: {
     likedList:[],
+    imageURL:"https://img3.doubanio.com/view/photo/albumcover/public/p1563537010.jpg",
     liked:0,
     show:false,
     myTeams:[],
@@ -108,7 +109,7 @@ Page({
 
     const len = 40
     this.setData({
-      likedList: Array.from({ length: len }, () => 'black')
+      likedList: Array.from({ length: len }, () => '#C9C9C9')
     })
 
  
@@ -177,7 +178,7 @@ Page({
   addToLike(e){
 
     console.log(e.target.dataset.stars)
-    if (e.target.dataset.flag==="black") {
+    if (e.target.dataset.flag ==="#C9C9C9") {
       e.target.dataset.stars++
       let param = {}
       let string = "likedList[" + e.target.dataset.index + "]"
@@ -193,7 +194,7 @@ Page({
       e.target.dataset.stars--
       let param_ = {}
       let string_ = "likedList[" + e.target.dataset.index + "]"
-      param_[string_] = "black"
+      param_[string_] = "#C9C9C9"
       this.setData(param_)
       let param_3 = {}
       let string_3 = "userMoments[" + e.target.dataset.index + "].stars"

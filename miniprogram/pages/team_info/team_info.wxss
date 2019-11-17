@@ -1,1 +1,26 @@
 /* pages/team_info/team_info.wxss */
+.tab{
+  margin-bottom: 10px;
+}
+.fire{
+  color: red;
+  margin-left: 12px;
+  margin-right: 4px;
+}
+.team-name{
+  font-size: 13px;
+
+}
+.add-btn{
+ left: 240px;
+position: absolute;
+top: 50px;
+
+
+}
+.add-txt{
+  font-size: 14px;
+color: #828282;
+font-weight: bolder
+
+}

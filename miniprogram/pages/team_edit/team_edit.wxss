@@ -22,3 +22,6 @@ view.divider-index--i-divider-content{
   margin:20rpx auto;
   color: plum;
 }
+.tab{
+  margin-bottom: 2px;
+}

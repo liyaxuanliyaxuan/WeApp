@@ -4,9 +4,6 @@
 可进行图片上传和文字描述，点击提交后在动态页面展示
 -->
 
-    <van-button slot="button" size="small"
-    bindtap="submitMine"
-     type="primary">发布我的动态</van-button>
  
    <!-- 上传图片 -->
   <view class="uploader">
@@ -17,10 +14,20 @@
       <image class="uploader-image" src="{{imgUrl}}" mode="aspectFit" bindtap="previewImg"></image>
     </view>
   </view>
+
+
   <van-cell-group>
     <van-field
+    value="{{title}}"
+    label="标题"
+    left-icon="smile-o"
+    
+    border="{{ true }}"
+  />
+    <van-field
       value="{{ message }}"
-      label="动态"
+    
+     input-class="input-area"
       type="textarea"
       placeholder="记录我的生活。。。"
       bind:change="onChange"
@@ -28,5 +35,13 @@
       border="{{ false }}"
     />
   </van-cell-group>
-  图片预览：
+
  <image class="image1" src="{{imagePath}}" mode="aspectFit"></image>
+  <van-button 
+  bindtap="submitMine"
+  custom-class="create-btn"
+  style="position:fixed;bottom:0;width:100%;"
+  color="#CD4F39" 
+  icon="plus"
+  size="large"
+  >发布</van-button>

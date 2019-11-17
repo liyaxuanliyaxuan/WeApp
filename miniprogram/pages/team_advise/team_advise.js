@@ -107,10 +107,15 @@ Page({
   },
   directTo(event) {
 
-    let index = event.detail
+    let index = event.detail.index
+    console.log(event.detail)
     switch (index) {
-  
       case 0: {
+        wx.switchTab({
+          url: '../team/team',
+        })
+      }
+      case 1: {
         wx.navigateTo({
           url: '../team_advise/team_advise',
           success: function (res) {
@@ -125,7 +130,7 @@ Page({
         })
       }
         break
-      case 1: {
+      case 2: {
         wx.navigateTo({
           url: '../team_info/team_info',
           success: function (res) {
@@ -140,5 +145,6 @@ Page({
         })
       }
     }
-  },
+  }
+
 })

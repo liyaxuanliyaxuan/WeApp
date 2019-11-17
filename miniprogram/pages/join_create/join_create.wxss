@@ -13,12 +13,8 @@ view.divider-index--i-divider-content{
   background: #ff6666;
   
 }
-.createBtn{
-  margin: 50rpx auto;
+.create-Btn{
+  color: white;
+ 
   
-}
-.page-team{
-  display:block;
-  margin:20rpx auto;
-  color: plum;
 }

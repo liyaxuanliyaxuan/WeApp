@@ -1,15 +1,16 @@
 {
   "pages": [
+    
+    
     "pages/team/team",
+    "pages/record/record",
     "pages/join/join",
     "pages/join_create/join_create",
-    
     "pages/team_info/team_info",
     "pages/team_advise/team_advise",
     "pages/team_add_advise/team_add_advise",
     "pages/me/me",
     "pages/me_edit/me_edit",
-    "pages/record/record",
     "pages/record_write/record_write",
     "pages/team_edit/team_edit",
     "pages/index/index",
@@ -34,9 +35,9 @@
     
   },
   "tabBar":{
-    "backgroundColor":"#FAFAD2",
+    "backgroundColor":"#ffffff",
     "color":"#999999",
-    "selectedColor":"#CC1004",
+    "selectedColor":"#1A1A1A",
     "borderStyle":"black",
     "list":[{
       "pagePath":"pages/join/join",
@@ -84,7 +85,11 @@
     "i-cell":"../miniprogram/utils/dist/cell/index",
     "van-collapse": "vant-weapp/collapse",
     "van-collapse-item": "vant-weapp/collapse-item",
-    "i-divider": "../miniprogram/utils/dist/divider/index"
+    "i-divider": "../miniprogram/utils/dist/divider/index",
+    "van-tag": "vant-weapp/tag",
+    "van-tab": "vant-weapp/tab",
+    "van-tabs": "vant-weapp/tabs"
+    
 
  
   
