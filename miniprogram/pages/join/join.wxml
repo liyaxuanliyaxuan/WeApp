@@ -15,6 +15,7 @@ placeholder="请输入搜索的团队ID或名称" />
 <van-icon name="add" 
 size="40px" 
 custom-class="join-btn"
+color="#ff9966"
 bind:click="addTeam"/>
 </view>
 

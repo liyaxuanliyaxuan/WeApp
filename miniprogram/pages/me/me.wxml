@@ -3,8 +3,58 @@
 
 显示个人信息
 -->
-
-<view>
-        <van-icon name="comment-o" size="20px" bind:click="editMe"/>
-    <text>编辑个人信息</text>
+<view class="accountBg">
+  <view class="img">
+    <image src="../../image/厨师帽.png" style="width:49px;height:47px;">
+    </image>
+  </view>
+  <view class="account">
+    <view>用户名：{{userInfo.nickName}}</view> 
+    <view>
+      <text>账号管理></text>
+    </view>
+  </view>  
+  <view class="nav">
+    <van-icon name="edit" size="20px" bind:click="editMe"/>
+  </view>
+</view>
+<text>\n</text>
+<view class="acc1">
+  <view class="age">
+    年龄：{{userInfo.age}}
+  </view>
+  <view class="gender">
+    性别：
+    <view wx:if="userInfo.gender==1">女</view>
+    <view wx:elif="userInfo.gender==2">男</view>
+    <view wx:else></view>
+  </view>
+</view>
+<text>\n</text>
+<view class="acc2">
+  <view class="job">
+    职业：{{userInfo.age}}
+  </view>
+  <view class="city">
+    城市：
+    <view wx:if="userInfo.gender==1">女</view>
+    <view wx:elif="userInfo.gender==2">男</view>
+    <view wx:else></view>
+  </view>
+</view>
+<text>\n</text>
+<view class="sig">
+  个性签名:
+  <view class="sig1">
+    {{ userInfo.signature }}
+  </view>
+</view>
+<text>\n</text>
+<view class="picture">
+  个人相册（可以修改/是否需要多个）：
+  <view>
+    <image src="../../image/厨师帽.png" 
+           style="width:70%;height:200px;margin-left:15%">
+    </image>
+  </view>
 </view>

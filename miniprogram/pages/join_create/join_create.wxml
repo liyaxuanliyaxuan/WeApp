@@ -50,7 +50,7 @@
   bind:click="createTeam"
   custom-class="create-btn"
   style="position:fixed;bottom:0;width:100%;"
-  color="#CD4F39" 
+  color="#ff9966" 
   icon="success"
   size="large"
-  >创建</van-button>
+  >创建团队</van-button>

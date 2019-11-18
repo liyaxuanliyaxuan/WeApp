@@ -1,13 +1,33 @@
 // pages/me/me.js
+var App = getApp()
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
+    userInfo: {
+      nickName: "Eevee",
+      age: "7",
+      gender: "1",
+      signature: "啦啦啦",
+      imgUrls: ["pictures/food-1.jpg", "pictures/food-5.jpg", "pictures/food-6.jpg", "pictures/food-7.jpg"],
+    },
+  },
+  getUserInfo: function (e) {
+    console.log(5);
+    console.log(e)
+    if (e.detail.userInfo) {
+      app.globalData.userInfo = e.detail.userInfo
+      this.setData({
+        userInfo: e.detail.userInfo,
+        hasUserInfo: true
+      })
+    } else {
+      this.openSetting();
+    }
 
   },
-
   /**
    * 生命周期函数--监听页面加载
    */
@@ -63,16 +83,16 @@ Page({
   onShareAppMessage: function () {
 
   },
-  editMe(){
+  editMe() {
     wx.navigateTo({
       url: '../me_edit/me_edit',
-      success: function(res){
+      success: function (res) {
         // success
       },
-      fail: function() {
+      fail: function () {
         // fail
       },
-      complete: function() {
+      complete: function () {
         // complete
       }
     })

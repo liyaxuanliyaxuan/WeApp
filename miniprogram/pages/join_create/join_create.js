@@ -89,6 +89,20 @@ Page({
     .then(res => {
       console.log(res)
     })
+    wx.showModal({
+      content: '创建成功',
+      success(res) {
+        if (res.confirm) {
+          console.log('确定'),
+            wx.switchTab({
+              url: '/pages/me/me'
+            })
+        }
+        else if (res.cancel) {
+          console.log('取消')
+        }
+      }
+    })
   },
 
 

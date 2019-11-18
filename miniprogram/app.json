@@ -30,14 +30,15 @@
   "window": {
     "backgroundColor": "#F6F6F6",
     "backgroundTextStyle": "light",
-    "navigationBarBackgroundColor": "#F6F6F6",
+    "navigationBarBackgroundColor": "#FAFAD2",
+    "navigationBarTextStyle": "black",
+    "enablePullDownRefresh": true,
     "navigationBarTitleText": "云开发 QuickStart"
-    
   },
   "tabBar":{
-    "backgroundColor":"#ffffff",
-    "color":"#999999",
-    "selectedColor":"#1A1A1A",
+    "backgroundColor": "#FAFAD2",
+    "color": "#999999",
+    "selectedColor": "#CC1004",
     "borderStyle":"black",
     "list":[{
       "pagePath":"pages/join/join",
