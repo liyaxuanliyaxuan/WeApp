@@ -1,5 +1,5 @@
 // pages/me_edit/me_edit.js
-import Dialog from '../../miniprogram_npm/weui-miniprogram/dialog//dialog';
+
 //Dialog.alert({
 // message: '弹窗内容'
 //}).then(() => {

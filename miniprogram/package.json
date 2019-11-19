@@ -10,7 +10,5 @@
   "license": "ISC",
   "dependencies": {
     "miniprogram-sm-crypto": "^0.1.0",
-    "vant-weapp": "^0.5.23",
-    "weui-miniprogram": "^0.2.0"
-  }
+    "vant-weapp": "^0.5.23",}
 }
