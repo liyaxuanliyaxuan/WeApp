@@ -7,9 +7,9 @@ Page({
   data: {
     inputValue: 'llllll',
     array: [[1, 2], [3, 4], [5, 6]],
-  
-    teamList:[],
-    selected:"",
+
+    teamList: [],
+    selected: "",
 
   },
 
@@ -33,26 +33,26 @@ Page({
   onShow: function () {
     const that = this
     const db = wx.cloud.database()
-    db.collection('team').get().then(res=>{
-     
-        // res.data 包含该记录的数据
-       //console.log(res.data)
-       return res.data
-      
-    }).then(list=>{
+    db.collection('team').get().then(res => {
+
+      // res.data 包含该记录的数据
+      //console.log(res.data)
+      return res.data
+
+    }).then(list => {
       var temp = new Array()
-      for (let i = 0; i <2; i++) {
+      for (let i = 0; i < 2; i++) {
         temp[i] = new Array();
-        for (let j = 0; j < list.length/2; j++) {
+        for (let j = 0; j < list.length / 2; j++) {
           temp[i][j] = list[i * 2 + j];
         }
       }
       return temp
-  
-    }).then(l=>{
+
+    }).then(l => {
       console.log(l)
       that.setData({
-        teamList:l
+        teamList: l
       })
     })
 
@@ -93,54 +93,70 @@ Page({
 
   },
   onChange: function (event) {
-      this.setData({
-        inputValue: event.detail
-      })
+    this.setData({
+      inputValue: event.detail
+    })
   },
 
-  onCancel(){
+  onCancel() {
 
   },
 
-  addTeam(){
-   wx.navigateTo({
-     url: '../join_create/join_create',
-     success: function(res){
-       // success
-     },
-     fail: function() {
-       // fail
-     },
-     complete: function() {
-       // complete
-     }
-   })
+  addTeam() {
+    wx.navigateTo({
+      url: '../join_create/join_create',
+      success: function (res) {
+        // success
+      },
+      fail: function () {
+        // fail
+      },
+      complete: function () {
+        // complete
+      }
+    })
   },
-  onSearch(e){
+
+  addMember() {
+    wx.navigateTo({
+      url: '../join_create/join_create',
+      success: function (res) {
+        // success
+      },
+      fail: function () {
+        // fail
+      },
+      complete: function () {
+        // complete
+      }
+    })
+  },
+
+  onSearch(e) {
     const that = this
     console.log(e.detail)
     let searchName = e.detail
     const db = wx.cloud.database()
     db.collection('team').where({
-      name:searchName,
-    }).get().then(res=>{
-  
-        // res.data 包含该记录的数据
-        //console.log(res.data)
-        
-       return res.data[0].leader
-      
-      }
-    ).then(l=>{
+      name: searchName,
+    }).get().then(res => {
+
+      // res.data 包含该记录的数据
+      //console.log(res.data)
+
+      return res.data[0].leader
+
+    }
+    ).then(l => {
       that.setData({
-        teamShow:l
+        teamShow: l
       })
-      
+
 
     })
 
   },
-  chooseTeam(e){
+  chooseTeam(e) {
     console.log(e)
     console.log(e.target.dataset.name)
     this.setData({
@@ -148,27 +164,27 @@ Page({
     })
 
 
-   // wx.navigateTo({
-     // url: '../team_info/team_info',
+    // wx.navigateTo({
+    // url: '../team_info/team_info',
     //})
 
   },
-  enterTeam(){
+  enterTeam() {
     wx.navigateTo({
       url: '../team_info/team_info',
     })
   }
   ,
-  enterIndex(){
+  enterIndex() {
     wx.navigateTo({
       url: '../index/index',
-      success: function(res){
+      success: function (res) {
         // success
       },
-      fail: function() {
+      fail: function () {
         // fail
       },
-      complete: function() {
+      complete: function () {
         // complete
       }
     })

@@ -10,10 +10,16 @@
 .img{
   margin-left:20px;
 }
+.userinfo-avatar {
+  width: 128rpx;
+  height: 128rpx;
+  margin: 20rpx;
+  border-radius: 50%;
+}
 .account{
   width:60%;
   color:#000000;
-  margin-left:30px;
+  margin-left:10px;
 }
 .nav{
   width:15px;

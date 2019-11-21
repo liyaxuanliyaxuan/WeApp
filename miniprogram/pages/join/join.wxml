@@ -10,30 +10,53 @@ bind:change="onChange"
 bind:search="onSearch"
 bind:cancel="onCancel"
 placeholder="请输入搜索的团队ID或名称" />
-<view class="banner"></view>
+<view class="banner"> 这里改一下样式 </view>
 <view class="btn">
 <van-icon name="add" 
-size="40px" 
-custom-class="join-btn"
-color="#ff9966"
-bind:click="addTeam"/>
+  size="40px" 
+  custom-class="join-btn"
+  color="#ff9966"
+  bind:click="addTeam"/>
 </view>
-
+<!--
+<view class="joinImg">
+  <image class="join" 
+    src="../../image/加入群.png" 
+    size="40px" 
+    custom-class="join-btn"
+    catchtap="addTeam">
+  </image>
+</view>
+-->
 
 <view class="team-list">
-<view class="team-row"
- wx:for="{{teamList}}" wx:for-item="i">
-<view class="team-col" wx:for="{{i}}" wx:for-item="j" data-name="{{j.name}}">
-<view class="team-img"></view>
+  <view class="team-row"
+    wx:for="{{teamList}}" wx:for-item="i">
+    <view class="team-col" wx:for="{{i}}" wx:for-item="j" data-name="{{j.name}}">
+      <view class="team-img"></view>
 
- <view class="team-title">
-     {{j.name}}
+      <view class="team-text">
+        <view class="team-title">
+          {{j.name}}
+        </view>
+        <view class="team-content">
+          {{j.leader}}
+        </view>
+      </view>
+      <view class="joinIcon">
+        <van-icon name="more-o"
+          size="20px" 
+          custom-class="join-btn"
+          color="#888"
+          bind:click="addMember"/>
+      </view>
     </view>
-    <view class="team-content">
-    {{j.leader}}
-    </view>
-</view>
-</view>
+    <van-icon name="more-o"
+      size="20px" 
+      custom-class="join-btn"
+      color="#ff9966"
+      bind:click="addTeam"/>
+  </view>
 </view>
 
 

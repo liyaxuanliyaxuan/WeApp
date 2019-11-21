@@ -1,19 +1,18 @@
 {
   "pages": [
-    
+    "pages/index/index",
+    "pages/me/me",
+    "pages/join/join",
     
     "pages/team/team",
     "pages/record/record",
-    "pages/join/join",
     "pages/join_create/join_create",
     "pages/team_info/team_info",
     "pages/team_advise/team_advise",
     "pages/team_add_advise/team_add_advise",
-    "pages/me/me",
     "pages/me_edit/me_edit",
     "pages/record_write/record_write",
     "pages/team_edit/team_edit",
-    "pages/index/index",
     "pages/userConsole/userConsole",
     "pages/storageConsole/storageConsole",
     "pages/databaseGuide/databaseGuide",
@@ -43,8 +42,8 @@
     "list":[{
       "pagePath":"pages/join/join",
       "text":"加入",
-      "iconPath":"image/厨师帽.png",
-      "selectedIconPath":"image/厨师帽.png"
+      "iconPath":"image/加入群.png",
+      "selectedIconPath":"image/加入群.png"
     },{
       "pagePath":"pages/record/record",
       "text":"动态",

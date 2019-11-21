@@ -1,7 +1,27 @@
 /* pages/join/join.wxss */
 .grid{
-  
-  
+    
+}
+.joinIcon{
+  display:flex;
+  flex-direction:row-reverse;
+  margin-right:5px;
+  margin-top:8px;
+  //justify-content:right;
+}
+.team-text{
+  margin-top:60rpx;
+  display:flex;
+}
+
+.joinImg{
+  display:felx;
+  justify-content:center;
+}
+.join{
+  width:40px;
+  height:40px;
+  position:fixed;
 }
 
 .team-list{
@@ -19,11 +39,11 @@
   
 }
 .team-col{
-  background: #DDDDDD;
+  background: 	#F5DEB3;
   margin: 4px;
   padding: 10px;
   border-radius: 5px;
-  
+  //height:200px;
   
   color: #777777;
   font-size: 30rpx;
@@ -31,13 +51,17 @@
 
 }
 .team-img{
-  width: 300rpx;
+  width: 315rpx;
   height: 240rpx;
   background: white;
  
 }
+.team-content{
+  margin-left:40px;
+  color: black;
+}
 .team-title{
-  margin-top:60rpx;
+  
   font-size:32rpx;
   color: black;
 }
@@ -59,8 +83,8 @@
 
 }
 .banner{
-  height: 160px;
+  height: 30px;
   width: 100%;
   margin: 0 auto;
-  background: #DDDDDD;
+  background: #F6F6F6;
 }

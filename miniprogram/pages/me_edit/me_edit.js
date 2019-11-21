@@ -1,10 +1,4 @@
 // pages/me_edit/me_edit.js
-
-//Dialog.alert({
-// message: '弹窗内容'
-//}).then(() => {
-// on close
-//});
 Page({
 
   /**

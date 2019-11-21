@@ -14,7 +14,19 @@ view.divider-index--i-divider-content{
   
 }
 .create-Btn{
-  color: white;
- 
-  
+  color: white;  
+}
+.logoAdd{
+  margin-left:87%;
+}
+
+.uploader-container {
+  width: 100%;
+  height: 400rpx;
+  padding: 20rpx 20rpx 20rpx 0;
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  box-sizing: border-box;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
 }

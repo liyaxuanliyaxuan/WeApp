@@ -6,14 +6,69 @@ Page({
    * 页面的初始数据
    */
   data: {
-    teamType:['1','2','3','4'],
-    teamName:"",
-    teamDetail:"",
-    leader:"",
-    newTeam:{}
-
+    teamType: "",
+    teamName: "",
+    teamDetail: "",
+    leader: "",
+    newTeam: {},
+    teamLogo: "",
+    fileID: '',
+    cloudPath: '',
+    imagePath: '',
   },
+  // 上传图片
+  doUpload: function () {
+    var that = this
+    // 选择图片
+    wx.chooseImage({
+      count: 1,
+      sizeType: ['compressed'],
+      sourceType: ['album', 'camera'],
+      success: function (res) {
 
+        wx.showLoading({
+          title: '上传中',
+        })
+
+        const filePath = res.tempFilePaths[0]
+        console.log(filePath)
+
+        // 上传图片
+        const cloudPath = 'my-image' + Math.random() + filePath.match(/\.[^.]+?$/)[0]
+        console.log('cloudPath>>', cloudPath)
+        wx.cloud.uploadFile({
+          cloudPath,
+          filePath,
+        }).then(res => {
+          console.log('[上传文件] 成功：', res)
+          console.log(res.fileID)
+          console.log(cloudPath)
+          console.log(filePath)
+          this.setData({
+            teamLogo: res.fileID
+          })
+
+          wx.hideLoading()
+
+          app.globalData.fileID = res.fileID
+          app.globalData.cloudPath = cloudPath
+          app.globalData.imagePath = filePath
+          return app.globalData.imagePath
+
+        }).then(path => {
+          that.setData({
+            teamLogo: path//在此处加载图片实际上使用的是本地的文件路径
+
+          })
+        }).catch(error => {
+          // handle error
+        })
+      },
+      fail: e => {
+        console.error(e)
+      }
+    })
+  },
   /**
    * 生命周期函数--监听页面加载
    */
@@ -69,34 +124,65 @@ Page({
   onShareAppMessage: function () {
 
   },
-  createTeam(){
-    
+  createTeam() {
+
     const newName = this.data.teamName
     const newLeader = this.data.leader
-    const newTeam ={
+    const newType = this.data.teamType
+    const newDetail = this.data.teamDetail
+    const newLogo = this.data.teamLogo
+    const newTeam = {
       newName,
-      newLeader
+      newLeader,
+      newType,
+      newDetail,
+      newLogo,
     }
-    console.log(newTeam)
-    const db = wx.cloud.database()
-    db.collection('team').add({
-      // data 字段表示需新增的 JSON 数据
-      data: {
-      name:newName,
-      leader:newLeader
-      }
-    })
-    .then(res => {
-      console.log(res)
-    })
+    if (newName == '') {
+      wx: wx.showToast({
+        title: '请输入团队名',
+        icon: 'none',
+      })
+      return false
+    }
+    else if (newType == '') {
+      wx: wx.showToast({
+        title: '请输入团队性质',
+        icon: 'none',
+      })
+      return false
+    }
+    else if (newLeader == '') {
+      wx: wx.showToast({
+        title: '请输入创建人姓名',
+        icon: 'none',
+      })
+      return false
+    }
+
     wx.showModal({
       content: '创建成功',
       success(res) {
         if (res.confirm) {
-          console.log('确定'),
-            wx.switchTab({
-              url: '/pages/me/me'
+          console.log('确定')
+          console.log(newTeam)
+          const db = wx.cloud.database()
+          db.collection('team').add({
+            // data 字段表示需新增的 JSON 数据
+            data: {
+              name: newName,
+              leader: newLeader,
+              type: newType,
+              detail: newDetail,
+              logo: newLogo,
+            }
+          })
+            .then(res => {
+              console.log(res)
             })
+          wx.switchTab({
+            url: '/pages/join/join'
+          })
         }
         else if (res.cancel) {
           console.log('取消')
@@ -104,25 +190,30 @@ Page({
       }
     })
   },
-
-
-
-
-
-  change1(e){
-  this.setData({
-    teamName:e.detail
-  })
-
-  },
-
-
-
-  change2(e){
+  change1(e) {
     this.setData({
-      leader:e.detail
+      teamName: e.detail
     })
-  
+  },
+  change2(e) {
+    this.setData({
+      leader: e.detail
+    })
+  },
+  change3(e) {
+    this.setData({
+      teamType: e.detail
+    })
+  },
+  change4(e) {
+    this.setData({
+      teamDetail: e.detail
+    })
+  },
+  change5(e) {
+    this.setData({
+      teamLogo: e.detail
+    })
   },
   onChange(event) {
     const { picker, value, index } = event.detail;

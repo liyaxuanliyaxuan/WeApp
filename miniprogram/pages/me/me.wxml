@@ -5,8 +5,7 @@
 -->
 <view class="accountBg">
   <view class="img">
-    <image src="../../image/厨师帽.png" style="width:49px;height:47px;">
-    </image>
+    <image class="userinfo-avatar" src="{{userInfo.avatarUrl}}"  mode="cover"></image>
   </view>
   <view class="account">
     <view>用户名：{{userInfo.nickName}}</view> 
@@ -21,7 +20,7 @@
 <text>\n</text>
 <view class="acc1">
   <view class="age">
-    年龄：{{userInfo.age}}
+    生日：{{userInfo.age}}
   </view>
   <view class="gender">
     性别：
@@ -36,10 +35,7 @@
     职业：{{userInfo.age}}
   </view>
   <view class="city">
-    城市：
-    <view wx:if="userInfo.gender==1">女</view>
-    <view wx:elif="userInfo.gender==2">男</view>
-    <view wx:else></view>
+    城市：{{userInfo.country}}
   </view>
 </view>
 <text>\n</text>

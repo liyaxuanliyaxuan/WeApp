@@ -1,5 +1,41 @@
 /**index.wxss**/
 
+/**index.wxss**/
+/**添加样式，美化页面**/
+
+.userinfo {
+  border-color:#F6F6F6;
+  margin-top: 80px;
+  height:100%;
+  background-color:#F6F6F6;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.create-btn{
+  margin-top:200px;
+}
+.userinfo-avatar {
+  width: 128rpx;
+  height: 128rpx;
+  margin: 20rpx;
+  border-radius: 50%;
+}
+
+.LoginText{
+  font-size:20px;
+  color:white;
+}
+.userinfo-nickname {
+  font-size:15px;
+  color: #000000;
+}
+
+.usermotto {
+  margin-top: 200px;
+}
+
+/**
 page {
   background: #f6f6f6;
   display: flex;
@@ -135,3 +171,4 @@ page {
   line-height: 36rpx;
   word-break: break-all;
 }
+*/
