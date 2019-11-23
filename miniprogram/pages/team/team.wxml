@@ -12,15 +12,14 @@
 选择显示团队协议
 -->
 
-<van-tabs active="{{ active }}"
-
+<van-tabs 
 custom-class="tab"
+active="{{active}}"
 bind:change="directTo">
 <van-tab title="团队秀" name="show"></van-tab>
   <van-tab title="团队建议" name="advice"></van-tab>
   <van-tab title="团队信息" name="info"></van-tab>
 </van-tabs>
-
 
 <view class="haibao">
   <swiper indicator-dots="{{indicatorDots}}"autoplay="{{autoplay}}"interval="{{interval}}"duration="{{duation}}">
@@ -34,6 +33,8 @@ bind:change="directTo">
     </block>
   </swiper>
 </view>
+
+
 
 
 
@@ -55,6 +56,7 @@ bind:click="showPopup" />
 
 
 <van-popup show="{{ show }}" 
+duriton="{{100}}"
 position="top"
   custom-style="height: auto;"
   round="true"
@@ -89,3 +91,4 @@ custom-class="fire"
     <view slot="footer" class="footer">{{item.title+"---"+item.when[0]+'-'+item.when[1]+'-'+item.when[2]}}</view>
 </i-card>
 </view>
+

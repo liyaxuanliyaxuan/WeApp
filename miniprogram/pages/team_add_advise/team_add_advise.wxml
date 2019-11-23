@@ -13,7 +13,7 @@
     value="{{title}}"
     label="关键字"
     left-icon="bulb-o"
-    
+    bind:change="changeKey"
     border="{{ true }}"/>
     <van-field
       value="{{ message }}"

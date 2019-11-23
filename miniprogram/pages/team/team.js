@@ -21,11 +21,8 @@ Page({
     defaultTeam:"默认",
     currentMembers:[],
     history:[],
-    danmuList:[
-      "我们是最棒的",
-      "新的一年，再度起航",
-      "今天你写代码了吗？"
-    ]
+    active:'0'
+  
     
 
   },
@@ -144,6 +141,7 @@ Page({
          url: '../team/team',
        })
      }
+     break;
        case 1:{
          wx.navigateTo({
            url: '../team_advise/team_advise',
@@ -158,7 +156,7 @@ Page({
            }
          })
        }
-       break
+       break;
        case 2:{
          wx.navigateTo({
            url: '../team_info/team_info',

@@ -115,6 +115,7 @@ Page({
           url: '../team/team',
         })
       }
+      break;
       case 1: {
         wx.navigateTo({
           url: '../team_advise/team_advise',
@@ -129,7 +130,7 @@ Page({
           }
         })
       }
-        break
+        break;
       case 2: {
         wx.navigateTo({
           url: '../team_info/team_info',

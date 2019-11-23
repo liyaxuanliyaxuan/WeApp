@@ -35,13 +35,20 @@
       border="{{ false }}"
     />
   </van-cell-group>
+  <i-divider content="选择发布圈子"></i-divider>
+
+
+   <i-checkbox-group current="{{current}}" color="#EE7942" bindchange="handleFruitChange">
+        <i-checkbox wx:for="{{fruit}}" position="{{position}}" wx:key="{{item.id}}" value="{{item.name}}">
+        </i-checkbox>
+    </i-checkbox-group>
 
  <image class="image1" src="{{imagePath}}" mode="aspectFit"></image>
   <van-button 
   bindtap="submitMine"
   custom-class="create-btn"
   style="position:fixed;bottom:0;width:100%;"
-  color="#CD4F39" 
+  color="#FF8247" 
   icon="plus"
   size="large"
   >发布</van-button>

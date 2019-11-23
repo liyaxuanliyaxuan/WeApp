@@ -3,6 +3,7 @@
 初始页面，显示团队创建按钮和搜索功能
 
 -->
+
 <van-search 
 show-action
 custom-class="search"
@@ -10,14 +11,50 @@ bind:change="onChange"
 bind:search="onSearch"
 bind:cancel="onCancel"
 placeholder="请输入搜索的团队ID或名称" />
-<view class="banner"> 这里改一下样式 </view>
-<view class="btn">
-<van-icon name="add" 
-  size="40px" 
-  custom-class="join-btn"
-  color="#ff9966"
-  bind:click="addTeam"/>
+
+
+
+<view class="banner"> 
+<div class="wrapper">
+  <div class="candles">
+    <div class="light__wave"></div>
+    <div class="candle1">
+      <div class="candle1__body">
+        <div class="candle1__eyes">
+          <span class="candle1__eyes-one"></span>
+          <span class="candle1__eyes-two"></span>
+        </div>
+        <div class="candle1__mouth"></div>
+      </div>
+      <div class="candle1__stick"></div>
+    </div>
+    
+    <div class="candle2">
+      <div class="candle2__body">
+        <div class="candle2__eyes">
+          <div class="candle2__eyes-one"></div>
+          <div class="candle2__eyes-two"></div>
+        </div>
+      </div>
+      <div class="candle2__stick"></div>
+    </div>
+    <div class="candle2__fire"></div>
+    <div class="sparkles-one"></div>
+    <div class="sparkles-two"></div>
+    <div class="candle__smoke-one">
+
+    </div>
+    <div class="candle__smoke-two">
+
+    </div>
+    
+  </div>
+ 
+  
+
+</div>
 </view>
+
 <!--
 <view class="joinImg">
   <image class="join" 
@@ -28,12 +65,19 @@ placeholder="请输入搜索的团队ID或名称" />
   </image>
 </view>
 -->
-
+<van-icon 
+name="add"
+size="40px"
+class="btn"
+bind:click="addTeam"
+/>
 <view class="team-list">
-  <view class="team-row"
-    wx:for="{{teamList}}" wx:for-item="i">
-    <view class="team-col" wx:for="{{i}}" wx:for-item="j" data-name="{{j.name}}">
-      <view class="team-img"></view>
+  <view class="team-col"
+    wx:for="{{teamList}}" wx:for-item="j">
+ 
+      <view class="team-img">
+      <image src="{{j.pic}}"/>
+      </view>
 
       <view class="team-text">
         <view class="team-title">
@@ -50,14 +94,11 @@ placeholder="请输入搜索的团队ID或名称" />
           color="#888"
           bind:click="addMember"/>
       </view>
-    </view>
-    <van-icon name="more-o"
-      size="20px" 
-      custom-class="join-btn"
-      color="#ff9966"
-      bind:click="addTeam"/>
+  
+
   </view>
 </view>
+
 
 
   

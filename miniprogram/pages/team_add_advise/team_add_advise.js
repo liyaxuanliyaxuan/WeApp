@@ -8,7 +8,8 @@ Page({
   data: {
     currentTeamName:"",
     message:"",
-    id:""
+    id:"",
+    keyWords:''
 
   },
 
@@ -80,12 +81,14 @@ Page({
       name:that.data.currentTeamName
     }).get().then(res=>{
       return res.data[0]._id
+      console.log(res.data[0]._id)
     }).then(id=>{
      wx.cloud.callFunction({
-       name:"add",
+       name:"add_advice",
        data:{
          name:"up",
          advice:that.data.message,
+         key:that.data.keyWords,
          id:id,
        },
        success:function(res){
@@ -98,10 +101,15 @@ Page({
    
     
     },
-  changeInput(e){
+  onChange(e){
     
     this.setData({
       message:e.detail
+    })
+  },
+  changeKey(e){
+    this.setData({
+      keyWords:e.detail
     })
   }
 })

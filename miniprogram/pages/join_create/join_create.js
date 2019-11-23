@@ -15,6 +15,7 @@ Page({
     fileID: '',
     cloudPath: '',
     imagePath: '',
+    pic:''
   },
   // 上传图片
   doUpload: function () {
@@ -31,37 +32,30 @@ Page({
         })
 
         const filePath = res.tempFilePaths[0]
-        console.log(filePath)
 
         // 上传图片
-        const cloudPath = 'my-image' + Math.random() + filePath.match(/\.[^.]+?$/)[0]
-        console.log('cloudPath>>', cloudPath)
+        const cloudPath = 'my-image' + filePath.match(/\.[^.]+?$/)[0]
         wx.cloud.uploadFile({
           cloudPath,
           filePath,
         }).then(res => {
           console.log('[上传文件] 成功：', res)
-          console.log(res.fileID)
-          console.log(cloudPath)
-          console.log(filePath)
-          this.setData({
-            teamLogo: res.fileID
-          })
-
           wx.hideLoading()
 
-          app.globalData.fileID = res.fileID
-          app.globalData.cloudPath = cloudPath
-          app.globalData.imagePath = filePath
-          return app.globalData.imagePath
+          return  res.fileID
 
-        }).then(path => {
-          that.setData({
-            teamLogo: path//在此处加载图片实际上使用的是本地的文件路径
-
-          })
-        }).catch(error => {
-          // handle error
+        }).then(id=>{
+          wx.cloud.downloadFile({
+            fileID: id
+          }).then(res => {
+            // get temp file path
+            console.log(res.tempFilePath)
+            return res.tempFilePath
+            }).then(pic => {
+              that.setData({
+                pic: pic
+              })
+            })
         })
       },
       fail: e => {
@@ -125,6 +119,7 @@ Page({
 
   },
   createTeam() {
+    const that = this
 
     const newName = this.data.teamName
     const newLeader = this.data.leader
@@ -170,14 +165,14 @@ Page({
           db.collection('team').add({
             // data 字段表示需新增的 JSON 数据
             data: {
-              name: newName,
-              leader: newLeader,
-              type: newType,
-              detail: newDetail,
-              logo: newLogo,
+              name: that.data.teamName,
+              leader: that.data.leader,
+              type: that.data.teamType,
+              detail: that.data.teamDetail,
+              pic:that.data.pic
+             
             }
-          })
-            .then(res => {
+          }).then(res => {
               console.log(res)
             })
           wx.switchTab({

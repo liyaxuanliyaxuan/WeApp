@@ -1,4 +1,6 @@
 // pages/record_write/record_write.js
+
+import store from "../../utils/store.js"
 const app = getApp()
 Page({
 
@@ -9,7 +11,19 @@ Page({
     fileID: '',
     cloudPath: '',
     imagePath: '',
-    message:''
+    message:'',
+    photoId:'',
+    fruit: [{
+      id: 1,
+      name: '薪火小队',
+    }, {
+      id: 2,
+      name: '数模小分队'
+    }, {
+      id: 3,
+      name: 'acm战队'
+    }],
+    current: [],
 
   },
 
@@ -17,6 +31,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+   
 
   },
 
@@ -50,6 +65,7 @@ Page({
    * 生命周期函数--监听页面隐藏
    */
   onHide: function () {
+    store.addData(this, "dataFromWriteRecord")
 
   },
 
@@ -57,6 +73,7 @@ Page({
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
+    store.addData(this, "dataFromWriteRecord")
 
   },
 
@@ -103,15 +120,14 @@ Page({
           filePath,
          }) .then(res=> {
             console.log('[上传文件] 成功：', res)
-           wx.hideLoading()
+            wx.hideLoading()
 
-          app.globalData.fileID = res.fileID
-          app.globalData.cloudPath = cloudPath
-          return app.globalData.imagePath = filePath
+          return  [filePath,res.fileID]
 
-        }).then(path=>{
+        }).then(res=>{
         that.setData({
-          imagePath:path//在此处加载图片实际上使用的是本地的文件路径
+          imagePath:res[0],
+          photoId:res[1]
 
         })
           }).catch(error => {
@@ -150,7 +166,9 @@ Page({
         },
         fail: console.error
       })
-    })
+    }).then(
+      store.addData(this, "dataFromWriteRecord")
+    )
 
   }
 

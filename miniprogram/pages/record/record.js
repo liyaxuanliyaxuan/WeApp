@@ -1,4 +1,6 @@
 // pages/record/record.js
+
+import store from "../../utils/store.js"
 Page({
 
   /**
@@ -6,7 +8,9 @@ Page({
    */
   data: {
     likedList:[],
-    imageURL:"https://img3.doubanio.com/view/photo/albumcover/public/p1563537010.jpg",
+    imageURL: ["https://img3.doubanio.com/view/photo/albumcover/public/p1563537010.jpg",      "https://qpic.y.qq.com/music_cover/jCPNL5FMs23Uk4XAo5aTmTouKW7kaU5km2nPBkIPXdiawtBBO4vqCPg/300?n=1",
+    "https://qpic.y.qq.com/music_cover/G3Ul1DUJzK1PpbH6r4GKq1KEF2kosMx6mVYI03yHjWAWq2Ribic3eSww/300?n=1",
+    "https://qpic.y.qq.com/music_cover/CXricxSibts8cC0Pl3TdOV0Gr0wG59zIndejB7VoUpIYYY7QPp4h99bw/300?n=1"],
     liked:0,
     show:false,
     myTeams:[],
@@ -17,21 +21,16 @@ Page({
     currentMembers:[],
     likeNum:1,
     userMomentsTest:[{name:"hhhhh",moment:"kkkkkkk",stars:22},{name:"uuuu",moment:"ooooooo",stars:19}],
-    userMoments:[]
+    userMoments:[],
+    photoPath:"",
+    change:true
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
-
-
-    
-
-
-
-
+   
   },
 
   /**
@@ -45,9 +44,30 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    //console.log(this.data.likedList)
-    //const that = this
     const that = this
+    if (store.dataFromWriteRecord!==undefined){
+      wx.cloud.downloadFile({
+        fileID:store.dataFromWriteRecord.photoId
+      }).then(res => {
+        // get temp file path
+        //console.log(res.tempFilePath)
+        return res.tempFilePath
+      }).then(path => {
+   
+        return  [...this.data.imageURL, path]
+        
+      }).then(list=>{
+        that.setData({
+          imageURL:list
+        })
+      })
+
+
+
+    }
+  
+   
+   
     const db = wx.cloud.database()
     db.collection('member').where({
       name:"陈诚",
@@ -62,8 +82,7 @@ Page({
     }).then(l => {
       that.setData({
         myTeams: l,
-        currentTeamName:l[0],//默认团队为该成员的index0团队
-        
+        currentTeamName:l[0],//默认团队为该成员的index0团队 
       })
       return l[0]
     }).then(name=>{
@@ -78,7 +97,11 @@ Page({
           that.setData({
             currentMembers: l
           })
-          return l[0]
+          if(that.data.change){
+            return l[0]
+          }else{
+            return l[1]
+          }
         }).then(id=>{
           //for(let i=0;i<idList.length;i++){
             wx.cloud.callFunction({
@@ -114,9 +137,6 @@ Page({
 
  
     
-   
-    
-
   },
 
   /**
@@ -210,6 +230,7 @@ Page({
     const db = wx.cloud.database()
     this.setData({
       currentTeamName: e.target.dataset.team,
+      change:that.data.change
       
     })
     db.collection("team").where({
@@ -223,7 +244,7 @@ Page({
         currentMembers: l
       })
 
-    return l[0]//暂时的报错是由于数据库的格式问题
+    return l[1]//暂时的报错是由于数据库的格式问题
     }
     ).then(id=>{
       wx.cloud.callFunction({
@@ -233,10 +254,14 @@ Page({
         },
         success: function (res) {
           console.log(res.result.data.update)
+          that.setData({
+            userMoments: res.result.data.update
+        ,
+          })
+         
         },
         fail: console.error
       })
-     
     })
   }
 })

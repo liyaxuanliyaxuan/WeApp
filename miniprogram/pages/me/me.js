@@ -49,6 +49,17 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    wx.cloud.downloadFile({
+      fileID: 'cloud://cloud-demo-l5rvx.636c-cloud-demo-l5rvx-1300498757/my-image0.33074095106783985.png'
+    }).then(res => {
+      // get temp file path
+      console.log(res.tempFilePath)
+    }).catch(error => {
+      // handle error
+    })
+
+
+
     if (app.globalData.userInfo) {
       this.setData({
         userInfo: app.globalData.userInfo,

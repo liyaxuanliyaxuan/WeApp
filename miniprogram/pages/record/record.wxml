@@ -13,6 +13,7 @@
  title="个人秀"
  icon="friends-o"
  value="选择我的团队"
+
 is-link 
 arrow-direction="down"
 bind:click="showPopup" />
@@ -21,7 +22,11 @@ bind:click="showPopup" />
 
 
 <van-popup show="{{ show }}" 
+ closeable
+ close-icon-position="bottom-right"
+ close-icon="close"
 position="top"
+duriton="{{100}}"
   custom-style="height: auto;"
   round
 bind:close="onClose">
@@ -52,12 +57,12 @@ custom-class="fire"
 
 
 
-<view wx:for="{{userMoments}}">
+<view wx:for="{{userMoments}}" wx:key="{{index}}">
 
 <van-card
   desc="{{item.content}}"
   title="{{item.title}}"
-  thumb="{{ imageURL }}">
+  thumb="{{ imageURL[index]}}">
   <view slot="footer">
   <text class="star-num">{{item.stars}}</text>
     <van-icon name="like"

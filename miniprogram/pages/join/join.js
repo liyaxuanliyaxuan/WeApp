@@ -5,9 +5,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    inputValue: 'llllll',
-    array: [[1, 2], [3, 4], [5, 6]],
-
+    inputValue: '',
     teamList: [],
     selected: "",
 
@@ -36,10 +34,18 @@ Page({
     db.collection('team').get().then(res => {
 
       // res.data 包含该记录的数据
-      //console.log(res.data)
+      console.log(res.data)
       return res.data
 
-    }).then(list => {
+    }).then(l => {
+      console.log(l)
+      that.setData({
+        teamList: l
+      })
+    })}
+    
+    /*
+    then(list => {
       var temp = new Array()
       for (let i = 0; i < 2; i++) {
         temp[i] = new Array();
@@ -49,14 +55,9 @@ Page({
       }
       return temp
 
-    }).then(l => {
-      console.log(l)
-      that.setData({
-        teamList: l
-      })
-    })
+    })*/
 
-  },
+  ,
 
   /**
    * 生命周期函数--监听页面隐藏

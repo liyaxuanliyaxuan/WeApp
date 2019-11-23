@@ -30,11 +30,11 @@ font-size: 12px;
 
 .choose-cell{}
 .span-class{
-  background:#E8E8E8;
+ background:#FFA500;
   padding: 4px;
   margin: 4px;
   border-radius: 4px;
-  color: #575757;
+  color: #FFFFE0;
   font-size: 12px;
   font-weight: bolder;
   text-align: center;
@@ -61,3 +61,51 @@ font-size: 12px;
 .team-card{
   margin-bottom: 20px;
 }
+a {
+	color: #e7e388;
+	text-decoration: none;
+	-webkit-transition: 0.15s color ease;
+	-moz-transition: 0.15s color ease;
+	-ms-transition: 0.15s color ease;
+	-o-transition: 0.15s color ease;
+	transition: 0.15s color ease;
+}
+a:hover {
+	color: #fff;
+}
+h1 {
+	font-size: 30px;
+	margin: 0 0 15px 0;
+}
+h2 {
+	font-size: 18px;
+	opacity: 0.6;
+	font-weight: normal;
+}
+p {
+	margin-bottom: 10px;
+}
+.contents {
+	padding: 40px 0px;
+	margin-bottom: 30px;
+	border-bottom: 1px solid #222;
+	color: white;
+	background: #39536B;
+}
+.sharing {
+	margin-top: 20px;
+}
+.thumb {
+	position: relative;
+	width: 200px;
+	height: 200px;
+	margin: 20px auto 60px auto;
+}
+.thumb img {
+	position: absolute;
+	top: 0;
+	left: 0;
+	border: 5px solid white;
+	box-shadow: 0px 0px 1px rgba( 0, 0, 0, 0.8 );
+}
+
