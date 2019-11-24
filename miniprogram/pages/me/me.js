@@ -1,35 +1,21 @@
 // pages/me/me.js
 const app = getApp()
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
+    openid:"",
     userInfo:{},
+    member:{
+      
+    },
     hasUserInfo: false,
     canIUse: wx.canIUse('button.open-type.getUserInfo')
-    /**
-    userInfo: {
-      nickName: "Eevee",
-      age: "7",
-      gender: "1",
-      signature: "啦啦啦",
-      imgUrls: ["pictures/food-1.jpg", "pictures/food-5.jpg", "pictures/food-6.jpg", "pictures/food-7.jpg"],
-      },
-    */
   
   },
-  /**
-  getUserInfo: function (e) {
-    console.log(e)
-    app.globalData.userInfo = e.detail.userInfo
-    this.setData({
-      userInfo: e.detail.userInfo,
-      hasUserInfo: true
-    })
-  },
-  */
   
   getUserInfo: function (e) {
     console.log(5);
@@ -49,6 +35,9 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    const that = this
+
+    //厨师帽图片在这里
     wx.cloud.downloadFile({
       fileID: 'cloud://cloud-demo-l5rvx.636c-cloud-demo-l5rvx-1300498757/my-image0.33074095106783985.png'
     }).then(res => {
@@ -58,13 +47,13 @@ Page({
       // handle error
     })
 
-
-
+    //获取userInfo
     if (app.globalData.userInfo) {
       this.setData({
         userInfo: app.globalData.userInfo,
         hasUserInfo: true
       })
+      console.log('1', this.data.userInfo)
     } else if (this.data.canIUse) {
       // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
       // 所以此处加入 callback 以防止这种情况
@@ -73,6 +62,7 @@ Page({
           userInfo: res.userInfo,
           hasUserInfo: true
         })
+        console.log('2', this.data.userInfo)
       }
     } else {
       // 在没有 open-type=getUserInfo 版本的兼容处理
@@ -84,10 +74,51 @@ Page({
             userInfo: res.userInfo,
             hasUserInfo: true
           })
+          console.log('3', this.data.userInfo)
         }
       })
     }
-    console.log(this.userInfo)
+    //存储openId
+    wx.cloud.callFunction({
+      name: 'login',
+      data: {},
+      success: res => {
+        console.log('[云函数] [login] user openid: ', res.result.openid)
+        app.globalData.openid = res.result.openid
+        this.setData({
+          openid: app.globalData.openid
+        })
+        console.log(this.data.openid)
+        const db = wx.cloud.database()
+        
+        //根据openid获得其他信息
+        db.collection('member').where({
+          openid: this.data.openid,
+        })
+          .get({
+            success: res => {
+              //console.log('调用成功')
+              console.log(res.data)
+              console.log(res.data[0].realName)
+              if (res.data.length == 0) {
+                console.log('调取失败')
+              }
+              else {
+                console.log('调用成功')
+                console.log('again',res.data[0].realName)
+                let temp = res.data[0]
+                that.setData({
+                  member:temp
+                })
+                console.log(that.data.member.realName)
+              }              
+            }
+          })
+      },
+      fail: err => {
+        console.error('[云函数] [login] 调用失败', err)
+      }
+    })
   },
 
   /**

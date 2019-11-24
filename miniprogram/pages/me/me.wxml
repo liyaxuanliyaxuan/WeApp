@@ -20,29 +20,29 @@
 <text>\n</text>
 <view class="acc1">
   <view class="age">
-    生日：{{userInfo.age}}
+    真实姓名：{{member.realName}}
   </view>
   <view class="gender">
     性别：
-    <view wx:if="userInfo.gender==1">女</view>
-    <view wx:elif="userInfo.gender==2">男</view>
+    <view wx:if="{{userInfo.gender==2}}">女</view>
+    <view wx:elif="{{userInfo.gender==1}}">男</view>
     <view wx:else></view>
   </view>
 </view>
 <text>\n</text>
 <view class="acc2">
   <view class="job">
-    职业：{{userInfo.age}}
+    出生日期：{{member.date}}
   </view>
   <view class="city">
-    城市：{{userInfo.country}}
+    职业：{{member.job}}
   </view>
 </view>
 <text>\n</text>
 <view class="sig">
   个性签名:
   <view class="sig1">
-    {{ userInfo.signature }}
+    {{ member.signature }}
   </view>
 </view>
 <text>\n</text>

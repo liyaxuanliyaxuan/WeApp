@@ -4,15 +4,96 @@ const app = getApp()
 Page({
   data: {
     motto: 'Hello World',
+    openID:"",
     userInfo: {},
     hasUserInfo: false,
     canIUse: wx.canIUse('button.open-type.getUserInfo')
   },
   //事件处理函数
   bindViewTap: function () {
-    wx.switchTab({
-      url: '/pages/join/join'
+    const that = this
+    // 调用云函数
+    wx.cloud.callFunction({
+      name: 'login',
+      data: {},
+      success: res => {
+        console.log('[云函数] [login] user openid: ', res.result.openid)
+        app.globalData.openid = res.result.openid
+        this.setData({
+          openId: app.globalData.openid
+        })
+        console.log('55',this.data.openId)
+        const db = wx.cloud.database()
+        db.collection('member').where({
+          openid: this.data.openId,
+        })
+          .get({
+            success: res => {
+              console.log('调用成功')
+              console.log(res.data)
+              if (res.data.length == 0) {
+                console.log('该用户不存在，需要创建')
+                wx.navigateTo({
+                  url: '/pages/me_create/me_create'
+                })
+              }
+              else {
+                wx.switchTab({
+                  url: '/pages/join/join'
+                })
+              }
+
+              //console.log(res.data.length)
+            }
+          })
+      },
+      fail: err => {
+        console.error('[云函数] [login] 调用失败', err)
+      }
     })
+    /*
+    const db = wx.cloud.database()
+    console.log('fghjk')
+    console.log(5)
+    console.log(this.data._openID)
+    db.collection('member').where({
+      _openID: this.data._openID,
+    })
+      .get({
+        success: res => {
+          console.log('调用成功')
+          console.log(res.data)
+          if (res.data.length==0){
+            console.log('该用户不存在，需要创建')
+            wx.navigateTo({
+              url:'/pages/me_create/me_create'
+            })
+          }
+          else{
+            wx.switchTab({
+              url: '/pages/join/join'
+            })
+          }
+
+          //console.log(res.data.length)
+        }
+      })
+    */
+    /*
+    wx.cloud.callFunction({
+      name:'search',
+      data:{
+        _openId: this.data._openID,
+      },
+      success:function(res){
+        console.log('search成功')
+        console.log(res.result.data[0])
+      },
+      fail:function(res){
+
+        console.error(res)
+      }
+    })*/
   },
   onLoad: function () {
     if (app.globalData.userInfo) {
@@ -20,6 +101,7 @@ Page({
         userInfo: app.globalData.userInfo,
         hasUserInfo: true
       })
+      console.log(this.data.userInfo)
     } else if (this.data.canIUse) {
       // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
       // 所以此处加入 callback 以防止这种情况
@@ -28,6 +110,7 @@ Page({
           userInfo: res.userInfo,
           hasUserInfo: true
         })
+        console.log(this.data.userInfo)
       }
     } else {
       // 在没有 open-type=getUserInfo 版本的兼容处理
@@ -38,9 +121,12 @@ Page({
             userInfo: res.userInfo,
             hasUserInfo: true
           })
+          console.log(this.data.userInfo)
         }
       })
     }
+
+    //console.log(app.globalData.userInfo)
   },
   getUserInfo: function (e) {
     console.log(e)
@@ -49,8 +135,9 @@ Page({
       userInfo: e.detail.userInfo,
       hasUserInfo: true
     })
-  }
+  },
 })
+ 
 
 /**
 Page({

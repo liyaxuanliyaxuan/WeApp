@@ -18,18 +18,17 @@ is-link
 arrow-direction="down"
 bind:click="showPopup" />
 
- 
-
 
 <van-popup show="{{ show }}" 
- closeable
- close-icon-position="bottom-right"
- close-icon="close"
-position="top"
-duriton="{{100}}"
+  closeable
+  close-icon-position="bottom-right"
+  close-icon="close"
+  position="top"
+  duriton="{{100}}"
   custom-style="height: auto;"
   round
-bind:close="onClose">
+  bind:close="onClose"
+>
 
 <van-row>
   <van-col span="8" 

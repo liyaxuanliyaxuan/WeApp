@@ -51,6 +51,7 @@ App({
     console.log(msg)
   },
   globalData: {
-    userInfo: null
+    userInfo: null,
+    openId:null
   }
 })

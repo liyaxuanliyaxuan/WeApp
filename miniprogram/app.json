@@ -1,9 +1,9 @@
 {
   "pages": [
-    "pages/index/index",
-    "pages/me/me",
     "pages/join/join",
-    
+    "pages/index/index",
+    "pages/me_create/me_create",
+    "pages/me/me",
     "pages/team/team",
     "pages/record/record",
     "pages/join_create/join_create",
@@ -62,6 +62,7 @@
     }]
   },
   "usingComponents": {
+    "van-action-sheet":"/vant-weapp/action-sheet",
     "van-button": "/vant-weapp/button",
     "van-search": "vant-weapp/search",
     "van-field":"vant-weapp/field",
@@ -69,14 +70,14 @@
     "van-icon":"vant-weapp/icon",
     "van-card":"vant-weapp/card",
     "van-tabbar": "vant-weapp/tabbar",
-  "van-tabbar-item": "vant-weapp/tabbar-item",
-  "van-overlay":"vant-weapp/overlay",
-  "van-popup":"vant-weapp/popup",
-  "van-cell":"vant-weapp/cell",
-  "van-rate": "vant-weapp/rate",
-  "van-row":"vant-weapp/row",
-  "van-col":"vant-weapp/col",
-  "i-grid": "../miniprogram/utils/dist/grid/index",
+    "van-tabbar-item": "vant-weapp/tabbar-item",
+    "van-overlay":"vant-weapp/overlay",
+    "van-popup":"vant-weapp/popup",
+    "van-cell":"vant-weapp/cell",
+    "van-rate": "vant-weapp/rate",
+    "van-row":"vant-weapp/row",
+    "van-col":"vant-weapp/col",
+    "i-grid": "../miniprogram/utils/dist/grid/index",
     "i-grid-item": "../miniprogram/utils/dist/grid-item/index",
     "i-grid-icon": "../miniprogram/utils/dist/grid-icon/index",
     "i-grid-label": "../miniprogram/utils/dist/grid-label/index",
@@ -89,13 +90,8 @@
     "van-tag": "vant-weapp/tag",
     "van-tab": "vant-weapp/tab",
     "van-tabs": "vant-weapp/tabs",
-   "i-checkbox-group": "../miniprogram/utils/dist/checkbox-group/index",
-  "i-checkbox": "../miniprogram/utils/dist/checkbox/index"
-    
-    
-
- 
-  
+    "i-checkbox-group": "../miniprogram/utils/dist/checkbox-group/index",
+    "i-checkbox": "../miniprogram/utils/dist/checkbox/index"
   },
   "sitemapLocation": "sitemap.json"
 }

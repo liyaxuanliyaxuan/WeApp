@@ -32,10 +32,10 @@
 
  <image class="image1" src="{{imagePath}}" mode="aspectFit"></image>
   <van-button 
-  bindtap="submitMine"
-  bind:click="upBtn"
-  style="position:fixed;bottom:0;width:100%;"
-  color="#CD4F39" 
-  icon="plus"
-  size="large"
+    bindtap="submitMine"
+    bind:click="upBtn"
+    style="position:fixed;bottom:0;width:100%;"
+    color="#CD4F39" 
+    icon="plus"
+    size="large"
   >提出建议</van-button>

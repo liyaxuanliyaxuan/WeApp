@@ -92,7 +92,6 @@ Page({
          id:id,
        },
        success:function(res){
-
        },
        fail:console.error
      })

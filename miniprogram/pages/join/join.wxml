@@ -5,54 +5,45 @@
 -->
 
 <van-search 
-show-action
-custom-class="search"
-bind:change="onChange"
-bind:search="onSearch"
-bind:cancel="onCancel"
-placeholder="请输入搜索的团队ID或名称" />
-
-
+  show-action
+  custom-class="search"
+  bind:change="onChange"
+  bind:search="onSearch"
+  bind:cancel="onCancel"
+  placeholder="请输入搜索的团队ID或名称" 
+/>
 
 <view class="banner"> 
-<div class="wrapper">
-  <div class="candles">
-    <div class="light__wave"></div>
-    <div class="candle1">
-      <div class="candle1__body">
-        <div class="candle1__eyes">
-          <span class="candle1__eyes-one"></span>
-          <span class="candle1__eyes-two"></span>
+  <div class="wrapper">
+    <div class="candles">
+      <div class="light__wave"></div>
+      <div class="candle1">
+        <div class="candle1__body">
+          <div class="candle1__eyes">
+            <span class="candle1__eyes-one"></span>
+            <span class="candle1__eyes-two"></span>
+          </div>
+          <div class="candle1__mouth"></div>
         </div>
-        <div class="candle1__mouth"></div>
+        <div class="candle1__stick"></div>
       </div>
-      <div class="candle1__stick"></div>
-    </div>
-    
-    <div class="candle2">
-      <div class="candle2__body">
-        <div class="candle2__eyes">
-          <div class="candle2__eyes-one"></div>
-          <div class="candle2__eyes-two"></div>
+      
+      <div class="candle2">
+        <div class="candle2__body">
+          <div class="candle2__eyes">
+            <div class="candle2__eyes-one"></div>
+            <div class="candle2__eyes-two"></div>
+          </div>
         </div>
+        <div class="candle2__stick"></div>
       </div>
-      <div class="candle2__stick"></div>
+      <div class="candle2__fire"></div>
+      <div class="sparkles-one"></div>
+      <div class="sparkles-two"></div>
+      <div class="candle__smoke-one"></div>
+      <div class="candle__smoke-two"></div>
     </div>
-    <div class="candle2__fire"></div>
-    <div class="sparkles-one"></div>
-    <div class="sparkles-two"></div>
-    <div class="candle__smoke-one">
-
-    </div>
-    <div class="candle__smoke-two">
-
-    </div>
-    
   </div>
- 
-  
-
-</div>
 </view>
 
 <!--
@@ -66,18 +57,18 @@ placeholder="请输入搜索的团队ID或名称" />
 </view>
 -->
 <van-icon 
-name="add"
-size="40px"
-class="btn"
-bind:click="addTeam"
+  name="add"
+  size="40px"
+  class="btn"
+  bind:click="addTeam"
 />
+
 <view class="team-list">
   <view class="team-col"
     wx:for="{{teamList}}" wx:for-item="j">
  
       <view class="team-img">
-      <image src="{{j.pic}}"/>
-      </view>
+      <image src="{{j.pic}}"/></view>
 
       <view class="team-text">
         <view class="team-title">
@@ -92,10 +83,38 @@ bind:click="addTeam"
           size="20px" 
           custom-class="join-btn"
           color="#888"
-          bind:click="addMember"/>
-      </view>
-  
+          bind:click="showPopup"
+        />
 
+        <van-popup show="{{ show }}" 
+          closeable
+          close-icon-position="bottom-right"
+          close-icon="close"
+          position="bottom"
+          duriton="{{100}}"
+          custom-style="height: auto;"
+          round
+          bind:close="onClose">
+          <van-row>
+            <van-col span="8" 
+            data-team="{{item}}"
+            offset="2"
+            custom-class="span-class"
+            round="round"
+            wx:for="{{myTeams}}"bindtap="enterTeam">{{item}}</van-col>
+          </van-row>
+        </van-popup>
+        <!--
+        <van-action-sheet
+          show="{{ show }}"
+          actions="{{ actions }}"
+          bind:close="onClose"
+          bind:select="onSelect"
+          data-id="{{j._id}}"
+          data-teamname="{{j.name}}"
+        />
+        -->
+      </view>
   </view>
 </view>
 

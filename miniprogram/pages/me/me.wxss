@@ -28,37 +28,38 @@
   display:flex;
 }
 .age{
-  font-size:20px;
-  width:35%;  
-  margin-left:8%;
+  display:flex;
+  font-size:15px;
+  width:55%;  
+  margin-left:5%;
 }
 .gender{
   display:flex;
-  font-size:20px;
-  width:50%;  
-  margin-left:20%;
+  font-size:15px;
+  width:40%;  
+  margin-left:5%;
 }
 .acc2{
   display:flex;
 }
 .job{
-  font-size:20px;
-  width:35%;  
-  margin-left:8%;
+  font-size:15px;
+  width:55%;  
+  margin-left:5%;
 }
 .city{
   display:flex;
-  font-size:20px;
-  width:50%;  
-  margin-left:20%;
+  font-size:15px;
+  width:40%;  
+  margin-left:5%;
 }
 .sig{
-  font-size:20px;
+  font-size:15px;
   width:84%;  
-  margin-left:8%;
+  margin-left:5%;
 }
 .sig1{
-  text-indent: 13%;
+  text-indent: 10%;
 }
 .picture{
   font-size:20px;

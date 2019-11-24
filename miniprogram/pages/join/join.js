@@ -1,16 +1,29 @@
 // pages/join/join.js
+const app = getApp()
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
+    memberid:'',
     inputValue: '',
+    openid:"",
     teamList: [],
     selected: "",
-
+    show: false,
+    actions: [
+      {
+        name: '加入'
+      },
+      {
+        name: '查看详情'
+      },
+    ]
   },
 
+  
   /**
    * 生命周期函数--监听页面加载
    */
@@ -42,22 +55,8 @@ Page({
       that.setData({
         teamList: l
       })
-    })}
-    
-    /*
-    then(list => {
-      var temp = new Array()
-      for (let i = 0; i < 2; i++) {
-        temp[i] = new Array();
-        for (let j = 0; j < list.length / 2; j++) {
-          temp[i][j] = list[i * 2 + j];
-        }
-      }
-      return temp
-
-    })*/
-
-  ,
+    })
+  },
 
   /**
    * 生命周期函数--监听页面隐藏
@@ -103,6 +102,7 @@ Page({
 
   },
 
+  //转入添加团队的界面
   addTeam() {
     wx.navigateTo({
       url: '../join_create/join_create',
@@ -118,6 +118,12 @@ Page({
     })
   },
 
+  //出现上拉菜单
+  showPopup() {
+    this.setData({ show: true });
+  },
+
+  //加入成员
   addMember() {
     wx.navigateTo({
       url: '../join_create/join_create',
@@ -133,6 +139,7 @@ Page({
     })
   },
 
+  //搜索团队是否存在
   onSearch(e) {
     const that = this
     console.log(e.detail)
@@ -157,6 +164,8 @@ Page({
     })
 
   },
+
+  //选择团队
   chooseTeam(e) {
     console.log(e)
     console.log(e.target.dataset.name)
@@ -170,12 +179,14 @@ Page({
     //})
 
   },
+
+  //加入团队
   enterTeam() {
     wx.navigateTo({
       url: '../team_info/team_info',
     })
-  }
-  ,
+  },
+
   enterIndex() {
     wx.navigateTo({
       url: '../index/index',
@@ -189,5 +200,104 @@ Page({
         // complete
       }
     })
+  },
+
+  onClose() {
+    this.setData({ show: false });
+  },
+
+  //是否加入推荐的团队
+  onSelect(event) {
+    const that = this
+    console.log("event:",event);
+    if (event.detail.name=="加入"){
+      //判断是否加入
+        wx.showModal({
+          content: '是否加入该团队',
+          success(res) {
+            if (res.confirm) {
+              console.log('确定')
+              console.log('确定加入')
+              //获得个人openId
+              wx.cloud.callFunction({
+                name: 'login',
+                data: {},
+                success: res => {
+                  console.log('[云函数] [login] user openid: ', res.result.openid)
+                  app.globalData.openid = res.result.openid
+                  that.setData({
+                    openid: app.globalData.openid
+                  })
+                  console.log(app.globalData.openid)
+                  console.log(that.data.openid)
+                  //获得团队id
+                  let teamid = event.currentTarget.dataset.id;
+                  let teamname = event.currentTarget.dataset.teamname;
+                  console.log("add:" + teamid + teamname)
+                  //获取个人id
+                  const db = wx.cloud.database()
+                  db.collection("member").where({
+                    openid: that.data.openid,
+                  }).get().then(res => {
+                    return res.data[0]._id
+                  }).then(memberid => {
+                    //将团队信息写入个人
+                    console.log('memberid',memberid)
+                    console.log('teamname', teamname)
+                    console.log('teamid', teamid)
+                    wx.cloud.callFunction({
+                      name: "add_memberteam",
+                      data: {
+                        name: teamname,
+                        teamid: teamid,
+                        id: memberid,
+                      },
+                      success: function (res) {
+                        console.log('success')
+                      },
+                      fail: console.log('fail')
+                    })
+                    //将个人信息写入团队
+                    wx.cloud.callFunction({
+                      name: "add_teammember",
+                      data: {
+                        openid:that.data.openid,
+                        id: teamid,
+                      },
+                      success: function (res) {
+                        console.log('success')
+                      },
+                      fail: console.log('fail')
+                    })
+                  })
+                },
+                fail: err => {
+                  console.error('[云函数] [login] 调用失败', err)
+                }
+              })
+
+              
+             
+              /**
+              const db = wx.cloud.database()
+              db.collection('team').doc('teamid').update({
+                data: {
+                  member:_.push({
+                    id:that.data.openid,
+                  })
+                
+                }
+              })
+              */
+              wx.switchTab({
+                url: '/pages/join/join'
+              })
+            }
+            else if (res.cancel) {
+              console.log('取消')
+            }
+          }
+        })
+    }
   }
 })
