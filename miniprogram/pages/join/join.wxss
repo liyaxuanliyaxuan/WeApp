@@ -2,6 +2,30 @@
 .grid{
     
 }
+.span-class1{
+  background:#FFA500;
+  width:40%;
+  padding: 4px;
+  margin: 20px;
+  margin-left:10%;
+  border-radius: 4px;
+  color: #FFFFE0;
+  font-size: 15px;
+  font-weight: bolder;
+  text-align: center;
+}
+.span-class2{
+  background:#FFA500;
+  width:40%;
+  padding: 4px;
+  margin-left:10%;
+  margin: 20px;
+  border-radius: 4px;
+  color: #FFFFE0;
+  font-size: 15px;
+  font-weight: bolder;
+  text-align: center;
+}
 .joinIcon{
  
   margin-left:120px;

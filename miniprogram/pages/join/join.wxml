@@ -46,16 +46,6 @@
   </div>
 </view>
 
-<!--
-<view class="joinImg">
-  <image class="join" 
-    src="../../image/加入群.png" 
-    size="40px" 
-    custom-class="join-btn"
-    catchtap="addTeam">
-  </image>
-</view>
--->
 <van-icon 
   name="add"
   size="40px"
@@ -90,18 +80,24 @@
           closeable
           close-icon-position="bottom-right"
           close-icon="close"
+          close-on-popstate="{{popstate}}"
           position="bottom"
           duriton="{{100}}"
           custom-style="height: auto;"
           round
           bind:close="onClose">
           <van-row>
-            <van-col span="8" 
-            data-team="{{item}}"
-            offset="2"
-            custom-class="span-class"
-            round="round"
-            wx:for="{{myTeams}}"bindtap="enterTeam">{{item}}</van-col>
+            <van-col 
+              custom-class="span-class1" 
+              span="8" 
+              bindtap="Addteam"
+              data-id="{{j._id}}"
+              data-teamname="{{j.name}}">
+              加入
+            </van-col>
+            <van-col custom-class="span-class2" span="8" bindtap="enterTeam">
+              查看详情
+            </van-col>
           </van-row>
         </van-popup>
         <!--

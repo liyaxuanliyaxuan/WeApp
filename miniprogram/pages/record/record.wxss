@@ -25,8 +25,9 @@
 }
 .span-class{
   background:#FFA500;
+  width:40%;
   padding: 4px;
-  margin: 4px;
+  margin: 10%;
   border-radius: 4px;
   color: #FFFFE0;
   font-size: 12px;
