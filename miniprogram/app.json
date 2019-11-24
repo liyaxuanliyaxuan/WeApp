@@ -1,13 +1,13 @@
 {
   "pages": [
+    "pages/team/team",
+    "pages/join_create/join_create",
+    "pages/team_info/team_info",
     "pages/join/join",
     "pages/index/index",
     "pages/me_create/me_create",
     "pages/me/me",
-    "pages/team/team",
     "pages/record/record",
-    "pages/join_create/join_create",
-    "pages/team_info/team_info",
     "pages/team_advise/team_advise",
     "pages/team_add_advise/team_add_advise",
     "pages/me_edit/me_edit",
