@@ -62,7 +62,12 @@
   text-indent: 10%;
 }
 .picture{
+  display:flex;
   font-size:20px;
   width:84%;  
   margin-left:8%;
+}
+.logoAdd{
+  display:flex;
+  margin-left:40%;
 }

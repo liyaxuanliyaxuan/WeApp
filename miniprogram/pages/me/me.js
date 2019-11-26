@@ -9,9 +9,7 @@ Page({
   data: {
     openid:"",
     userInfo:{},
-    member:{
-      
-    },
+    member:{},
     hasUserInfo: false,
     canIUse: wx.canIUse('button.open-type.getUserInfo')
   
@@ -35,6 +33,72 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    
+  },
+
+  /**
+   * 生命周期函数--监听页面初次渲染完成
+   */
+  onReady: function () {
+
+  },
+
+  /**
+   * 上传图片
+   */
+  // 上传图片
+  doUpload: function () {
+    var that = this
+    // 选择图片
+    wx.chooseImage({
+      count: 1,
+      sizeType: ['compressed'],
+      sourceType: ['album', 'camera'],
+      success: function (res) {
+
+        wx.showLoading({
+          title: '上传中',
+        })
+
+        const filePath = res.tempFilePaths[0]
+
+        // 上传图片
+        const cloudPath = 'my-image' + filePath.match(/\.[^.]+?$/)[0]
+        wx.cloud.uploadFile({
+          cloudPath,
+          filePath,
+        }).then(res => {
+          console.log('[上传文件] 成功：', res)
+          wx.hideLoading()
+          return res.fileID
+        }).then(id => {
+          console.log('id', id)
+          that.setData({
+            id: id
+          })
+          wx.cloud.downloadFile({
+            fileID: id
+          }).then(res => {
+            // get temp file path
+            console.log(res.tempFilePath)
+            console.log('fileID', id)
+            return res.tempFilePath
+          }).then(pic => {
+            that.setData({
+              pic: pic
+            })
+          })
+        })
+      },
+      fail: e => {
+        console.error(e)
+      }
+    })
+  },
+  /**
+   * 生命周期函数--监听页面显示
+   */
+  onShow: function () {
     const that = this
 
     //厨师帽图片在这里
@@ -78,61 +142,47 @@ Page({
         }
       })
     }
-    //存储openId
-    wx.cloud.callFunction({
-      name: 'login',
-      data: {},
-      success: res => {
-        console.log('[云函数] [login] user openid: ', res.result.openid)
-        app.globalData.openid = res.result.openid
-        this.setData({
-          openid: app.globalData.openid
-        })
-        console.log(this.data.openid)
-        const db = wx.cloud.database()
-        
-        //根据openid获得其他信息
-        db.collection('member').where({
-          openid: this.data.openid,
-        })
-          .get({
-            success: res => {
-              //console.log('调用成功')
-              console.log(res.data)
-              console.log(res.data[0].realName)
-              if (res.data.length == 0) {
-                console.log('调取失败')
-              }
-              else {
-                console.log('调用成功')
-                console.log('again',res.data[0].realName)
-                let temp = res.data[0]
-                that.setData({
-                  member:temp
-                })
-                console.log(that.data.member.realName)
-              }              
-            }
+      //存储openId
+      wx.cloud.callFunction({
+        name: 'login',
+        data: {},
+        success: res => {
+          console.log('[云函数] [login] user openid: ', res.result.openid)
+          app.globalData.openid = res.result.openid
+          this.setData({
+            openid: app.globalData.openid
           })
-      },
-      fail: err => {
-        console.error('[云函数] [login] 调用失败', err)
-      }
-    })
-  },
+          console.log(this.data.openid)
+          const db = wx.cloud.database()
 
-  /**
-   * 生命周期函数--监听页面初次渲染完成
-   */
-  onReady: function () {
-
-  },
-
-  /**
-   * 生命周期函数--监听页面显示
-   */
-  onShow: function () {
-
+          //根据openid获得其他信息
+          db.collection('member').where({
+            openid: this.data.openid,
+          })
+            .get({
+              success: res => {
+                //console.log('调用成功')
+                console.log(res.data)
+                console.log(res.data[0].realName)
+                if (res.data.length == 0) {
+                  console.log('调取失败')
+                }
+                else {
+                  console.log('调用成功')
+                  console.log('again', res.data[0].realName)
+                  let temp = res.data[0]
+                  that.setData({
+                    member: temp
+                  })
+                  console.log(that.data.member.realName)
+                }
+              }
+            })
+        },
+        fail: err => {
+          console.error('[云函数] [login] 调用失败', err)
+        }
+      })
   },
 
   /**

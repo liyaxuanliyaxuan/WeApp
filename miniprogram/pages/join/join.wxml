@@ -46,19 +46,22 @@
   </div>
 </view>
 
-<van-icon 
-  name="add"
-  size="40px"
-  class="btn"
-  bind:click="addTeam"
-/>
+
+  <van-icon 
+    name="add"
+    size="40px"
+    custom-style="left:43%;"
+    class="btn"
+    bind:click="addTeam"
+  />
+
 
 <view class="team-list">
   <view class="team-col"
     wx:for="{{teamList}}" wx:for-item="j">
  
       <view class="team-img">
-      <image src="{{j.pic}}"/></view>
+      <image src="{{j.pic}}" mode="widthFix"/></view>
 
       <view class="team-text">
         <view class="team-title">
@@ -72,6 +75,8 @@
         <van-icon name="more-o"
           size="20px" 
           custom-class="join-btn"
+          data-id="{{j._id}}"
+          data-teamname="{{j.name}}"
           color="#888"
           bind:click="showPopup"
         />

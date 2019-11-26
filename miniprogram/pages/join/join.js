@@ -7,6 +7,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    teamid:'',
     popstate:'true',
     memberid:'',
     inputValue: '',
@@ -122,7 +123,10 @@ Page({
 
   //出现上拉菜单
   showPopup() {
-    this.setData({ show: true });
+    this.setData({
+      show: true,
+
+    });
   },
 
 
@@ -167,11 +171,31 @@ Page({
                       console.log(app.globalData.openid)
                       console.log(that.data.openid)
                       //获得团队id
-                      let teamid = event.currentTarget.dataset.id;
-                      let teamname = event.currentTarget.dataset.teamname;
-                      console.log("add:" + teamid + teamname)
-                      //获取个人id
                       const db = wx.cloud.database()
+                      console.log('searchName:',searchName)
+                      db.collection("team").where({
+                        name: searchName,
+                      }).get({
+                        success: res => {
+                          console.log(res.data)
+                          console.log(res.data[0]._id)
+                          let temp = res.data[0]._id
+                          that.setData({
+                            teamid:temp
+                          })
+                          console.log("add:" + that.data.teamid + searchName)
+                        }
+                      })
+                      /*
+                      get().then(res => {
+                        console.log(res)
+                        return res.data[0]._id
+                      }).then(teamid => {
+                        console.log('teamid', teamid)
+                      })
+                      console.log("add:" + that.data.teamid + searchName)
+                      */
+                      //获取个人id
                       db.collection("member").where({
                         openid: that.data.openid,
                       }).get().then(res => {
@@ -179,13 +203,13 @@ Page({
                       }).then(memberid => {
                         //将团队信息写入个人
                         console.log('memberid', memberid)
-                        console.log('teamname', teamname)
-                        console.log('teamid', teamid)
+                        console.log('teamname', searchName)
+                        console.log('teamid', that.data.teamid)
                         wx.cloud.callFunction({
                           name: "add_memberteam",
                           data: {
-                            name: teamname,
-                            teamid: teamid,
+                            name: searchName,
+                            teamid: that.data.teamid,
                             id: memberid,
                           },
                           success: function (res) {
@@ -198,7 +222,7 @@ Page({
                           name: "add_teammember",
                           data: {
                             openid: that.data.openid,
-                            id: teamid,
+                            id: that.data.teamid,
                           },
                           success: function (res) {
                             console.log('success')

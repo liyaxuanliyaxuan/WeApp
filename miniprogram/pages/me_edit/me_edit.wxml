@@ -1,62 +1,45 @@
 <!--pages/me_edit/me_edit.wxml-->
-<!--
-<view class="icon">
-  <view style="display:flex;flex-direction:flex"> 
-    <view class="icon-item">
-      <van-icon name="manager-o" size="30px"/>
-    </view>
-    <view class="icon-item">
-      <van-icon name="records" size="30px"/>
-    </view>
-    <view class="icon-item">
-      <van-icon name="flower-o" size="30px"/>
-    </view>
-    <view class="icon-item">
-      <van-icon name="peer-pay" size="30px"/>
-    </view>
-  </view>
-</view>
--->
+
   <text>\n</text>
   <van-field
-    value="{{ peison.nickname }}"
+    value="{{ realName }}"
     required
     clearable
     icon="manager-o"
-    label="昵称："
-    placeholder="请输入昵称"
+    label="真实姓名："
+    placeholder="请输入真实姓名"
     border="{{ false }}"
     bindinput="bindKeyInput"
-    bind:change="onChange"
+    bind:change="change1"
   />
 
   <text>\n</text>
   <picker mode="date"
-          value="{{person.date}}"
+          value="{{date}}"
           start="2000-01-01"
           end="2020-01-01"
           bindchange="bindDateChange">
     <van-field
-      value="{{ person.date }}"
+      value="{{ date }}"
       label="出生日期："
       icon="records"
-      placeholder="请选择您的生日"
+      placeholder="请选择您的出生日期"
       border="{{ false }}"
       bindinput="bindKeyInput"
-      bind:change="onChange"
+      bind:change="change2"
     />
   </picker>
 
 
   <text>\n</text>
   <van-field
-    value="{{ value }}"
+    value="{{ job }}"
     label="职业："
     placeholder="请输入职业"
     icon="flower-o"
     border="{{ false }}"
     bindinput="bindKeyInput"
-    bind:change="onChange"
+    bind:change="change3"
   />
 
 
@@ -70,20 +53,37 @@
     icon="peer-pay"
     placeholder="请输入个性签名"
     autosize
-    border="{{ false }}"
+    bind:change="change4"
   />
-<text>\n\n\n\n\n</text>
 
-<!--
-<van-button slot="button" size="large" type="primary" is-link bind:click="showPopup">
-  保存
-</van-button>
-<van-popup show="{{ show }}" height="50px" bind:click='showtip' bind:close="onClose">保存成功</van-popup>
--->
+  <text>\n</text>
+  <view class="logo">
+      <van-field
+        value="{{ password }}"
+        type="txt"
+        label="团队头像"
+        style="width:90%"
+        placeholder="点击右侧加号修改个人相册"
+      />
+      <van-icon name="add-o" 
+          size="30px" 
+          custom-class="join-btn"
+          color="#A9A9A9"
+          bind:click="doUpload"
+      />
+</view>
+<view class="uploader-container">
+      <image class="uploader-image" src="{{pic}}" 
+             mode="aspectFit"
+             bindtap="previewImg" 
+             custom-style="height: auto;">
+      </image>
+</view>
+
+<text>\n\n</text>
 <view class='bottomButton'>
   <van-button slot="button" size="large" type="primary" icon="success" color="#ff9966" is-link bind:click="showtip">
     保存
   </van-button>
-  </view>
-
+</view>
 

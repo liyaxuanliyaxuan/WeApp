@@ -74,7 +74,9 @@
 }
 .team-img{
   width: 315rpx;
+  /**
   height: 240rpx;
+  */
   background: white;
  
 }

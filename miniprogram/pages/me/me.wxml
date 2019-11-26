@@ -47,10 +47,11 @@
 </view>
 <text>\n</text>
 <view class="picture">
-  个人相册（可以修改/是否需要多个）：
+  个人相册：
+</view>
   <view>
-    <image src="../../image/厨师帽.png" 
-           style="width:70%;height:200px;margin-left:15%">
+    <image src="{{member.pic}}"
+           style="width:70%;margin-left:15%;margin-top:10px;"
+           custom-style="height: auto;">
     </image>
   </view>
-</view>

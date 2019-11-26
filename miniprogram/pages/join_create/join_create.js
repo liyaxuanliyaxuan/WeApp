@@ -6,6 +6,7 @@ Page({
    * 页面的初始数据
    */
   data: {
+    id:"",
     teamType: "",
     teamName: "",
     teamDetail: "",
@@ -41,15 +42,18 @@ Page({
         }).then(res => {
           console.log('[上传文件] 成功：', res)
           wx.hideLoading()
-
           return  res.fileID
-
         }).then(id=>{
+          console.log('id',id)
+          that.setData({
+            id:id
+          })
           wx.cloud.downloadFile({
             fileID: id
           }).then(res => {
             // get temp file path
             console.log(res.tempFilePath)
+            console.log('fileID',id)
             return res.tempFilePath
             }).then(pic => {
               that.setData({
@@ -169,8 +173,7 @@ Page({
               leader: that.data.leader,
               type: that.data.teamType,
               detail: that.data.teamDetail,
-              pic:that.data.pic
-             
+              pic:that.data.id             
             }
           }).then(res => {
               console.log(res)

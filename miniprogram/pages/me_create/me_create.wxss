@@ -1,1 +1,5 @@
 /* pages/me_create/me_create.wxss */
+.Info{
+  margin-left:5%;
+  margin-right:5%;
+}
