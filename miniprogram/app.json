@@ -1,10 +1,11 @@
 {
   "pages": [
+    "pages/join/join",
+    "pages/picture/picture",
+    "pages/team/team",
     "pages/index/index",
     "pages/me_edit/me_edit",
     "pages/me/me",
-    "pages/join/join",
-    "pages/team/team",
     "pages/join_create/join_create",
     "pages/team_info/team_info",
     "pages/me_create/me_create",
@@ -15,7 +16,6 @@
     "pages/team_edit/team_edit",
     "pages/userConsole/userConsole",
     "pages/storageConsole/storageConsole",
-  
     "pages/addFunction/addFunction",
     "pages/deployFunctions/deployFunctions",
     "pages/chooseLib/chooseLib",

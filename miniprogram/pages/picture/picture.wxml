@@ -1,0 +1,26 @@
+<text>\n</text>
+    <view class="logo">
+      <van-field
+        value="{{ password }}"
+        type="txt"
+        label="图片"
+        icon="plus"
+        placeholder="点击加号上传图片"
+        border="{{ false }}"
+      />
+      <view class="logoAdd">
+        <van-icon name="add" 
+          size="40px" 
+          custom-class="join-btn"
+          color="#ff9966"
+          bind:click="doUpload"
+        />
+      </view>
+      <view class="uploader-container">
+      <image class="uploader-image" 
+             src="{{pic}}" 
+             mode="aspectFit"
+             bindtap="previewImg">
+      </image>
+    </view>
+  </view>

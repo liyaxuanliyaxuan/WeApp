@@ -61,7 +61,7 @@
       <van-field
         value="{{ password }}"
         type="txt"
-        label="团队头像"
+        label="个人相册"
         style="width:90%"
         placeholder="点击右侧加号修改个人相册"
       />

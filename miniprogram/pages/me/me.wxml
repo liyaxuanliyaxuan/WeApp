@@ -51,7 +51,8 @@
 </view>
   <view>
     <image src="{{member.pic}}"
-           style="width:70%;margin-left:15%;margin-top:10px;"
+           style="width:90%;margin-left:5%;margin-top:3px;"
+           mode="aspectFit"
            custom-style="height: auto;">
     </image>
   </view>
