@@ -34,3 +34,13 @@
   font-weight: bolder;
   text-align: center;
 }
+.span-class{
+ background:#FFA500;
+  padding: 4px;
+  margin: 4px;
+  border-radius: 4px;
+  color: #FFFFE0;
+  font-size: 12px;
+  font-weight: bolder;
+  text-align: center;
+}

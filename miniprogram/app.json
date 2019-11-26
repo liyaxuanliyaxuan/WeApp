@@ -12,7 +12,7 @@
     "pages/record/record",
     "pages/team_advise/team_advise",
     "pages/team_add_advise/team_add_advise",
-    "pages/record_write/record_write",
+    
     "pages/team_edit/team_edit",
     "pages/userConsole/userConsole",
     "pages/storageConsole/storageConsole",
@@ -92,6 +92,8 @@
     "van-tabs": "vant-weapp/tabs",
     "i-checkbox-group": "../miniprogram/utils/dist/checkbox-group/index",
     "i-checkbox": "../miniprogram/utils/dist/checkbox/index"
+
+    
   },
   "sitemapLocation": "sitemap.json"
 }

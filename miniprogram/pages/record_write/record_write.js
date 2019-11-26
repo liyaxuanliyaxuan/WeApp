@@ -9,19 +9,24 @@ Page({
    */
   data: {
     fileID: '',
+    curIcon:"eye-o",
     cloudPath: '',
     imagePath: '',
     message:'',
     photoId:'',
-    fruit: [{
+    chosen: ['unchoosen', 'unchoosen','unchoosen'],
+    teamToChoose: [{
       id: 1,
       name: '薪火小队',
+      pic:"https://qpic.y.qq.com/music_cover/JBDCVgqXWXaYUvcsElqcicRsk0aiad9r1BCtxAwcqyn1txfvSZYWcpgw/300?n=1"
     }, {
       id: 2,
-      name: '数模小分队'
+      name: '数模小分队',
+        pic:"https://qpic.y.qq.com/music_cover/8eiaDBJ27yYicpMibYZmmEdNAPZ9gMjMvGu8ibJtY4sQelVxZ3qyGYB9fw/300?n=1"
     }, {
       id: 3,
-      name: 'acm战队'
+      name: 'acm战队',
+        pic:"https://qpic.y.qq.com/music_cover/0yiaX8d9LSmnROyId1RsUU7cH7IiabvZeibYgrITnKibMI1mmrsYEGZmNA/300?n=1"
     }],
     current: [],
 
@@ -170,6 +175,21 @@ Page({
       store.addData(this, "dataFromWriteRecord")
     )
 
+  },
+chooseToSee(e){
+console.log(e)
+let temp = [...this.data.chosen]
+  if (temp[e.target.dataset.index]!== "chosen"){
+    temp[e.target.dataset.index] = "chosen"
   }
+  else{
+    temp[e.target.dataset.index] = "unchosen"
+
+  }
+
+this.setData({
+  chosen:temp
+})
+}
 
 })

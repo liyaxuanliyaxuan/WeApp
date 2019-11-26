@@ -14,7 +14,21 @@
   font-size: 34rpx;
   color: #007aff;
 }
+.chosen{
+  background: 
+#F5F5DC;
+}
+.team-name{
+  color:#696969;
+  font-size:12px ;
+  margin-top: 30px;
+  margin-left: 10px;
 
+}
+.team-pic{
+  width: 160%;
+  height: 160%;
+}
 .uploader-container {
   width: 100%;
   height: 400rpx;

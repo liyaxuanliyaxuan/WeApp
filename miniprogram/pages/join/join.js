@@ -14,6 +14,8 @@ Page({
     openid:"",
     teamList: [],
     selected: "",
+    chosenName:"",
+    chosenId:"",
     show: false,
     content:['加入','查看详情'],
     actions: [
@@ -54,9 +56,17 @@ Page({
       return res.data
 
     }).then(l => {
-      console.log(l)
+
+      let len = Math.floor(l.length / 2) +1
+      let copy1 = [...l]
+      let copy2 = copy1.splice(0,len)
+      return [copy2,copy1]
+
+      console.log([copy2,copy1])
+      
+    }).then(l=>{
       that.setData({
-        teamList: l
+        teamList:l
       })
     })
   },
@@ -122,10 +132,13 @@ Page({
   },
 
   //出现上拉菜单
-  showPopup() {
+  showPopup(e) {
+    console.log(e)
     this.setData({
       show: true,
-
+      chosenId:e.target.dataset.id,
+      chosenName:e.target.dataset.teamname
+      
     });
   },
 
@@ -287,7 +300,7 @@ Page({
     })
   },
 
-  onClose() {
+  getClose() {
     this.setData({ show: false });
   },
 
@@ -314,8 +327,8 @@ Page({
                 console.log(app.globalData.openid)
                 console.log(that.data.openid)
                 //获得团队id
-                let teamid = event.currentTarget.dataset.id;
-                let teamname = event.currentTarget.dataset.teamname;
+                let teamid = that.data.chosenId;
+                let teamname = that.data.chosenName;
                 console.log("add:" + teamid + teamname)
                 //获取个人id
                 const db = wx.cloud.database()

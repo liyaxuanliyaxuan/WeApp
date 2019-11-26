@@ -57,8 +57,9 @@
 
 
 <view class="team-list">
-  <view class="team-col"
-    wx:for="{{teamList}}" wx:for-item="j">
+<view class="team-col" wx:for="{{teamList}}" wx:for-item="i">
+  <view class="team-row"
+    wx:for="{{i}}" wx:for-item="j">
  
       <view class="team-img">
       <image src="{{j.pic}}" mode="widthFix"/></view>
@@ -82,15 +83,16 @@
         />
 
         <van-popup show="{{ show }}" 
-          closeable
-          close-icon-position="bottom-right"
-          close-icon="close"
-          close-on-popstate="{{popstate}}"
+        
+        close-on-click-overlay
+        overlay-style="background:transparent;"
+      
           position="bottom"
           duriton="{{100}}"
           custom-style="height: auto;"
           round
-          bind:close="onClose">
+         
+          bind:close="getClose">
           <van-row>
             <van-col 
               custom-class="span-class1" 
@@ -116,6 +118,7 @@
         />
         -->
       </view>
+  </view>
   </view>
 </view>
 
