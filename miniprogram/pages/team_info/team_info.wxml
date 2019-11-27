@@ -14,25 +14,40 @@ bind:change="directTo">
 </van-tabs>
 
 
-<view class="add-btn">
-        
+<view class="Event">
+  <image class="teamIcon" src="cloud://cloud-demo-l5rvx.636c-cloud-demo-l5rvx-1300498757/my-image7974.577556905607.png" mode="aspectFit">
+  </image>
+  <text class="team-name">{{currentTeamName}}</text>
+  <view class="add-btn">
     <text class="add-txt">编辑</text>
-    <van-icon name="records" size="20px" bind:click="editTeamInfo"/>
+    <van-icon name="records" size="20px" style="top:5px" bind:click="editTeamInfo"/>
+  </view>
 </view>
 
-<view>
-<van-icon
-custom-class="fire"
- name="fire-o"/>
-<text class="team-name">{{currentTeamName}}</text>
-</view>
-
-<van-cell-group>
+<van-cell-group class="team">
   <van-cell icon="award-o" title="团队名称" value="{{currentTeamName}}" />
   <van-cell icon="user-circle-o" title="团队创建者" value="{{teamInfo.leader}}" />
-  <van-cell icon="calender-o" title="团队成立时间" value="{{}}" label="{{editTeamInfo.createTime}}"
+  <van-cell icon="calender-o" title="团队成立时间" value="{{teamInfo.date}}" label="{{editTeamInfo.createTime}}"
    border="{{false}}" />
 </van-cell-group>
+
+<van-collapse value="{{ activeName }}" bind:change="onChange" accordion>
+  <van-collapse-item title="团队成员" icon="friends-o">
+    <view class="Member" wx:for="{{teamMember}}">
+      {{index}}<text decode="ensp">&ensp;:&ensp;</text>{{item.name}}
+    </view>
+  </van-collapse-item>
+  <van-collapse-item title="团队头像" icon="photo-o">
+    <image class="teampic" src="{{teamInfo.pic}}" mode="aspectFit"></image>
+  </van-collapse-item>
+</van-collapse>
+
+<view class="background">
+	<!--pics文件夹下的background.jpg文件-->
+	<image class='background'   src="cloud://cloud-demo-l5rvx.636c-cloud-demo-l5rvx-1300498757/my-image8136.837809904365.jpeg" mode="aspectFill" >
+  </image>
+	<!--页面其它部分-->
+</view>
 
 
 

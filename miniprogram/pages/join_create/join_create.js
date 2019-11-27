@@ -1,5 +1,8 @@
 // pages/join_create/join_create.js
 import Toast from 'vant-weapp/toast';
+var util = require('../../utils/util.js');
+const app = getApp()
+
 Page({
 
   /**
@@ -7,6 +10,10 @@ Page({
    */
   data: {
     id:"",
+    openid: "",
+    date: "",
+    teamid:"",
+    memberid: '',
     teamType: "",
     teamName: "",
     teamDetail: "",
@@ -71,7 +78,39 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    const that = this
+    //获取当前日期
+    let DATE = util.formatDate(new Date());
+    this.setData({
+      date: DATE
+    })
+    //获得个人openId
+    wx.cloud.callFunction({
+      name: 'login',
+      data: {},
+      success: res => {
+        console.log('[云函数] [login] user openid: ', res.result.openid)
+        app.globalData.openid = res.result.openid
+        that.setData({
+          openid: app.globalData.openid
+        })
+        console.log("openid",that.data.openid)
+        const db = wx.cloud.database()
+        //获取个人id
+        db.collection("member").where({
+          _openid: that.data.openid,
+        }).get().then(res => {
+          that.setData({
+            memberid: res.data[0]._id,
+            leader:res.data[0].realName
+          })
+          console.log('member',res.data[0])
+        })
+      },
+      fail: err => {
+        console.error('[云函数] [login] 调用失败', err)
+      }
+    })
   },
 
   /**
@@ -124,7 +163,6 @@ Page({
   },
   createTeam() {
     const that = this
-
     const newName = this.data.teamName
     const newLeader = this.data.leader
     const newType = this.data.teamType
@@ -139,7 +177,7 @@ Page({
     }
     if (newName == '') {
       wx: wx.showToast({
-        title: '请输入团队名',
+        title: '请输入团队名称',
         icon: 'none',
       })
       return false
@@ -151,13 +189,7 @@ Page({
       })
       return false
     }
-    else if (newLeader == '') {
-      wx: wx.showToast({
-        title: '请输入创建人姓名',
-        icon: 'none',
-      })
-      return false
-    }
+    
 
     wx.showModal({
       content: '创建成功',
@@ -173,13 +205,59 @@ Page({
               leader: that.data.leader,
               type: that.data.teamType,
               detail: that.data.teamDetail,
-              pic:that.data.id             
-            }
-          }).then(res => {
-              console.log(res)
-            })
-          wx.switchTab({
-            url: '/pages/join/join'
+              pic:that.data.id,
+              date:that.data.date             
+            },success:res =>{
+              console.log('success')
+              //查找团队Id
+              console.log('查找团队Id', that.data.teamName)
+              db.collection("team").where({
+                name: that.data.teamName,
+              }).get().then(res => {
+                console.log("get teamid successful")
+                console.log(res.data)
+                console.log(res.data[0]._id)
+                return res.data[0]._id
+              }).then(teamid => {
+                /**
+                that.setData({
+                  teamid: teamid
+                })
+                */
+                //将团队信息写入个人
+                console.log('memberid', that.data.memberid)
+                console.log('teamid', teamid)
+                wx.cloud.callFunction({
+                  name: "add_memberteam",
+                  data: {
+                    name: that.data.teamName,
+                    teamid: teamid,
+                    id: that.data.memberid,
+                  },
+                  success: function (res) {
+                    console.log('success')
+                  },
+                  fail: console.log('fail')
+                })
+                //将个人信息写入团队
+                wx.cloud.callFunction({
+                  name: "add_teammember",
+                  data: {
+                    openid: that.data.openid,
+                    name:that.data.leader,
+                    id: teamid,
+                  },
+                  success: function (res) {
+                    console.log('success')
+                  },
+                  fail: console.log('fail')
+                })
+                wx.switchTab({
+                  url: '/pages/join/join'
+                })
+              })
+            },
+            fail:console.log('fail')
           })
         }
         else if (res.cancel) {
@@ -193,11 +271,13 @@ Page({
       teamName: e.detail
     })
   },
+  /**
   change2(e) {
     this.setData({
       leader: e.detail
     })
   },
+  */
   change3(e) {
     this.setData({
       teamType: e.detail

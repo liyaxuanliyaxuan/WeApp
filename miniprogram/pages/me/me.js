@@ -157,7 +157,7 @@ Page({
 
           //根据openid获得其他信息
           db.collection('member').where({
-            openid: this.data.openid,
+            _openid: this.data.openid,
           })
             .get({
               success: res => {

@@ -59,3 +59,10 @@
   icon="plus"
   size="large"
   >发布</van-button>
+
+  
+<view class="background">
+	<!--pics文件夹下的background.jpg文件-->
+
+	<!--页面其它部分-->
+</view>

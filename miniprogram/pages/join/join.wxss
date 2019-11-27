@@ -107,6 +107,7 @@
 .search {
   height: 40px;
   margin: 0 10px;
+  z-index: 10;
 }
 
 .btn {
@@ -114,7 +115,7 @@
   background: transparent;
   position: sticky;
   z-index: 2;
-  top: 400px;
+  top: 600px;
   color: #ff8247;
 }
 
@@ -123,7 +124,7 @@
 }
 
 .banner {
-  height: 150px;
+  height: 200px;
   width: 100%;
   margin: 0 auto;
   background: #f6f6f6;
@@ -153,9 +154,9 @@
 .candles {
   position: absolute;
   left: 50%;
-  top: -160rpx;
+  top: -275rpx;
   width: 250px;
-  height: 300rpx;
+  height: 200rpx;
   transform: translate(-50%, -100%);
   z-index: 1;
 }

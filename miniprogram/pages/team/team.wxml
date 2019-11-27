@@ -12,7 +12,7 @@
 选择显示团队协议
 -->
 
-<van-cell
+<van-cell class="showTeam"
   title="团队秀"
   icon="diamond-o"
   value="选择我的团队"
@@ -44,43 +44,45 @@
 </van-tabs>
 
 
-
-
-
 <van-popup show="{{ show }}" 
-duriton="{{100}}"
-position="top"
+  duriton="{{100}}"
+  position="top"
   custom-style="height: auto;"
   round="true"
-bind:close="onClose">
-
-
-<van-row>
-  <van-col span="8" 
-  data-team="{{item}}"
-  offset="2"
-  custom-class="span-class"
-  round="round"
-  wx:for="{{myTeams}}"bindtap="enterTeam">{{item}}</van-col>
-</van-row>
-<van-row>
-</van-row>
-
+  bind:close="onClose">
+  <van-row>
+    <van-col span="8" 
+      data-team="{{item}}"
+      offset="2"
+      custom-class="span-class"
+      round="round"
+      wx:for="{{teamNames}}"bindtap="enterTeam">{{item}}</van-col>
+  </van-row>
+  <van-row>
+  </van-row>
 </van-popup>
 
-<view>
-<van-icon
-custom-class="fire"
- name="fire-o"/>
-<text class="team-name">{{currentTeamName}}</text>
+<view class="Event">
+  <image class="teamIcon" src="cloud://cloud-demo-l5rvx.636c-cloud-demo-l5rvx-1300498757/my-image7974.577556905607.png" mode="aspectFit">
+  </image>
+  <text class="team-name">{{currentTeamName}}</text>
+  <view class="add-btn">
+    <text class="add-txt">Add</text>
+    <van-icon name="description" size="20px" style="top:5px" bind:click="addEvent"/>
+  </view>
 </view>
 
-
-
 <view wx:for="{{history}}" class="team-card">
-<i-card  thumb="https://img1.doubanio.com/view/photo/albumcover/public/p2513679947.jpg">
-    <view slot="content" class="content">{{item.details}}</view>
-    <view slot="footer" class="footer">{{item.title+"---"+item.when[0]+'-'+item.when[1]+'-'+item.when[2]}}</view>
-</i-card>
+  <i-card thumb="{{item.pic}}">
+      <view slot="content" class="content">{{item.details}}</view>
+      <view slot="footer" class="footer">{{item.title+"---"+item.date+'---'+item.who}}</view>
+  </i-card>
+</view>
+
+<view class="background">
+	<!--pics文件夹下的background.jpg文件-->
+	<image class='background'   src="cloud://cloud-demo-l5rvx.636c-cloud-demo-l5rvx-1300498757/my-image1164.6167718219358.jpeg" mode="aspectFill">
+  </image>
+	<!--页面其它部分-->
 </view>
 

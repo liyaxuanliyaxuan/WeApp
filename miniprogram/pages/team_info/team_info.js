@@ -8,8 +8,9 @@ Page({
   data: {
     active:2,
     currentTeamName:"",
-    teamInfo:{}
-
+    teamInfo:{},
+    teamMember: [],
+    activeName: '1'
   },
 
   /**
@@ -22,7 +23,6 @@ Page({
       currentTeamName: temp
     })
     store.addData(this, "dataFromTeamInfo")
-
   },
 
   /**
@@ -42,15 +42,24 @@ Page({
       name: this.data.currentTeamName,
     }).get().then(res => {
       return res.data[0]
-     
     }).then(t => {
       that.setData({
         teamInfo:t
-      }
-      )
+      })
+      console.log('teamInfo',that.data.teamInfo)
+      return t.member
+    }).then(r =>{
+      that.setData({
+        teamMember:r
+      })
+      console.log('teamMember',that.data.teamMember)
     })
+  },
 
-
+  onChange(event) {
+    this.setData({
+      activeName: event.detail
+    });
   },
 
   /**

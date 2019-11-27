@@ -9,24 +9,14 @@
       value="{{ teamName }}"
       required
       clearable
-      label="团队名"
+      label="团队名称"
       icon="question-o"
-      placeholder="请输入团队名"
+      placeholder="请输入团队名称"
       bind:change="change1"
       bind:click-icon="onClickIcon"
     />
-    <text>\n</text>
-    <van-field
-      value="{{ leader }}"
-      icon="user-o"
+   
     
-      label="创建人姓名"
-      placeholder="请输入创建人姓名"
-      bind:change="change2"
-      required
-      border="{{ false }}"
-    />
-    <text>\n</text>
     <van-field
       value="{{ teamType }}"
       icon="info-o"
@@ -37,7 +27,7 @@
       required
       border="{{ false }}"
     />
-    <text>\n</text>
+    
     <van-field
       value="{{ teamDetail }}"
       type="txt"
@@ -47,7 +37,7 @@
       bind:change="change4"
       border="{{ false }}"
     />
-    <text>\n</text>
+    
     <view class="logo">
       <van-field
         value="{{ password }}"
@@ -79,3 +69,10 @@
     icon="success"
     size="large"
   >创建团队</van-button>
+
+  <view class="background">
+	<!--pics文件夹下的background.jpg文件-->
+	<image class='background'   src="cloud://cloud-demo-l5rvx.636c-cloud-demo-l5rvx-1300498757/my-image8228.302151239528.jpeg" mode="aspectFill" >
+  </image>
+	<!--页面其它部分-->
+</view>

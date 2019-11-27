@@ -25,3 +25,18 @@ view.divider-index--i-divider-content{
 .tab{
   margin-bottom: 2px;
 }
+.logo{
+  display:flex;
+}
+.join-btn{
+  margin-left:5%;
+  margin-top:5px;
+}
+.background{
+  width: 100%;
+  height: 100%;
+  position:fixed; 
+  background-size:100% 100%;
+  z-index: -1;
+}
+

@@ -1,5 +1,5 @@
 // 云函数入口文件
-//该云函数用来添加用户的动态
+//该云函数用来处理添加意见
 const cloud = require('wx-server-sdk')
 
 cloud.init()
@@ -8,15 +8,19 @@ cloud.init()
 
 const db = cloud.database()
 const _ = db.command
-
+// 云函数入口函数
+//传递的参数可通过event.xxx得到
 exports.main = async (event, context) => {
   try {
     return await db.collection('team').doc(event.id).update({
       // data 传入需要局部更新的数据
       data: {
-        member: _.push({
-          id: event.openid,
-          name:event.realName
+        history: _.push({
+          details: event.message,
+          title: event.title,
+          date: event.date,
+          who: event.who,
+          pic:event.pic
         })
       }
     })

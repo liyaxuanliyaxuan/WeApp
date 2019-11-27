@@ -14,10 +14,10 @@ exports.main = async (event, context) => {
     return await db.collection('team').doc(event.id).update({
       // data 传入需要局部更新的数据
       data: {
-        member: _.push({
-          id: event.openid,
-          name:event.realName
-        })
+        pic: event.pic,
+        name: event.name,
+        detail: event.detail,
+        type: event.type
       }
     })
   } catch (e) {

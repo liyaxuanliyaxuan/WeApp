@@ -1,49 +1,41 @@
 // pages/team/team.js
 import store from "../../utils/store.js"
+const app = getApp()
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
+    openid: "",
+    teams:[],
+    teamNames:[],
+    teamHistory:[],
     round:true,
     indicatorDots: true,
     autoplay: true,
     interval: 5000,
     duration: 1000,
-    imgUrls: ["pictures/food-1.jpg", "pictures/food-5.jpg", "pictures/food-6.jpg", "pictures/food-7.jpg"],
-    
+    imgUrls: [
+      "cloud://cloud-demo-l5rvx.636c-cloud-demo-l5rvx-1300498757/my-image2674.3974602027088.png", "cloud://cloud-demo-l5rvx.636c-cloud-demo-l5rvx-1300498757/my-image1253.2703794961785.png", "cloud://cloud-demo-l5rvx.636c-cloud-demo-l5rvx-1300498757/my-image7893.673448224204.jpg", "cloud://cloud-demo-l5rvx.636c-cloud-demo-l5rvx-1300498757/my-image2646.524894211055.png",  "cloud://cloud-demo-l5rvx.636c-cloud-demo-l5rvx-1300498757/my-image2793.232629361855.jpg",
+"cloud://cloud-demo-l5rvx.636c-cloud-demo-l5rvx-1300498757/my-image8345.86425860766.jpeg"
+],
     show:false,
     myTeams:[],
-    currentTeamName:"薪火小队",//此处还没有动态实现默认的团队名称
+    currentTeamName:"My Team",
     defaultTeamName:"",
     unchoose:true,
     defaultTeam:"默认",
     currentMembers:[],
     history:[],
     active:'0'
-  
-    
-
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    store.addData(this,"dataFromTeam")
-    wx.cloud.getTempFileURL({
-      fileList: [{
-        fileID: 'cloud://cloud-demo-l5rvx.636c-cloud-demo-l5rvx-1300498757/my-image.jpg',
-        maxAge: 60 * 60, // one hour
-      }]
-    }).then(res => {
-      // get temp file URL
-      console.log(res.fileList)
-    }).catch(error => {
-      // handle error
-    })
- 
 
   },
 
@@ -58,36 +50,70 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+    //页面数据加入数据池
+    store.addData(this, "dataFromTeam")
+    wx.cloud.getTempFileURL({
+      fileList: [{
+        fileID: 'cloud://cloud-demo-l5rvx.636c-cloud-demo-l5rvx-1300498757/my-image.jpg',
+        maxAge: 60 * 60, // one hour
+      }]
+    }).then(res => {
+      // get temp file URL
+      console.log(res.fileList)
+    }).catch(error => {
+      // handle error
+    })
     const that = this
     const db = wx.cloud.database()
-    db.collection('member').where({
-      name:"陈诚",
-    }).get().then(res => {
-
-      // res.data 包含该记录的数据
-      console.log(res.data[0].teams)
-      return res.data[0].teams
-    }).then(t=>{
-      //console.log(t.map(a => a.id))  
-      return t.map(a => a.name)
-    }).then(l => {
-      that.setData({
-        myTeams: l,
-        defaultTeamName:l[0],
-        
-      })
+    //获得个人openId
+    wx.cloud.callFunction({
+      name: 'login',
+      data: {},
+      success: res => {
+        console.log('[云函数] [login] user openid: ', res.result.openid)
+        app.globalData.openid = res.result.openid
+        that.setData({
+          openid: app.globalData.openid
+        })
+        console.log("openid", that.data.openid)
+        //获取个人id
+        db.collection("member").where({
+          _openid: that.data.openid,
+        }).get().then(res => {
+          console.log(res.data[0].teams)
+          return res.data[0].teams
+        }).then(teams => {
+          that.setData({
+            teams: teams
+          })
+          console.log('myTeams', that.data.teams)
+          return teams.map(a => a.name)
+        }).then(l => {
+          that.setData({
+            teamNames: l,
+            defaultTeamName: l[0],
+            //currentTeamName: l[0]
+          })
+          //console.log(that.data.currentTeamName)
+          console.log('teamNames', that.data.teamNames)
+        })
+      },
+      fail: err => {
+        console.error('[云函数] [login] 调用失败', err)
+      }
     })
+    console.log('currentName', this.data.currentTeamName)
     db.collection("team").where({
       name: this.data.currentTeamName,
     }).get().then(res => {
+      console.log('res',res)
+      console.log('history', res.data[0].history)
       return res.data[0].history
     }).then(t => {
       that.setData({
         history: t
       })
     })
-   
-
   },
 
   /**
@@ -131,47 +157,61 @@ Page({
   onClose() {
     this.setData({ show: false });
   },
+  addEvent() {
+    wx.navigateTo({
+      url: '../teamShow/teamShow',
+      success: function (res) {
+        // success
+      },
+      fail: function () {
+        // fail
+      },
+      complete: function () {
+        // complete
+      }
+    })
+
+  },
   directTo(event){
-     
     let index=event.detail.index
     console.log(event.detail)
-   switch(index){
-     case 0: {
-       wx.switchTab({
-         url: '../team/team',
-       })
-     }
-     break;
-       case 1:{
-         wx.navigateTo({
-           url: '../team_advise/team_advise',
-           success: function(res){
-             // success
-           },
-           fail: function() {
-             // fail
-           },
-           complete: function() {
-             // complete
-           }
-         })
-       }
-       break;
-       case 2:{
-         wx.navigateTo({
-           url: '../team_info/team_info',
-           success: function(res){
-             // success
-           },
-           fail: function() {
-             // fail
-           },
-           complete: function() {
-             // complete
-           }
-         })
-       }
-   }
+    switch(index){
+      case 0: {
+        wx.switchTab({
+          url: '../team/team',
+        })
+      }
+      break;
+      case 1:{
+        wx.navigateTo({
+          url: '../team_advise/team_advise',
+          success: function(res){
+            // success
+          },
+          fail: function() {
+            // fail
+          },
+          complete: function() {
+            // complete
+          }
+        })
+      }
+      break;
+      case 2:{
+        wx.navigateTo({
+          url: '../team_info/team_info',
+          success: function(res){
+            // success
+          },
+         fail: function() {
+            // fail
+          },
+         complete: function() {
+           // complete
+         }
+        })
+      }
+    }
   },
   enterTeam(e){
     const that = this

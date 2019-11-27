@@ -16,13 +16,8 @@ cloud.init()
         // data 传入需要局部更新的数据
         data: {
           teamId: event.name,
+          advice:_.push({content:event.advice,when:[],who:""})
 
-          advice:_.push({
-            content:event.advice,
-            key:event.key,
-            when:[],
-            who:""
-          })
         }
       })
     } catch (e) {

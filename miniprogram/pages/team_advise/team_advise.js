@@ -10,7 +10,7 @@ Page({
     currentTeamName:"",
     adviceList:[],
     activeName: '1'
-    },
+  },
  
 
   /**
@@ -38,7 +38,6 @@ Page({
   onShow: function () {
     const that = this
     const db = wx.cloud.database()
-  
     db.collection("team").where({
       name: this.data.currentTeamName,
     }).get().then(res => {
@@ -48,7 +47,6 @@ Page({
         adviceList: t
       })
     })
-
   },
 
   /**
@@ -86,11 +84,13 @@ Page({
   onShareAppMessage: function () {
 
   },
+
   onChange(event) {
     this.setData({
       activeName: event.detail
     });
   },
+
   addAdvise(){
     wx.navigateTo({
       url: '../team_add_advise/team_add_advise',
@@ -105,8 +105,8 @@ Page({
       }
     })
   },
-  directTo(event) {
 
+  directTo(event) {
     let index = event.detail.index
     console.log(event.detail)
     switch (index) {
@@ -147,5 +147,4 @@ Page({
       }
     }
   }
-
 })

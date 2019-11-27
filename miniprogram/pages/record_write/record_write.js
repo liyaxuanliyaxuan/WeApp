@@ -9,24 +9,24 @@ Page({
    */
   data: {
     fileID: '',
-    curIcon:"eye-o",
+    curIcon: "eye-o",
     cloudPath: '',
     imagePath: '',
-    message:'',
-    photoId:'',
-    chosen: ['unchoosen', 'unchoosen','unchoosen'],
+    message: '',
+    photoId: '',
+    chosen: ['unchoosen', 'unchoosen', 'unchoosen'],
     teamToChoose: [{
       id: 1,
       name: '薪火小队',
-      pic:"https://qpic.y.qq.com/music_cover/JBDCVgqXWXaYUvcsElqcicRsk0aiad9r1BCtxAwcqyn1txfvSZYWcpgw/300?n=1"
+      pic: "https://qpic.y.qq.com/music_cover/JBDCVgqXWXaYUvcsElqcicRsk0aiad9r1BCtxAwcqyn1txfvSZYWcpgw/300?n=1"
     }, {
       id: 2,
       name: '数模小分队',
-        pic:"https://qpic.y.qq.com/music_cover/8eiaDBJ27yYicpMibYZmmEdNAPZ9gMjMvGu8ibJtY4sQelVxZ3qyGYB9fw/300?n=1"
+      pic: "https://qpic.y.qq.com/music_cover/8eiaDBJ27yYicpMibYZmmEdNAPZ9gMjMvGu8ibJtY4sQelVxZ3qyGYB9fw/300?n=1"
     }, {
       id: 3,
       name: 'acm战队',
-        pic:"https://qpic.y.qq.com/music_cover/0yiaX8d9LSmnROyId1RsUU7cH7IiabvZeibYgrITnKibMI1mmrsYEGZmNA/300?n=1"
+      pic: "https://qpic.y.qq.com/music_cover/0yiaX8d9LSmnROyId1RsUU7cH7IiabvZeibYgrITnKibMI1mmrsYEGZmNA/300?n=1"
     }],
     current: [],
 
@@ -36,7 +36,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-   
+
 
   },
 
@@ -123,46 +123,46 @@ Page({
         wx.cloud.uploadFile({
           cloudPath,
           filePath,
-         }) .then(res=> {
-            console.log('[上传文件] 成功：', res)
-            wx.hideLoading()
+        }).then(res => {
+          console.log('[上传文件] 成功：', res)
+          wx.hideLoading()
 
-          return  [filePath,res.fileID]
+          return [filePath, res.fileID]
 
-        }).then(res=>{
-        that.setData({
-          imagePath:res[0],
-          photoId:res[1]
+        }).then(res => {
+          that.setData({
+            imagePath: res[0],
+            photoId: res[1]
 
-        })
-          }).catch(error => {
-            // handle error
           })
+        }).catch(error => {
+          // handle error
+        })
       },
       fail: e => {
         console.error(e)
       }
     })
   },
-  onChange(e){
+  onChange(e) {
     console.log(e.detail)
     this.setData({
-      message:e.detail
+      message: e.detail
     })
   },
-  submitMine(e){
+  submitMine(e) {
     console.log(this.data.message)
     const that = this
     const db = wx.cloud.database()
     db.collection("member").where({
-      name:"陈诚"
+      name: "陈诚"
     }).get().then(res => {
       return res.data[0]._id
     }).then(id => {
       wx.cloud.callFunction({
         name: "add_dongtai",
         data: {
-          
+
           content: that.data.message,
           id: id,
         },
@@ -176,20 +176,20 @@ Page({
     )
 
   },
-chooseToSee(e){
-console.log(e)
-let temp = [...this.data.chosen]
-  if (temp[e.target.dataset.index]!== "chosen"){
-    temp[e.target.dataset.index] = "chosen"
-  }
-  else{
-    temp[e.target.dataset.index] = "unchosen"
+  chooseToSee(e) {
+    console.log(e)
+    let temp = [...this.data.chosen]
+    if (temp[e.target.dataset.index] !== "chosen") {
+      temp[e.target.dataset.index] = "chosen"
+    }
+    else {
+      temp[e.target.dataset.index] = "unchosen"
 
-  }
+    }
 
-this.setData({
-  chosen:temp
-})
-}
+    this.setData({
+      chosen: temp
+    })
+  }
 
 })

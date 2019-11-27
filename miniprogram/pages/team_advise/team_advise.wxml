@@ -15,20 +15,17 @@ bind:change="directTo">
   <van-tab title="团队信息" name="info"></van-tab>
 </van-tabs>
 
-<view class="add-btn">
-        
+<view class="Event">
+  <image class="teamIcon" src="cloud://cloud-demo-l5rvx.636c-cloud-demo-l5rvx-1300498757/my-image7974.577556905607.png" mode="aspectFit">
+  </image>
+  <text class="team-name">{{currentTeamName}}</text>
+  <view class="add-btn">
     <text class="add-txt">提出意见</text>
-    <van-icon name="records" size="20px" bind:click="addAdvise"/>
+    <van-icon name="records" size="20px" style="top:5px" bind:click="addAdvise"/>
+  </view>
 </view>
 
-<view>
-<van-icon
-custom-class="fire"
- name="fire-o"/>
-<text class="team-name">{{currentTeamName}}</text>
-</view>
-
-<view  wx:for="{{adviceList}}">
+<view class="advice" wx:for="{{adviceList}}">
 <van-collapse value="{{ activeName }}" bind:change="onChange" accordion>
   <van-collapse-item title="{{item.key}}" name="{{index}}">
     {{item.content}}
@@ -36,3 +33,9 @@ custom-class="fire"
 </van-collapse>
 </view>
   
+<view class="background">
+	<!--pics文件夹下的background.jpg文件-->
+	<image class='background'   src="cloud://cloud-demo-l5rvx.636c-cloud-demo-l5rvx-1300498757/my-image3318.3525223202314.jpeg" mode="aspectFill" >
+  </image>
+	<!--页面其它部分-->
+</view>
