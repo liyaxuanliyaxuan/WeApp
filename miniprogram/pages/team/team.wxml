@@ -1,0 +1,88 @@
+<!--pages/team/team.wxml
+
+包括三个导航/子页面
+1、团队足迹
+2、团队建议→建议页面
+3、团队信息->修改团队信息
+默认当前页面为团队足迹
+
+还没有增加添加动态的功能
+还没有增加对足迹的排序
+
+选择显示团队协议
+-->
+
+<van-cell class="showTeam"
+  title="团队秀"
+  icon="diamond-o"
+  value="选择我的团队"
+  is-link 
+  arrow-direction="down"
+  bind:click="showPopup" 
+/>
+
+<view class="haibao">
+  <swiper indicator-dots="{{indicatorDots}}"autoplay="{{autoplay}}"interval="{{interval}}"duration="{{duation}}">
+    <block wx:for="{{imgUrls}}">
+      <swiper-item>
+   <view class="parent">
+        <image src="{{item}}"class="slide-image"style="width:100%">
+        </image>
+   </view>
+      </swiper-item>
+    </block>
+  </swiper>
+</view>
+
+<van-tabs 
+  custom-class="tab"
+  active="{{active}}"
+  bind:change="directTo">
+  <van-tab title="团队秀" name="show"></van-tab>
+  <van-tab title="团队建议" name="advice"></van-tab>
+  <van-tab title="团队信息" name="info"></van-tab>
+</van-tabs>
+
+
+<van-popup show="{{ show }}" 
+  duriton="{{100}}"
+  position="top"
+  custom-style="height: auto;"
+  round="true"
+  bind:close="onClose">
+  <van-row>
+    <van-col span="8" 
+      data-team="{{item}}"
+      offset="2"
+      custom-class="span-class"
+      round="round"
+      wx:for="{{teamNames}}"bindtap="enterTeam">{{item}}</van-col>
+  </van-row>
+  <van-row>
+  </van-row>
+</van-popup>
+
+<view class="Event">
+  <image class="teamIcon" src="cloud://cloud-demo-l5rvx.636c-cloud-demo-l5rvx-1300498757/my-image7974.577556905607.png" mode="aspectFit">
+  </image>
+  <text class="team-name">{{currentTeamName}}</text>
+  <view class="add-btn">
+    <text class="add-txt">Add</text>
+    <van-icon name="description" size="20px" style="top:5px" bind:click="addEvent"/>
+  </view>
+</view>
+
+<view wx:for="{{history}}" class="team-card">
+  <i-card thumb="{{item.pic}}">
+      <view slot="content" class="content">{{item.details}}</view>
+      <view slot="footer" class="footer">{{item.title+"---"+item.date+'---'+item.who}}</view>
+  </i-card>
+</view>
+
+<view class="background">
+	<!--pics文件夹下的background.jpg文件-->
+	<image class='background'   src="cloud://cloud-demo-l5rvx.636c-cloud-demo-l5rvx-1300498757/my-image1164.6167718219358.jpeg" mode="aspectFill">
+  </image>
+	<!--页面其它部分-->
+</view>
+

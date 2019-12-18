@@ -1,0 +1,39 @@
+/* pages/join_create/join_create.wxss */
+view.divider-index--i-divider-line{
+
+  height: 4rpx;
+  background: #ffcc33;
+
+}
+view.divider-index--i-divider{
+ 
+}
+view.divider-index--i-divider-content{
+  border-radius: 4px;
+  background: #ff6666;
+  
+}
+.create-Btn{
+  color: white;  
+}
+.logoAdd{
+  margin-left:87%;
+}
+
+.uploader-container {
+  width: 100%;
+  height: 400rpx;
+  padding: 20rpx 20rpx 20rpx 0;
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  box-sizing: border-box;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+.background{
+  width: 100%;
+  height: 100%;
+  position:fixed; 
+  background-size:100% 100%;
+  z-index: -1;
+}

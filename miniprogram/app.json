@@ -1,0 +1,99 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/record/record",
+    "pages/join/join",
+    "pages/team_detail/team_detail",
+    "pages/team/team",
+    "pages/teamShow/teamShow",
+    "pages/team_advise/team_advise",
+    "pages/picture/picture",
+    "pages/me_edit/me_edit",
+    "pages/me/me",
+    "pages/join_create/join_create",
+    "pages/team_info/team_info",
+    "pages/me_create/me_create",
+    "pages/team_add_advise/team_add_advise",
+    "pages/record_write/record_write",
+    "pages/team_edit/team_edit",
+    "pages/userConsole/userConsole",
+    "pages/storageConsole/storageConsole",
+    "pages/addFunction/addFunction",
+    "pages/deployFunctions/deployFunctions",
+    "pages/chooseLib/chooseLib",
+    "pages/openapi/openapi",
+    "pages/openapi/serverapi/serverapi",
+    "pages/openapi/callback/callback",
+    "pages/openapi/cloudid/cloudid",
+    "pages/im/im",
+    "pages/im/room/room"
+  ],
+  "window": {
+    "backgroundColor": "#F6F6F6",
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#FAFAD2",
+    "navigationBarTextStyle": "black",
+    "enablePullDownRefresh": true,
+    "navigationBarTitleText": "云开发 QuickStart"
+  },
+  "tabBar":{
+    "backgroundColor": "#FFFAFA",
+    "color": "#999999",
+    "selectedColor": "#FF7F00",
+    "borderStyle":"black",
+    "list":[{
+      "pagePath":"pages/join/join",
+      "text":"加入",
+      "iconPath":"image/加入群.png",
+      "selectedIconPath":"image/合作.png"
+    },{
+      "pagePath":"pages/record/record",
+      "text":"动态",
+      "iconPath":"image/消息.png",
+      "selectedIconPath":"image/问题.png"
+    },{
+      "pagePath":"pages/team/team",
+      "text":"团队",
+      "iconPath":"image/圈子.png",
+      "selectedIconPath":"image/班级圈.png"
+    },{
+      "pagePath":"pages/me/me",
+      "text":"我的",
+      "iconPath":"image/我的.png",
+      "selectedIconPath":"image/通讯录.png"
+    }]
+  },
+  "usingComponents": {
+    "van-action-sheet":"/vant-weapp/action-sheet",
+    "van-button": "/vant-weapp/button",
+    "van-search": "vant-weapp/search",
+    "van-field":"vant-weapp/field",
+    "van-picker":"vant-weapp/picker",
+    "van-icon":"vant-weapp/icon",
+    "van-card":"vant-weapp/card",
+    "van-tabbar": "vant-weapp/tabbar",
+    "van-tabbar-item": "vant-weapp/tabbar-item",
+    "van-overlay":"vant-weapp/overlay",
+    "van-popup":"vant-weapp/popup",
+    "van-cell":"vant-weapp/cell",
+    "van-rate": "vant-weapp/rate",
+    "van-row":"vant-weapp/row",
+    "van-col":"vant-weapp/col",
+    "i-grid": "../miniprogram/utils/dist/grid/index",
+    "i-grid-item": "../miniprogram/utils/dist/grid-item/index",
+    "i-grid-icon": "../miniprogram/utils/dist/grid-icon/index",
+    "i-grid-label": "../miniprogram/utils/dist/grid-label/index",
+    "i-card":"../miniprogram/utils/dist/card/index",
+    "i-swipeout":"../miniprogram/utils/dist/swipeout/index",
+    "i-cell":"../miniprogram/utils/dist/cell/index",
+    "van-collapse": "vant-weapp/collapse",
+    "van-collapse-item": "vant-weapp/collapse-item",
+    "i-divider": "../miniprogram/utils/dist/divider/index",
+    "van-tag": "vant-weapp/tag",
+    "van-tab": "vant-weapp/tab",
+    "van-tabs": "vant-weapp/tabs",
+    "i-checkbox-group": "../miniprogram/utils/dist/checkbox-group/index",
+    "i-checkbox": "../miniprogram/utils/dist/checkbox/index"
+  },
+  "sitemapLocation": "sitemap.json"
+}

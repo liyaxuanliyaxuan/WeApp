@@ -1,0 +1,45 @@
+/* pages/team_advise/team_advise.wxss */
+.tab{
+  margin-bottom: 10px;
+}
+.fire{
+  font-size:20px;
+  color: red;
+  margin-left: 12px;
+  margin-right: 4px;
+}
+.Event{
+  display:flex;
+  flex-direction: row;
+  align-items: center;
+  margin-top:5rpx;
+  margin-left:40rpx;
+  font-size:15px;
+}
+.team-name{
+  font-size: 15px;
+  margin-left:70rpx;
+}
+.teamIcon{
+  position:absolute;
+  width:50rpx;
+}
+.add-btn{
+  font-size:15px;
+  margin-left:5%;
+  position: absolute;
+  right:5%;
+}
+.add-txt{
+  font-size: 15px;
+}
+.advice{
+  margin-top:20rpx;
+}
+.background{
+  width: 100%;
+  height: 100%;
+  position:fixed; 
+  background-size:100% 100%;
+  z-index: -1;
+}

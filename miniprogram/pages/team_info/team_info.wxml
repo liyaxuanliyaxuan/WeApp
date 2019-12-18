@@ -1,0 +1,57 @@
+<!--pages/team_info/team_info.wxml
+
+显示团队的资料
+
+-->
+
+<van-tabs active="{{ active }}"
+
+custom-class="tab"
+bind:change="directTo">
+<van-tab title="团队秀" name="show"></van-tab>
+  <van-tab title="团队建议" name="advice"></van-tab>
+  <van-tab title="团队信息" name="info"></van-tab>
+</van-tabs>
+
+
+<view class="Event">
+  <image class="teamIcon" src="cloud://cloud-demo-l5rvx.636c-cloud-demo-l5rvx-1300498757/my-image7974.577556905607.png" mode="aspectFit">
+  </image>
+  <text class="team-name">{{teamInfo.name}}</text>
+  <view class="add-btn">
+    <text class="add-txt">编辑</text>
+    <van-icon name="records" size="20px" style="top:5px" bind:click="editTeamInfo"/>
+  </view>
+</view>
+
+<van-cell-group class="team">
+  <van-cell icon="award-o" title="团队名称" value="{{teamInfo.name}}" />
+  <van-cell icon="user-circle-o" title="团队创建者" value="{{teamInfo.leader}}" />
+  <van-cell icon="calender-o" title="团队成立时间" value="{{teamInfo.date}}" label="{{editTeamInfo.createTime}}" border="{{false}}" />
+  <van-cell icon="cluster-o" title="团队类型" value="{{teamInfo.type}}" />
+  <van-cell icon="bar-chart-o" title="团队描述" value="{{teamInfo.detail}}" />
+</van-cell-group>
+
+<van-collapse value="{{ activeName }}" bind:change="onChange" accordion>
+  <van-collapse-item title="团队成员" icon="friends-o">
+    <view class="Member" wx:for="{{teamMember}}">
+      {{index}}<text decode="ensp">&ensp;:&ensp;</text>{{item.name}}
+    </view>
+  </van-collapse-item>
+  <van-collapse-item title="团队头像" icon="photo-o">
+    <image class="teampic" src="{{teamInfo.pic}}" mode="aspectFit"></image>
+  </van-collapse-item>
+</van-collapse>
+
+<view class="background">
+	<!--pics文件夹下的background.jpg文件-->
+  <image class='background'   src="cloud://cloud-demo-l5rvx.636c-cloud-demo-l5rvx-1300498757/my-image3593.421890790611.jpg" mode="aspectFill" >
+  <!--
+	<image class='background'   src="cloud://cloud-demo-l5rvx.636c-cloud-demo-l5rvx-1300498757/my-image8136.837809904365.jpeg" mode="aspectFill" >
+  -->
+  </image>
+	<!--页面其它部分-->
+</view>
+
+
+

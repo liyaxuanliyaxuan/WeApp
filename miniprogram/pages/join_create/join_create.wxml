@@ -1,0 +1,78 @@
+<!--pages/join_create/join_create.wxml
+当前是团队创建页面，具体的数据项还未完善，本质上是表单和提交
+
+-->
+<text>\n</text>
+<van-cell-group>
+    <van-field
+      icon="eye-o"   
+      value="{{ teamName }}"
+      required
+      clearable
+      label="团队名称"
+      icon="question-o"
+      placeholder="请输入团队名称"
+      bind:change="change1"
+      bind:click-icon="onClickIcon"
+    />
+   
+    
+    <van-field
+      value="{{ teamType }}"
+      icon="info-o"
+    
+      label="团队性质"
+      placeholder="请输入团队性质"
+      bind:change="change3"
+      required
+      border="{{ false }}"
+    />
+    
+    <van-field
+      value="{{ teamDetail }}"
+      type="txt"
+      label="描述"
+      icon="flag-o"
+      placeholder="请输入团队描述"
+      bind:change="change4"
+      border="{{ false }}"
+    />
+    
+    <view class="logo">
+      <van-field
+        value="{{ password }}"
+        type="txt"
+        label="团队头像"
+        icon="plus"
+        placeholder="点击右侧加号上传团队头像"
+        border="{{ false }}"
+      />
+      <view class="logoAdd">
+        <van-icon name="add" 
+          size="40px" 
+          custom-class="join-btn"
+          color="#ff9966"
+          bind:click="doUpload"
+        />
+      </view>
+      <view class="uploader-container">
+      <image class="uploader-image" src="{{pic}}" mode="aspectFit"       bindtap="previewImg"></image>
+    </view>
+    </view>
+  </van-cell-group>
+
+  <van-button 
+    bind:click="createTeam"
+    custom-class="create-btn"
+    style="position:fixed;bottom:0;width:100%;"
+    color="#ff9966" 
+    icon="success"
+    size="large"
+  >创建团队</van-button>
+
+  <view class="background">
+	<!--pics文件夹下的background.jpg文件-->
+	<image class='background'   src="cloud://cloud-demo-l5rvx.636c-cloud-demo-l5rvx-1300498757/my-image8228.302151239528.jpeg" mode="aspectFill" >
+  </image>
+	<!--页面其它部分-->
+</view>

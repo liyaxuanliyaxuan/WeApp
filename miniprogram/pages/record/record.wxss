@@ -1,0 +1,35 @@
+/* pages/record/record.wxss */
+.van-card__title{
+ 
+}
+.dongtai-btn{
+  color: #A52A2A;
+  position:absolute;
+  margin-top:2%;
+  margin-left:85%;
+  z-index:5;
+}
+.star-num{
+  margin: 8px;
+  position: relative;
+  top:-1px;
+}
+.fire{
+  color: red;
+  margin-left: 12px;
+  margin-right: 4px;
+}
+.team-name{
+  font-size: 13px;
+
+}
+.span-class{
+  background:#FFA500;
+  padding: 4px;
+  margin: 4px;
+  border-radius: 4px;
+  color: #FFFFE0;
+  font-size: 12px;
+  font-weight: bolder;
+  text-align: center;
+}

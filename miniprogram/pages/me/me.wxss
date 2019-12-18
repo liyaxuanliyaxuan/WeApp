@@ -1,0 +1,73 @@
+/* pages/me/me.wxss */
+.accountBg{
+  font-size:20px;
+  height:100px;
+  background-color:#FAFAD2;
+  display:flex;
+  flex-direction:row;
+  align-items:center;
+}
+.img{
+  margin-left:20px;
+}
+.userinfo-avatar {
+  width: 128rpx;
+  height: 128rpx;
+  margin: 20rpx;
+  border-radius: 50%;
+}
+.account{
+  width:60%;
+  color:#000000;
+  margin-left:10px;
+}
+.nav{
+  width:15px;
+}
+.acc1{
+  display:flex;
+}
+.age{
+  display:flex;
+  font-size:15px;
+  width:55%;  
+  margin-left:5%;
+}
+.gender{
+  display:flex;
+  font-size:15px;
+  width:40%;  
+  margin-left:5%;
+}
+.acc2{
+  display:flex;
+}
+.job{
+  font-size:15px;
+  width:55%;  
+  margin-left:5%;
+}
+.city{
+  display:flex;
+  font-size:15px;
+  width:40%;  
+  margin-left:5%;
+}
+.sig{
+  font-size:15px;
+  width:84%;  
+  margin-left:5%;
+}
+.sig1{
+  text-indent: 10%;
+}
+.picture{
+  display:flex;
+  font-size:20px;
+  width:84%;  
+  margin-left:8%;
+}
+.logoAdd{
+  display:flex;
+  margin-left:40%;
+}

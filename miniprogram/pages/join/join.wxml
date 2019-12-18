@@ -1,0 +1,130 @@
+<!--pages/join/join.wxml
+
+初始页面，显示团队创建按钮和搜索功能
+
+-->
+
+<van-search 
+  show-action
+  custom-class="search"
+  bind:change="onChange"
+  bind:search="onSearch"
+  bind:cancel="onCancel"
+  placeholder="请输入搜索的团队ID或名称" 
+/>
+
+<view class="banner"> 
+  <div class="wrapper">
+    <div class="candles">
+      <div class="light__wave"></div>
+      <div class="candle1">
+        <div class="candle1__body">
+          <div class="candle1__eyes">
+            <span class="candle1__eyes-one"></span>
+            <span class="candle1__eyes-two"></span>
+          </div>
+          <div class="candle1__mouth"></div>
+        </div>
+        <div class="candle1__stick"></div>
+      </div>
+      
+      <div class="candle2">
+        <div class="candle2__body">
+          <div class="candle2__eyes">
+            <div class="candle2__eyes-one"></div>
+            <div class="candle2__eyes-two"></div>
+          </div>
+        </div>
+        <div class="candle2__stick"></div>
+      </div>
+      <div class="candle2__fire"></div>
+      <div class="sparkles-one"></div>
+      <div class="sparkles-two"></div>
+      <div class="candle__smoke-one"></div>
+      <div class="candle__smoke-two"></div>
+    </div>
+  </div>
+</view>
+
+
+<van-icon 
+  name="add"
+  size="30px"
+  custom-style="top:8%;right:1%;position:fixed;color:coral"
+  class="btn"
+  bind:click="addTeam"
+/>
+
+
+<view class="team-list">
+<view class="team-col" wx:for="{{teamList}}" wx:for-item="i">
+  <view class="team-row"
+    wx:for="{{i}}" wx:for-item="j">
+ 
+      <view class="team-img">
+      <image src="{{j.pic}}" mode="widthFix"/></view>
+
+      <view class="team-text">
+        <view class="team-title">
+          {{j.name}}
+        </view>
+        <view class="team-content">
+          {{j.leader}}
+        </view>
+      </view>
+      <view class="joinIcon">
+        <van-icon name="more-o"
+          size="20px" 
+          custom-class="join-btn"
+          data-id="{{j._id}}"
+          data-teamname="{{j.name}}"
+          color="#888"
+          bind:click="showPopup"
+        />
+
+        <van-popup show="{{ show }}" 
+          close-on-click-overlay
+          overlay-style="background:transparent;"
+          position="bottom"
+          duriton="{{100}}"
+          custom-style="height: auto;"
+          round
+          bind:close="getClose">
+          <van-row>
+            <van-col 
+              custom-class="span-class1" 
+              span="8" 
+              bindtap="Addteam"
+              data-id="{{j._id}}"
+              data-teamname="{{j.name}}">
+              加入
+            </van-col>
+            <van-col 
+              custom-class="span-class2" 
+              span="8" 
+              bindtap="enterTeam"
+              data-id="{{j._id}}"
+              data-teamname="{{j.name}}">
+              查看详情
+            </van-col>
+          </van-row>
+        </van-popup>
+        <!--
+        <van-action-sheet
+          show="{{ show }}"
+          actions="{{ actions }}"
+          bind:close="onClose"
+          bind:select="onSelect"
+          data-id="{{j._id}}"
+          data-teamname="{{j.name}}"
+        />
+        -->
+      </view>
+  </view>
+  </view>
+</view>
+
+
+
+  
+

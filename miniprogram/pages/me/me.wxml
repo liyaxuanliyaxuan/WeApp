@@ -1,0 +1,58 @@
+<!--pages/me/me.wxml
+
+
+显示个人信息
+-->
+<view class="accountBg">
+  <view class="img">
+    <image class="userinfo-avatar" src="{{userInfo.avatarUrl}}"  mode="cover"></image>
+  </view>
+  <view class="account">
+    <view>用户名：{{userInfo.nickName}}</view> 
+    <view>
+      <text>账号管理></text>
+    </view>
+  </view>  
+  <view class="nav">
+    <van-icon name="edit" size="20px" bind:click="editMe"/>
+  </view>
+</view>
+<text>\n</text>
+<view class="acc1">
+  <view class="age">
+    真实姓名：{{member.realName}}
+  </view>
+  <view class="gender">
+    性别：
+    <view wx:if="{{userInfo.gender==2}}">女</view>
+    <view wx:elif="{{userInfo.gender==1}}">男</view>
+    <view wx:else></view>
+  </view>
+</view>
+<text>\n</text>
+<view class="acc2">
+  <view class="job">
+    出生日期：{{member.date}}
+  </view>
+  <view class="city">
+    职业：{{member.job}}
+  </view>
+</view>
+<text>\n</text>
+<view class="sig">
+  个性签名:
+  <view class="sig1">
+    {{ member.signature }}
+  </view>
+</view>
+<text>\n</text>
+<view class="picture">
+  个人相册：
+</view>
+  <view>
+    <image src="{{member.pic}}"
+           style="width:90%;margin-left:5%;margin-top:3px;"
+           mode="aspectFit"
+           custom-style="height: auto;">
+    </image>
+  </view>

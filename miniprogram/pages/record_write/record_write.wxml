@@ -1,0 +1,69 @@
+<!--pages/record_write/record_write.wxml
+
+当前页面为发布个人动态页面
+可进行图片上传和文字描述，点击提交后在动态页面展示
+-->
+
+ 
+   <!-- 上传图片 -->
+  <view class="uploader">
+    <view class="uploader-text" bindtap="doUpload">
+      <text>上传图片</text>
+    </view>
+    <view class="uploader-container" wx:if="{{imgUrl}}">
+      <image class="uploader-image" 
+             src="{{imgUrl}}" 
+             mode="aspectFit" 
+             indtap="previewImg">
+      </image>
+    </view>
+  </view>
+
+
+  <van-cell-group>
+    <van-field
+    value="{{title}}"
+    label="标题"
+    left-icon="smile-o"
+    bind:change="Change1"
+    border="{{ true }}"
+  />
+    <van-field
+      value="{{ message }}"
+      input-class="input-area"
+      type="textarea"
+      placeholder="记录我的生活。。。"
+      bind:change="onChange"
+      autosize
+      border="{{ false }}"
+    />
+  </van-cell-group>
+  <i-divider content="选择发布圈子"></i-divider>
+<i-grid>
+    <i-grid-item wx:for="{{teamToChoose}}" wx:key="{{item.id}}" data-index='{{index}}' i-class="{{chosen[index]}}" bindtap="chooseToSee">
+        <i-grid-icon i-class="team-pic">
+            <image src='{{item.pic}}' />
+        </i-grid-icon>
+        <i-grid-label i-class="team-name">{{item.name}}</i-grid-label>
+    </i-grid-item>
+</i-grid>
+
+<view class="image">
+  <image class="image1" src="{{imagePath}}" mode="aspectFit"></image>
+</view>
+
+  <van-button 
+    bindtap="submitMine"
+    custom-class="create-btn"
+    style="position:fixed;bottom:0;width:100%;"
+    color="#FF8247" 
+    icon="plus"
+    size="large"
+  >发布</van-button>
+
+  
+<view class="background">
+	<!--pics文件夹下的background.jpg文件-->
+
+	<!--页面其它部分-->
+</view>

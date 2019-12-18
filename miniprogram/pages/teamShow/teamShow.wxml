@@ -1,0 +1,61 @@
+<!--pages/record_write/record_write.wxml
+
+当前页面为发布个人动态页面
+可进行图片上传和文字描述，点击提交后在动态页面展示
+-->
+<text>\n</text>
+<van-cell-group class="field">
+    <van-field
+      value="{{currentTeamName}}"
+      label="团队"
+      left-icon="fire-o"
+      placeholder="My Team"
+      border="{{ true }}"
+    />
+  <text>\n</text>
+    <van-field
+    value="{{title}}"
+    label="标题"
+    placeholder="Breaking news!"
+    left-icon="hot-o"
+    bind:change="Change1"
+    border="{{ true }}"
+  />
+  <text>\n</text>
+    <van-field
+      value="{{ message }}"
+      left-icon="label-o"
+      label="内容"
+      input-class="input-area"
+      type="textarea"
+      placeholder="Breaking news description..."
+      bind:change="onChange"
+      autosize
+      border="{{ false }}"
+    />
+</van-cell-group>
+
+  <!-- 上传图片 -->
+  <image class="picture" src="cloud://cloud-demo-l5rvx.636c-cloud-demo-l5rvx-1300498757/my-image2540.5228429728054.png"
+      mode="aspectFit" bindtap="doUpload">
+  </image>
+
+  <i-divider class="divider" content="图片预览"></i-divider>
+
+  <image class="image1" style="width:80%" src="{{pic}}" mode="aspectFit"></image>
+
+<van-button 
+  bindtap="submitMine"
+  custom-class="create-btn"
+  style="position:fixed;bottom:0;width:100%;"
+  color="#FF8247" 
+  icon="plus"
+  size="large"
+>发布</van-button>
+
+
+<view class="background">
+	<!--pics文件夹下的background.jpg文件-->
+
+	<!--页面其它部分-->
+</view>

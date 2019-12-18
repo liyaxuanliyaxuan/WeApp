@@ -1,0 +1,43 @@
+<!--pages/team_add_advise/team_add_advise.wxml
+提建议页面：
+写入建议、表单提交
+-->
+<van-cell-group>
+  <van-field
+    value="{{title}}"
+    required
+    label="关键字"
+    left-icon="bulb-o"
+    bind:change="changeKey"
+    border="{{ true }}"
+  />
+  <van-field
+    value="{{ message }}"
+    required
+    input-class="input-area"
+    type="textarea"
+    bind:change="changeInput"
+    placeholder="我有一个大胆的想法！！"
+    bind:change="onChange"
+    autosize
+    border="{{ false }}"
+  />
+ </van-cell-group>
+
+ <image class="image1" src="{{imagePath}}" mode="aspectFit"></image>
+  <van-button 
+    bindtap="submitMine"
+    bind:click="upBtn"
+    style="position:fixed;bottom:0;width:100%;"
+    color="#CD4F39" 
+    icon="plus"
+    size="large"
+  >提出建议</van-button>
+
+
+<view class="background">
+	<!--pics文件夹下的background.jpg文件-->
+	<image class='background'   src="cloud://cloud-demo-l5rvx.636c-cloud-demo-l5rvx-1300498757/my-image3075.1953238659335.jpg" mode="aspectFill" >
+  </image>
+	<!--页面其它部分-->
+</view>
