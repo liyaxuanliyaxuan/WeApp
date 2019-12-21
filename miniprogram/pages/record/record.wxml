@@ -51,10 +51,19 @@
 </view>
 
 <view wx:for="{{userMoments}}" wx:key="{{index}}">
+  <view class="moments">
+    <image class="userinfo-avatar" 
+             src="{{item.logo}}" 
+             mode="cover">
+    </image>
+    <view class="moment-name">{{item.who}}</view>
+    <view class="moment-time">{{item.when}}</view>
+  </view>
   <van-card
     desc="{{item.content}}"
     title="{{item.title}}"
-    thumb="{{ imageURL[index]}}">
+    thumb="{{item.pic}}"
+    thumb-mode="scaleToFill">
     <view slot="footer">
       <text class="star-num">{{item.stars}}</text>
       <van-icon name="like"
@@ -65,4 +74,5 @@
       />
     </view>
   </van-card>
+  <i-divider class="divider" content=""></i-divider>
 </view>

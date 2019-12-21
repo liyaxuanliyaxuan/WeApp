@@ -193,6 +193,8 @@ Page({
       wx.cloud.callFunction({
         name: "add_dongtai",
         data: {
+          name:that.data.userInfo.nickName,
+          logo:that.data.userInfo.avatarUrl,
           pic:that.data.fileID,
           date:that.data.date,
           title:that.data.title,

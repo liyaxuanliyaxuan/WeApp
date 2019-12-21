@@ -5,32 +5,21 @@
 -->
 
  
-   <!-- 上传图片 -->
-  <view class="uploader">
-    <view class="uploader-text" bindtap="doUpload">
-      <text>上传图片</text>
-    </view>
-    <view class="uploader-container" wx:if="{{imgUrl}}">
-      <image class="uploader-image" 
-             src="{{imgUrl}}" 
-             mode="aspectFit" 
-             indtap="previewImg">
-      </image>
-    </view>
-  </view>
 
-
-  <van-cell-group>
+    <text>\n</text>
+    <van-cell-group>
     <van-field
-    value="{{title}}"
-    label="标题"
-    left-icon="smile-o"
-    bind:change="Change1"
-    border="{{ true }}"
-  />
+      value="{{title}}"
+      label="标题"
+      left-icon="smile-o"
+      bind:change="Change1"
+      border="{{ true }}"
+    />
+    <text>\n</text>
     <van-field
       value="{{ message }}"
       input-class="input-area"
+      left-icon="comment-circle-o"
       type="textarea"
       placeholder="记录我的生活。。。"
       bind:change="onChange"
@@ -38,7 +27,12 @@
       border="{{ false }}"
     />
   </van-cell-group>
-  <i-divider content="选择发布圈子"></i-divider>
+   <!-- 上传图片 -->
+  <image class="picture" src="cloud://cloud-demo-l5rvx.636c-cloud-demo-l5rvx-1300498757/my-image2540.5228429728054.png"
+      mode="aspectFit" bindtap="doUpload">
+  </image>
+  <i-divider class="divider" content="图片预览"></i-divider>
+<!--
 <i-grid>
     <i-grid-item wx:for="{{teamToChoose}}" wx:key="{{item.id}}" data-index='{{index}}' i-class="{{chosen[index]}}" bindtap="chooseToSee">
         <i-grid-icon i-class="team-pic">
@@ -47,6 +41,7 @@
         <i-grid-label i-class="team-name">{{item.name}}</i-grid-label>
     </i-grid-item>
 </i-grid>
+-->
 
 <view class="image">
   <image class="image1" src="{{imagePath}}" mode="aspectFit"></image>

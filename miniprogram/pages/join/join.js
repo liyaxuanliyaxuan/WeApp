@@ -231,7 +231,7 @@ Page({
                         wx.cloud.callFunction({
                           name: "add_teammember",
                           data: {
-                            openid: that.data.openid,
+                            id: that.data.memberid,
                             id: that.data.teamid,
                             realName:that.data.realName
                           },
@@ -363,7 +363,7 @@ Page({
                 wx.cloud.callFunction({
                   name: "add_teammember",
                   data: {
-                    openid: that.data.openid,
+                    openid: that.data.memberid,
                     id: teamid,
                     realName:that.data.realName
                   },

@@ -13,6 +13,7 @@ Page({
     openid: "",
     date: "",
     teamid:"",
+    userInfo:{},
     memberid: '',
     teamType: "",
     teamName: "",
@@ -83,6 +84,11 @@ Page({
     let DATE = util.formatDate(new Date());
     this.setData({
       date: DATE
+    })
+    console.log(app.globalData)
+    this.setData({
+      userInfo: app.globalData.userInfo,
+      openid: app.globalData.openid
     })
     //获得个人openId
     wx.cloud.callFunction({
@@ -241,8 +247,8 @@ Page({
                 wx.cloud.callFunction({
                   name: "add_teammember",
                   data: {
-                    openid: that.data.openid,
-                    name:that.data.leader,
+                    openid: that.data.memberid,
+                    realName:that.data.leader,
                     id: teamid,
                   },
                   success: function (res) {

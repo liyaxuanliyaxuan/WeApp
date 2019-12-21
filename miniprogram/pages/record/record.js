@@ -57,14 +57,14 @@ Page({
       wx.cloud.downloadFile({
         fileID:store.dataFromWriteRecord.photoId
       }).then(res => {
-        // get temp file path
+        // get temp file path 
         //console.log(res.tempFilePath)
         return res.tempFilePath
       }).then(path => {
         return  [...this.data.imageURL, path]
       }).then(list=>{
         that.setData({
-          imageURL:list
+          imageURL:list 
         })
       })
     }
@@ -85,43 +85,47 @@ Page({
       })
       return l[0]
     }).then(name=>{
-      
         db.collection("team").where({
           name: name,
         }).get().then(res => {
+          console.log('member',res.data[0])
           return res.data[0].member
         }).then(t => {
+          console.log("id",t)
           return t.map(a => a.id)
         }).then(l => {
+          console.log('l',l)
           that.setData({
             currentMembers: l
           })
-          if(that.data.change){
-            return l[0]
-          }else{
-            return l[1]
-          }
-        }).then(id=>{
-          //for(let i=0;i<idList.length;i++){
+          console.log("that.data",that.data)
+          console.log('length',l.length)
+          that.setData({
+            userMoments:[]
+          })
+          for(let i=0;i<l.length;i++){
+            console.log('l[i]',l[i])
             wx.cloud.callFunction({
               name: "get_dongtai",
               data: {
                 //id: idList[i]
-                id:id
+                id: l[i]
               },
               success: function (res) {
-                //console.log(res.result.data.update)
+                console.log('update', res.result.data.update)
+                //that.data.userMoments.push(res.result.data.update)
+                
                 that.setData({
-                  userMoments: res.result.data.update,
+                  userMoments: that.data.userMoments.concat(res.result.data.update),
                 })
               },
               fail: console.error
             })
-         // }
+          }
+          console.log('userMoments',that.data.userMoments)
         })
       }
     )
-
     const len = 40
     this.setData({
       likedList: Array.from({ length: len }, () => '#C9C9C9')
@@ -223,36 +227,44 @@ Page({
     this.setData({
       currentTeamName: e.target.dataset.team,
       change:that.data.change
-      
     })
     db.collection("team").where({
       name: this.data.currentTeamName,
     }).get().then(res => {
       return res.data[0].member
     }).then(t => {
+      console.log('t.id',t)
       return t.map(a => a.id)
     }).then(l => {
+      console.log("currentmember",l)
       that.setData({
         currentMembers: l
       })
-
-    return l[1]//暂时的报错是由于数据库的格式问题
-    }
-    ).then(id=>{
-      wx.cloud.callFunction({
-        name: "get_dongtai",
-        data: {
-          id: id
-        },
-        success: function (res) {
-          console.log(res.result.data.update)
-          that.setData({
-            userMoments: res.result.data.update,
-          })
-         
-        },
-        fail: console.error
+      console.log("that.data", that.data)
+      console.log('length', l.length)
+      that.setData({
+        userMoments: []
       })
+      for (let i = 0; i < l.length; i++) {
+        console.log('l[i]', l[i])
+        wx.cloud.callFunction({
+          name: "get_dongtai",
+          data: {
+            //id: idList[i]
+            id: l[i]
+          },
+          success: function (res) {
+            console.log('update', res.result.data.update)
+            //that.data.userMoments.push(res.result.data.update)
+
+            that.setData({
+              userMoments: that.data.userMoments.concat(res.result.data.update),
+            })
+          },
+          fail: console.error
+        })
+      }
+      console.log('userMoments', that.data.userMoments)
     })
   }
 })
