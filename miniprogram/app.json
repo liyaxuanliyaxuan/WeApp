@@ -1,8 +1,8 @@
 {
   "pages": [
+    "pages/join/join",
     "pages/index/index",
     "pages/record/record",
-    "pages/join/join",
     "pages/team_detail/team_detail",
     "pages/team/team",
     "pages/teamShow/teamShow",
@@ -16,17 +16,7 @@
     "pages/team_add_advise/team_add_advise",
     "pages/record_write/record_write",
     "pages/team_edit/team_edit",
-    "pages/userConsole/userConsole",
-    "pages/storageConsole/storageConsole",
-    "pages/addFunction/addFunction",
-    "pages/deployFunctions/deployFunctions",
-    "pages/chooseLib/chooseLib",
-    "pages/openapi/openapi",
-    "pages/openapi/serverapi/serverapi",
-    "pages/openapi/callback/callback",
-    "pages/openapi/cloudid/cloudid",
-    "pages/im/im",
-    "pages/im/room/room"
+    "pages/openapi/openapi"
   ],
   "window": {
     "backgroundColor": "#F6F6F6",
@@ -88,12 +78,14 @@
     "i-cell":"../miniprogram/utils/dist/cell/index",
     "van-collapse": "vant-weapp/collapse",
     "van-collapse-item": "vant-weapp/collapse-item",
+    "van-dialog":"vant-weapp/dialog",
     "i-divider": "../miniprogram/utils/dist/divider/index",
     "van-tag": "vant-weapp/tag",
     "van-tab": "vant-weapp/tab",
     "van-tabs": "vant-weapp/tabs",
     "i-checkbox-group": "../miniprogram/utils/dist/checkbox-group/index",
-    "i-checkbox": "../miniprogram/utils/dist/checkbox/index"
+    "i-checkbox": "../miniprogram/utils/dist/checkbox/index",
+    "i-drawer":"../miniprogram/utils/dist/drawer/index"
   },
   "sitemapLocation": "sitemap.json"
 }
