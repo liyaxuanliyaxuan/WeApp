@@ -3,14 +3,14 @@
  
 }
 .dongtai-btn{
-  color: #A52A2A;
+  color: 	#FFA54F;
   position:absolute;
   margin-top:2%;
   margin-left:85%;
   z-index:5;
 }
 .star-num{
-  margin: 8px;
+  margin: 16rpx;
   position: relative;
   top:-1px;
 }
@@ -36,20 +36,24 @@
 }
 .fire{
   color:rgb(224, 19, 19);
-  margin-left: 12px;
-  margin-right: 4px;
+  margin-left: 24rpx;
+  margin-right: 8rpx;
   size:20rpx;
 }
 .team-name{
-  font-size: 18px;
+  font-size: 34rpx;
+color: darkgray;
+line-height: 2;
+
 }
 .span-class{
-  background:#FFA500;
+border: #D3D3D3 1rpx solid;
+  width: 40%;
   padding: 4px;
-  margin: 4px;
+  margin: 10rpx;
+  margin-left: 10%;
   border-radius: 4px;
-  color: #FFFFE0;
-  font-size: 12px;
-  font-weight: bolder;
+  color: #4d4d4b;
+  font-size: 24rpx;
   text-align: center;
 }

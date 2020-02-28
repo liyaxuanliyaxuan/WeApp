@@ -36,8 +36,7 @@
 </van-cell-group>
 
   <!-- 上传图片 -->
-  <image class="picture" src="cloud://cloud-demo-l5rvx.636c-cloud-demo-l5rvx-1300498757/my-image2540.5228429728054.png"
-      mode="aspectFit" bindtap="doUpload">
+  <image class="picture" bindtap="doUpload">
   </image>
 
   <i-divider class="divider" content="图片预览"></i-divider>

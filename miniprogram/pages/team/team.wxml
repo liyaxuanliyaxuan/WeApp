@@ -63,7 +63,7 @@
 </van-popup>
 
 <view class="Event">
-  <image class="teamIcon" src="cloud://cloud-demo-l5rvx.636c-cloud-demo-l5rvx-1300498757/my-image7974.577556905607.png" mode="aspectFit">
+  <image class="teamIcon">
   </image>
   <text class="team-name">{{currentTeamName}}</text>
   <view class="add-btn">
@@ -79,10 +79,4 @@
   </i-card>
 </view>
 
-<view class="background">
-	<!--pics文件夹下的background.jpg文件-->
-	<image class='background'   src="cloud://cloud-demo-l5rvx.636c-cloud-demo-l5rvx-1300498757/my-image1164.6167718219358.jpeg" mode="aspectFill">
-  </image>
-	<!--页面其它部分-->
-</view>
 

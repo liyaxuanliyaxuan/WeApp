@@ -8,11 +8,11 @@
   box-sizing: border-box;
 }
 .picture{
-  position:absolute;
+
   z-index: 2;
-  right:10px;
+
   width:20%;
-  margin-top:15%;
+ 
 }
 .divider{
   margin-top:12%;

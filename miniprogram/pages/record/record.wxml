@@ -15,12 +15,15 @@
   bind:click="showPopup" 
 />
 
-<view >
-  <van-icon name="add" size="40px"
+
+  <van-icon 
+  name="comment" 
+  size="120rpx"
+   custom-style="bottom:18%;right:5%;position:fixed;color:coral" 
     custom-class="dongtai-btn"
     bind:click="addRecord"
   />
-</view>
+
 
 <van-popup show="{{ show }}" 
   closeable

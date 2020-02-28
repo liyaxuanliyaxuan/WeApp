@@ -61,13 +61,14 @@
 
 }
 .span-class{
- background:#FFA500;
+border: #D3D3D3 1rpx solid;
+  width: 40%;
   padding: 4px;
-  margin: 4px;
+  margin: 10rpx;
+  margin-left: 10%;
   border-radius: 4px;
-  color: #FFFFE0;
-  font-size: 12px;
-  font-weight: bolder;
+  color: #4d4d4b;
+  font-size: 24rpx;
   text-align: center;
 }
 .page-team{

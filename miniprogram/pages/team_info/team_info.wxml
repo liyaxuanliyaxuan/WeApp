@@ -15,7 +15,7 @@ bind:change="directTo">
 
 
 <view class="Event">
-  <image class="teamIcon" src="cloud://cloud-demo-l5rvx.636c-cloud-demo-l5rvx-1300498757/my-image7974.577556905607.png" mode="aspectFit">
+  <image class="teamIcon">
   </image>
   <text class="team-name">{{teamInfo.name}}</text>
   <view class="add-btn">
@@ -43,15 +43,7 @@ bind:change="directTo">
   </van-collapse-item>
 </van-collapse>
 
-<view class="background">
-	<!--pics文件夹下的background.jpg文件-->
-  <image class='background'   src="cloud://cloud-demo-l5rvx.636c-cloud-demo-l5rvx-1300498757/my-image3593.421890790611.jpg" mode="aspectFill" >
-  <!--
-	<image class='background'   src="cloud://cloud-demo-l5rvx.636c-cloud-demo-l5rvx-1300498757/my-image8136.837809904365.jpeg" mode="aspectFill" >
-  -->
-  </image>
-	<!--页面其它部分-->
-</view>
+
 
 
 

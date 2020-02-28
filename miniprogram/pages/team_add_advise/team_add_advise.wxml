@@ -34,10 +34,3 @@
     size="large"
   >提出建议</van-button>
 
-
-<view class="background">
-	<!--pics文件夹下的background.jpg文件-->
-	<image class='background'   src="cloud://cloud-demo-l5rvx.636c-cloud-demo-l5rvx-1300498757/my-image3075.1953238659335.jpg" mode="aspectFill" >
-  </image>
-	<!--页面其它部分-->
-</view>

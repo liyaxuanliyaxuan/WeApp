@@ -59,27 +59,21 @@ Page({
       console.log(res.data)
       return res.data
 
-    }).then(l => {
-
-      let len = Math.floor(l.length / 2) + 1
-      let copy1 = [...l]
-      let copy2 = copy1.splice(0, len)
-      return [copy2, copy1]
-
-      console.log([copy2, copy1])
-
-    }).then(l => {
+    }).then( list=>{
       that.setData({
-        teamList: l
+        teamList:list
       })
-    })
+    }  
+    )
   },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
   onHide: function () {
-
+this.setData({
+  show:false
+})
   },
 
   /**
@@ -183,6 +177,7 @@ Page({
                       console.log('[云函数] [login] user openid: ', res.result.openid)
                       app.globalData.openid = res.result.openid
                       that.setData({
+                        show:false,
                         openid: app.globalData.openid
                       })
                       console.log(app.globalData.openid)
