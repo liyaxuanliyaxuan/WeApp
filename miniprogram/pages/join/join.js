@@ -8,18 +8,23 @@ Page({
    * 页面的初始数据
    */
   data: {
+    showAddBtnStyle:"bottom:10%;right:5%;position:fixed;color:coral;opacity:1;transition:opacity 0.5s,bottom 0.5s",
+    hideAddBtnStyle:"opacity:0;bottom:20%;right:5%;position:fixed;transition:opacity 0.5s,bottom 0.5s",
+    show: false,
+    showAddBtn: true,
+    //控制样式
     teamid: '',
     popstate: 'true',
     memberid: '',
     inputValue: '',
     openid: "",
-    realName:"",
+    realName: "",
     teamList: [],
     selected: "",
     chosenName: "",
     chosenId: "",
     currentTeamName: "My Team",
-    show: false,
+    allList:[],
     content: ['加入', '查看详情'],
     actions: [
       {
@@ -59,21 +64,26 @@ Page({
       console.log(res.data)
       return res.data
 
-    }).then( list=>{
+    }).then(list => {
       that.setData({
-        teamList:list
+        allList:list,
+        teamList: list.slice(0,6)
       })
-    }  
+    }
     )
+    wx.pageScrollTo({
+      scrollTop: 0,
+      duration: 300
+    })
   },
 
   /**
    * 生命周期函数--监听页面隐藏
    */
   onHide: function () {
-this.setData({
-  show:false
-})
+    this.setData({
+      show: false
+    })
   },
 
   /**
@@ -93,15 +103,70 @@ this.setData({
   /**
    * 页面上拉触底事件的处理函数
    */
-  onReachBottom: function () {
+  onPageScroll(e) {
+    // if(timer){
+    //   clearTimeout(timer)
+    // }
 
+    this.scrollTop = e.scrollTop;
+    if(this.scrollTop <= 50){
+      this.setData({
+        showAddBtn: true
+      })
+    }else{
+      this.setData({
+        showAddBtn: false,
+      })   
+    }
+   
+    
+  //  var timer =  setTimeout(()=>{
+  //     if(!_this.data.showAddBtn){
+  //       _this.setData({
+  //         showAddBtn:true
+  //       })
+  //     }
+  //     },500)  
+  //   console.log(e)
+  
   },
+  onReachBottom() {
+    // wx.pageScrollTo({
+    //   scrollTop: this.scrollTop - 2,
+    //   duration: 0
+    // })
 
+    let addLen =     this.data.teamList.length + 4
+    this.setData({
+      teamList:this.data.allList.slice(0,addLen),
+      
+    })
+    
+    console.log(this.scrollTop)
+    //其他操作
+  },
   /**
    * 用户点击右上角分享
    */
   onShareAppMessage: function () {
 
+  },
+
+
+  //------自定义事件------
+  handleScroll(){
+
+// this.setData({
+//   showAddBtn: false
+// })
+// const _this = this
+//     setTimeout(() => {
+//       if(!_this.data.showAddBtn){
+//         _this.setData({
+//           showAddBtn:true
+//         })
+//       }
+//       },500)  
   },
   onChange: function (event) {
     this.setData({
@@ -115,18 +180,21 @@ this.setData({
 
   //转入添加团队的界面
   addTeam() {
-    wx.navigateTo({
-      url: '../join_create/join_create',
-      success: function (res) {
-        // success
-      },
-      fail: function () {
-        // fail
-      },
-      complete: function () {
-        // complete
-      }
-    })
+    if(this.data.showAddBtn){
+
+      wx.navigateTo({
+        url: '../join_create/join_create',
+        success: function (res) {
+          // success
+        },
+        fail: function () {
+          // fail
+        },
+        complete: function () {
+          // complete
+        }
+      })
+    }
   },
 
   //出现上拉菜单
@@ -177,7 +245,7 @@ this.setData({
                       console.log('[云函数] [login] user openid: ', res.result.openid)
                       app.globalData.openid = res.result.openid
                       that.setData({
-                        show:false,
+                        show: false,
                         openid: app.globalData.openid
                       })
                       console.log(app.globalData.openid)
@@ -188,13 +256,13 @@ this.setData({
                       db.collection("team").where({
                         name: searchName,
                       }).get().then(res => {
-                          console.log(res.data)
-                          console.log(res.data[0]._id)
-                          let temp = res.data[0]._id
-                          that.setData({
-                            teamid: temp
-                          })
-                          console.log("add:" + that.data.teamid + searchName)
+                        console.log(res.data)
+                        console.log(res.data[0]._id)
+                        let temp = res.data[0]._id
+                        that.setData({
+                          teamid: temp
+                        })
+                        console.log("add:" + that.data.teamid + searchName)
                       })
                       //获取个人id
                       db.collection("member").where({
@@ -203,8 +271,8 @@ this.setData({
                         return res.data[0]
                       }).then(t => {
                         that.setData({
-                          memberid:t._id,
-                          realName:t.realName
+                          memberid: t._id,
+                          realName: t.realName
                         })
                         //将团队信息写入个人
                         console.log('memberid', that.data.memberid)
@@ -228,7 +296,7 @@ this.setData({
                           data: {
                             id: that.data.memberid,
                             id: that.data.teamid,
-                            realName:that.data.realName
+                            realName: that.data.realName
                           },
                           success: function (res) {
                             console.log('success')
@@ -334,8 +402,8 @@ this.setData({
                 return res.data[0]
               }).then(t => {
                 that.setData({
-                  memberid:t._id,
-                  realName:t.realName
+                  memberid: t._id,
+                  realName: t.realName
                 })
                 //将团队信息写入个人
                 console.log('memberid', that.data.memberid)
@@ -353,14 +421,14 @@ this.setData({
                   },
                   fail: console.log('fail')
                 })
-                console.log('realName',that.data.realName)
+                console.log('realName', that.data.realName)
                 //将个人信息写入团队
                 wx.cloud.callFunction({
                   name: "add_teammember",
                   data: {
                     openid: that.data.memberid,
                     id: teamid,
-                    realName:that.data.realName
+                    realName: that.data.realName
                   },
                   success: function (res) {
                     console.log('success')

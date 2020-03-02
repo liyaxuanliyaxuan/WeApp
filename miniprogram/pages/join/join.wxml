@@ -4,6 +4,7 @@
 
 -->
 
+
 <van-search show-action custom-class="search" bind:change="onChange" bind:search="onSearch" bind:cancel="onCancel" placeholder="请输入搜索的团队ID或名称" />
 
 <view class="banner">
@@ -11,13 +12,15 @@
 </view>
 
 
-<van-icon name="add" size="100rpx" custom-style="bottom:20%;right:5%;position:fixed;color:coral" bind:click="addTeam" />
+<van-icon name="add" size="140rpx" custom-style="{{showAddBtn?showAddBtnStyle:hideAddBtnStyle}}" bind:click="addTeam" />
 
 
 <view class="team-list">
 
 
-  <view wx:for="{{teamList}}" wx:for-item='item' bindtap="enterTeam" data-id="{{item._id}}" data-teamname="{{item.name}}" class='team-item'>
+  <view wx:for="{{teamList}}" wx:for-item='item' 
+  wx:key="index"
+  bindtap="enterTeam" data-id="{{item._id}}" data-teamname="{{item.name}}" class='team-item'>
     <view class="team-img">
       <image src="{{item.pic}}" />
     </view>
