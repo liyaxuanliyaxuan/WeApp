@@ -1,10 +1,10 @@
 {
   "pages": [
+    "pages/team/team",
     "pages/join/join",
     "pages/index/index",
     "pages/record/record",
     "pages/team_detail/team_detail",
-    "pages/team/team",
     "pages/teamShow/teamShow",
     "pages/team_advise/team_advise",
     "pages/picture/picture",

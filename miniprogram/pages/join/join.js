@@ -120,14 +120,7 @@ Page({
     }
    
     
-  //  var timer =  setTimeout(()=>{
-  //     if(!_this.data.showAddBtn){
-  //       _this.setData({
-  //         showAddBtn:true
-  //       })
-  //     }
-  //     },500)  
-  //   console.log(e)
+
   
   },
   onReachBottom() {
@@ -154,20 +147,7 @@ Page({
 
 
   //------自定义事件------
-  handleScroll(){
 
-// this.setData({
-//   showAddBtn: false
-// })
-// const _this = this
-//     setTimeout(() => {
-//       if(!_this.data.showAddBtn){
-//         _this.setData({
-//           showAddBtn:true
-//         })
-//       }
-//       },500)  
-  },
   onChange: function (event) {
     this.setData({
       inputValue: event.detail

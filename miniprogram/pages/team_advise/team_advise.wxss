@@ -2,36 +2,31 @@
 .tab{
   margin-bottom: 10px;
 }
-.fire{
-  font-size:20px;
-  color: red;
-  margin-left: 12px;
-  margin-right: 4px;
-}
+
 .Event{
   display:flex;
   flex-direction: row;
   align-items: center;
   margin-top:5rpx;
   margin-left:40rpx;
-  font-size:15px;
+  font-size:30rpx;
 }
 .team-name{
-  font-size: 15px;
-  margin-left:70rpx;
+  font-size: 30rpx;
+  margin-left:50rpx;
 }
 .teamIcon{
   position:absolute;
-  width:50rpx;
+  width:40rpx;
 }
 .add-btn{
-  font-size:15px;
+  font-size:30rpx;
   margin-left:5%;
   position: absolute;
   right:5%;
 }
 .add-txt{
-  font-size: 15px;
+  font-size: 30rpx;
 }
 .advice{
   margin-top:20rpx;

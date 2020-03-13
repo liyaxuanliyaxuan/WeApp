@@ -34,7 +34,7 @@
           <van-icon name="ellipsis" size="40rpx" custom-class="join-btn" data-id="{{item._id}}" data-teamname="{{item.name}}" color="#888" catchtap="showPopup" />
 
           <van-popup show="{{ show }}" closeable="{{ true }}" close-on-click-overlay="{{ false }}" custom-style="-webkit-transition-duration:150ms;transition-duration: 150ms;" overlay-style="background:transparent;" position="bottom" custom-class="pop-up">
-            <van-icon name="cross" size="36rpx" custom-style="margin-left:92%" catchtap="getClose" />
+            <van-icon name="cross" size="36rpx" custom-style="font-size: 15px;margin-left: 92%;margin-top: 10rpx;" catchtap="getClose" />
             <van-row>
               <van-col custom-class="pop-add-btn" span="8" catchtap="Addteam" data-id="{{item._id}}" data-teamname="{{item.name}}">
                 加入

@@ -16,8 +16,7 @@ bind:change="directTo">
 </van-tabs>
 
 <view class="Event">
-  <image class="teamIcon">
-  </image>
+
   <text class="team-name">{{currentTeamName}}</text>
   <view class="add-btn">
     <text class="add-txt">提出意见</text>

@@ -36,21 +36,7 @@
       border="{{ false }}"
     />
 
-    <view class="logo">
-      <van-field
-        value="{{ password }}"
-        type="txt"
-        label="团队头像"
-        style="width:90%"
-        placeholder="点击右侧加号修改团队头像"
-      />
-      <van-icon name="add-o" 
-          size="30px" 
-          custom-class="join-btn"
-          color="#A9A9A9"
-          bind:click="doUpload"
-      />
-    </view>
+    <van-cell value="{{title}}" title="点击修改团队头像" bind:click="doUpload" icon="add-o" border="{{ true }}" />
   </van-cell-group>
 
   <view class="uploader-container">

@@ -43,12 +43,11 @@
     border="{{a}}"
     label="个性签名："
     type="textarea"
-    icon="peer-pay"
     placeholder="请输入个性签名"
     autosize
     bind:change="change4"
   />
-<text>\n\n\n\n\n</text>
+
 
 <view class='bottomButton'>
   <van-button slot="button" size="large" type="primary" icon="success" color="#ff9966" is-link bind:click="showtip">

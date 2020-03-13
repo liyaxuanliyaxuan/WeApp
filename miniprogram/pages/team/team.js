@@ -23,7 +23,7 @@ Page({
 ],
     show:false,
     myTeams:[],
-    currentTeamName:"My Team",
+    currentTeamName:"我的团队",
     defaultTeamName:"",
     unchoose:true,
     defaultTeam:"默认",

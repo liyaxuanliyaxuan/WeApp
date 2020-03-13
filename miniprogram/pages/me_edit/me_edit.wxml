@@ -13,7 +13,6 @@
     bind:change="change1"
   />
 
-  <text>\n</text>
   <picker mode="date"
           value="{{date}}"
           start="2000-01-01"
@@ -30,8 +29,6 @@
     />
   </picker>
 
-
-  <text>\n</text>
   <van-field
     value="{{ job }}"
     label="职业："
@@ -42,45 +39,29 @@
     bind:change="change3"
   />
 
-
-  <text>\n</text>
+<br/>
   <van-field
   custom-style="height:100px"  
     value="{{signature}}"
     border="{{a}}"
     label="个性签名："
     type="textarea"
-    icon="peer-pay"
     placeholder="请输入个性签名"
     autosize
     bind:change="change4"
   />
 
-  <text>\n</text>
-  <view class="logo">
-      <van-field
-        value="{{ password }}"
-        type="txt"
-        label="个人相册"
-        style="width:90%"
-        placeholder="点击右侧加号修改个人相册"
-      />
-      <van-icon name="add-o" 
-          size="30px" 
-          custom-class="join-btn"
-          color="#A9A9A9"
-          bind:click="doUpload"
-      />
-</view>
+<br/>
+    <van-cell value="{{title}}" title="点击修改个人相册" bind:click="doUpload" icon="add-o" border="{{ true }}" />
 <view class="uploader-container">
       <image class="uploader-image" src="{{pic}}" 
-             mode="aspectFit"
+            
              bindtap="previewImg" 
              custom-style="height: auto;">
       </image>
 </view>
 
-<text>\n\n</text>
+<br/>
 <view class='bottomButton'>
   <van-button slot="button" size="large" type="primary" icon="success" color="#ff9966" is-link bind:click="showtip">
     保存

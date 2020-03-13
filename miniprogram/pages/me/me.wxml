@@ -8,10 +8,7 @@
     <image class="userinfo-avatar" src="{{userInfo.avatarUrl}}"  mode="cover"></image>
   </view>
   <view class="account">
-    <view>用户名：{{userInfo.nickName}}</view> 
-    <view>
-      <text>账号管理></text>
-    </view>
+    <view>{{userInfo.nickName}}</view> 
   </view>  
   <view class="nav">
     <van-icon name="edit" size="20px" bind:click="editMe"/>

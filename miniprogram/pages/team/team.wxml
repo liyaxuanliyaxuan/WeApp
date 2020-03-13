@@ -62,13 +62,12 @@
   </van-row>
 </van-popup>
 
-<view class="Event">
-  <image class="teamIcon">
-  </image>
-  <text class="team-name">{{currentTeamName}}</text>
-  <view class="add-btn">
-    <text class="add-txt">Add</text>
-    <van-icon name="description" size="20px" style="top:5px" bind:click="addEvent"/>
+<view class="team-event">
+  <text class="team-name">
+  {{currentTeamName}}</text>
+  <view class="add-btn" >
+    <text class="add-txt">添加</text>
+    <van-icon name="edit" size="20px" style="top:5px" bind:click="addEvent"/>
   </view>
 </view>
 

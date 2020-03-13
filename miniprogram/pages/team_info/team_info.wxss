@@ -11,29 +11,26 @@
   font-size:15px;
 }
 .team-name{
-  font-size: 15px;
-  margin-left:70rpx;
+  font-size: 30rpx;
+  margin-left:50rpx;
 }
 .teamIcon{
   position:absolute;
   width:50rpx;
 }
 .add-btn{
-  font-size:15px;
+  font-size:20rpx;
   margin-left:5%;
   position: absolute;
   right:5%;
 }
 .add-txt{
-  font-size: 15px;
+  font-size: 30rpx;
+  padding: 8rpx;
 }
-.fire{
-  color: red;
-  margin-left: 12px;
-  margin-right: 4px;
-}
+
 .team{
-  margin-top:20rpx;
+  margin-top:40rpx;
 }
 .Member{
   margin-left:5%;
@@ -41,13 +38,7 @@
   font-size:30rpx;
   line-height:2em;  
 }
-.background{
-  width: 100%;
-  height: 100%;
-  position:fixed; 
-  background-size:100% 100%;
-  z-index: -1;
-}
+
 .teampic{
   width:80%;
   margin-left:10%;
